@@ -1,0 +1,27 @@
+{
+  "dataset": "Eedi - Mining Misconceptions in Mathematics (2024)",
+  "split": "train",
+  "upstream": "https://www.kaggle.com/competitions/eedi-mining-misconceptions-in-mathematics/data",
+  "mirror": "https://github.com/wangqihanginthesky/Eedi_kaggle",
+  "revision": "17a1bc3825c5354b7f70adbb5124198cca448e5f",
+  "files": {
+    "misconception_mapping.csv": {
+      "url": "https://raw.githubusercontent.com/wangqihanginthesky/Eedi_kaggle/17a1bc3825c5354b7f70adbb5124198cca448e5f/data/raw/misconception_mapping.csv",
+      "sha256": "2b2fd9c031084b11fe486435c823452e5ef1a8edc1fa47ab7fa676ffe141a507",
+      "bytes": 197808
+    },
+    "train.csv": {
+      "url": "https://raw.githubusercontent.com/wangqihanginthesky/Eedi_kaggle/17a1bc3825c5354b7f70adbb5124198cca448e5f/data/raw/train.csv",
+      "sha256": "31fbea4fdb250fc67a8254aba0764100e89db71a43ea74d2f123ef1c95545187",
+      "bytes": 711692
+    }
+  },
+  "junyi": {
+    "dataset": "Junyi Academy Online Learning Activity Dataset (Info_Content)",
+    "role": "Knowledge graph for prerequisite / hierarchy traversal",
+    "local_file": "junyi/archive/Info_Content.csv",
+    "optional_expert_table": "raw/junyi/junyi_Exercise_table.csv",
+    "upstream": "https://www.kaggle.com/datasets/junyiacademy/learning-activity-public-dataset-by-junyi-academy",
+    "note": "Loader prefers junyi_Exercise_table.csv (expert prerequisite column) when present; otherwise uses Info_Content level2/3/4 hierarchy. Log_Problem.csv is not loaded."
+  }
+}

@@ -1,0 +1,124 @@
+[
+  {
+    "question_id": "EEDI_Q101",
+    "concept_id": "QUADRATIC_EQ",
+    "concept_name": "Giải Phương Trình Bậc Hai",
+    "subject": "Mathematics",
+    "construct_id": "ALG_QUAD_01",
+    "question_text": "Cho phương trình 2x^2 - 4x - 6 = 0. Tìm nghiệm x của phương trình.",
+    "options": {
+      "A": "x = 3 hoặc x = -1",
+      "B": "x = -3 hoặc x = 1",
+      "C": "x = 6 hoặc x = -2",
+      "D": "x = 3 hoặc x = 1"
+    },
+    "correct_option": "A",
+    "misconception_map": {
+      "B": {
+        "misconception_id": "MISC_SIGN_FLIP",
+        "name": "Nhầm dấu Vi-ét / Đổi dấu nghiệm khi chuyển vế",
+        "description": "Học sinh tính đúng giá trị tuyệt đối của nghiệm nhưng đảo ngược dấu do áp dụng sai công thức Vi-ét hoặc khi chuyển vế.",
+        "severity": "medium"
+      },
+      "C": {
+        "misconception_id": "MISC_MISSING_A_COEFF",
+        "name": "Quên chia cho hệ số a trong công thức nghiệm",
+        "description": "Học sinh áp dụng công thức x = (-b +- sqrt(Delta)) mà quên mất chia cho 2a ở mẫu số.",
+        "severity": "high"
+      },
+      "D": {
+        "misconception_id": "MISC_DELTA_SIGN",
+        "name": "Tính sai Delta / Sai dấu dưới căn",
+        "description": "Học sinh tính Delta = b^2 - 4ac thành b^2 + 4ac hoặc sai dấu âm của b^2.",
+        "severity": "high"
+      }
+    }
+  },
+  {
+    "question_id": "EEDI_Q102",
+    "concept_id": "FRACTION_ADDITION",
+    "concept_name": "Cộng Trừ Phân Số Khác Mẫu",
+    "subject": "Mathematics",
+    "construct_id": "ARITH_FRAC_02",
+    "question_text": "Tính giá trị của biểu thức P = 1/2 + 1/3.",
+    "options": {
+      "A": "5/6",
+      "B": "2/5",
+      "C": "1/6",
+      "D": "2/6"
+    },
+    "correct_option": "A",
+    "misconception_map": {
+      "B": {
+        "misconception_id": "MISC_DIRECT_ADD",
+        "name": "Cộng tử với tử, mẫu với mẫu",
+        "description": "Học sinh ngây thơ cộng trực tiếp tử số với tử số (1+1=2) và mẫu số với mẫu số (2+3=5) mà không quy đồng mẫu số.",
+        "severity": "high"
+      },
+      "C": {
+        "misconception_id": "MISC_NO_NUMERATOR_MULT",
+        "name": "Nhân mẫu số nhưng giữ nguyên tử số",
+        "description": "Học sinh quy đồng bằng cách lấy mẫu số chung (6) nhưng quên nhân tử số với hệ số phụ.",
+        "severity": "medium"
+      }
+    }
+  },
+  {
+    "question_id": "EEDI_Q103",
+    "concept_id": "LINEAR_EQ",
+    "concept_name": "Phương Trình Bậc Nhất Một Ẩn",
+    "subject": "Mathematics",
+    "construct_id": "ALG_LIN_01",
+    "question_text": "Giải phương trình: 3x - 9 = 0.",
+    "options": {
+      "A": "x = 3",
+      "B": "x = -3",
+      "C": "x = 1/3",
+      "D": "x = 27"
+    },
+    "correct_option": "A",
+    "misconception_map": {
+      "B": {
+        "misconception_id": "MISC_TRANSPOSITION_SIGN",
+        "name": "Quên đổi dấu khi chuyển vế số hạng",
+        "description": "Học sinh chuyển -9 sang vế phải thành 3x = -9 thay vì 3x = +9.",
+        "severity": "medium"
+      },
+      "C": {
+        "misconception_id": "MISC_DIVIDE_SWAP",
+        "name": "Nhầm lẫn số bị chia và số chia",
+        "description": "Học sinh lấy hệ số x chia cho hằng số (3/9) thay vì hằng số chia hệ số (9/3).",
+        "severity": "medium"
+      }
+    }
+  },
+  {
+    "question_id": "EEDI_Q104",
+    "concept_id": "ALGEBRAIC_EXPANSION",
+    "concept_name": "Hằng Đẳng Thức Bình Phương Một Tổng",
+    "subject": "Mathematics",
+    "construct_id": "ALG_EXP_01",
+    "question_text": "Rút gọn biểu thức A = (x + 3)^2.",
+    "options": {
+      "A": "x^2 + 6x + 9",
+      "B": "x^2 + 9",
+      "C": "x^2 + 3x + 9",
+      "D": "x^2 + 6x + 6"
+    },
+    "correct_option": "A",
+    "misconception_map": {
+      "B": {
+        "misconception_id": "MISC_FRESHMAN_DREAM",
+        "name": "Sai lầm ngây thơ (Freshman's Dream): Bỏ qua tích 2ab",
+        "description": "Học sinh áp dụng (a+b)^2 = a^2 + b^2 mà bỏ qua hoàn toàn số hạng tích 2ab ở giữa.",
+        "severity": "high"
+      },
+      "C": {
+        "misconception_id": "MISC_NO_2_FACTOR",
+        "name": "Quên nhân 2 ở số hạng tích ab",
+        "description": "Học sinh lấy x * 3 = 3x mà quên nhân hệ số 2 theo công thức 2ab.",
+        "severity": "medium"
+      }
+    }
+  }
+]
