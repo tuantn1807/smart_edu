@@ -1,0 +1,55 @@
+{
+  "subject": "Toán Học Phổ Thông (Junyi Schema)",
+  "version": "1.0",
+  "concepts": [
+    {
+      "concept_id": "BASIC_ARITHMETIC",
+      "name": "Phép Tính Số Học Cơ Bản",
+      "difficulty": 0.1,
+      "description": "Cộng, trừ, nhân, chia số nguyên cơ bản.",
+      "prerequisites": []
+    },
+    {
+      "concept_id": "FRACTION_ADDITION",
+      "name": "Cộng Trừ Phân Số",
+      "difficulty": 0.3,
+      "description": "Quy đồng mẫu số và thực hiện phép tính phân số.",
+      "prerequisites": ["BASIC_ARITHMETIC"]
+    },
+    {
+      "concept_id": "LINEAR_EQ",
+      "name": "Phương Trình Bậc Nhất",
+      "difficulty": 0.4,
+      "description": "Giải phương trình ax + b = 0.",
+      "prerequisites": ["BASIC_ARITHMETIC"]
+    },
+    {
+      "concept_id": "ALGEBRAIC_EXPANSION",
+      "name": "Khai Triển & Phân Tích Đa Thức",
+      "difficulty": 0.5,
+      "description": "Hằng đẳng thức đáng nhớ và phân tích thành nhân tử.",
+      "prerequisites": ["BASIC_ARITHMETIC", "FRACTION_ADDITION"]
+    },
+    {
+      "concept_id": "QUADRATIC_EQ",
+      "name": "Phương Trình Bậc Hai",
+      "difficulty": 0.7,
+      "description": "Giải phương trình ax^2 + bx + c = 0 bằng công thức Delta hoặc Vi-ét.",
+      "prerequisites": ["ALGEBRAIC_EXPANSION", "LINEAR_EQ"]
+    },
+    {
+      "concept_id": "VIETA_THEOREM",
+      "name": "Định Lý Vi-ét",
+      "difficulty": 0.8,
+      "description": "Ứng dụng mối quan hệ giữa các nghiệm và hệ số phương trình bậc hai.",
+      "prerequisites": ["QUADRATIC_EQ"]
+    },
+    {
+      "concept_id": "QUADRATIC_FUNCTION_GRAPH",
+      "name": "Đồ Thị Hàm Số Bậc Hai",
+      "difficulty": 0.85,
+      "description": "Vẽ và khảo sát sự biến thiên của Parabol y = ax^2 + bx + c.",
+      "prerequisites": ["QUADRATIC_EQ"]
+    }
+  ]
+}
