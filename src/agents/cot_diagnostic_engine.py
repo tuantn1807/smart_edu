@@ -116,9 +116,6 @@ class LocalCoTDiagnosticEngine:
         if self.backend not in ("ollama", "vllm"):
             raise ValueError(f"Unsupported backend '{self.backend}'. Must be 'ollama' or 'vllm'.")
 
-        if self.diagnosis_mode not in ("independent", "rubric_constrained"):
-            raise ValueError(f"Unsupported diagnosis_mode '{self.diagnosis_mode}'. Must be 'independent' or 'rubric_constrained'.")
-
         self._validate_local_endpoint(self.api_base)
 
     def _validate_local_endpoint(self, url: str) -> None:
@@ -137,12 +134,14 @@ class LocalCoTDiagnosticEngine:
         selected_option: str,
         feedback_error: Optional[str] = None
     ) -> str:
-        """Construct prompt with system instructions, few-shot examples, and input context."""
+        """
+        Constructs zero-leakage Chain-of-Thought prompt.
+        Strictly excludes any ground-truth rubric hints or candidate misconception IDs.
+        """
         question_text = question.get("question_text", "")
         options = question.get("options", {})
         correct_option = question.get("correct_option", "")
         concept_name = question.get("concept_name", "Chưa xác định")
-        misconception_map = question.get("misconception_map", {})
 
         prompt = [
             "Bạn là Diagnostic AI Agent chuyên sâu về phân tích nguyên nhân lỗi sai và phát hiện hiểu lầm (misconception) của học sinh trong môn Toán.",
@@ -181,14 +180,7 @@ class LocalCoTDiagnosticEngine:
         prompt.append(f"Đáp án đúng: [{correct_option}]")
         prompt.append(f"Học sinh chọn: [{selected_option}]")
         prompt.append(f"Khái niệm: {concept_name}")
-
-        # Zero-leakage prompt construction: In independent mode, absolutely no rubric hints or ground-truth IDs are passed.
-        if self.diagnosis_mode == "independent":
-            prompt.append("Lưu ý: Phân tích CoT độc lập hoàn toàn. Nếu không phát hiện hiểu lầm cụ thể hoặc đáp án không thuộc danh mục hiểu lầm đã biết, hãy gán misconception_id là 'unlabeled'.")
-        elif self.diagnosis_mode == "rubric_constrained":
-            if selected_option in misconception_map:
-                cand = misconception_map[selected_option]
-                prompt.append(f"Gợi ý nhãn rubric Eedi: Tên='{cand.get('name')}'")
+        prompt.append("Lưu ý: Phân tích CoT độc lập hoàn toàn. Nếu không phát hiện hiểu lầm cụ thể hoặc đáp án không thuộc danh mục hiểu lầm đã biết, hãy gán misconception_id là 'unlabeled'.")
 
         if feedback_error:
             prompt.append(f"\n⚠️ CHÚ Ý: Lần thử trước xuất output không hợp lệ với lỗi: {feedback_error}. Hãy sửa lại và chỉ xuất duy nhất 1 JSON hợp lệ!")
@@ -197,7 +189,13 @@ class LocalCoTDiagnosticEngine:
         return "\n".join(prompt)
 
     def _call_backend(self, prompt: str) -> Tuple[Optional[str], Optional[str]]:
-        """Calls local REST API endpoint (Ollama or vLLM). Returns (raw_text, error_reason)."""
+        """
+        Calls local REST API endpoint (Ollama or vLLM).
+        Returns:
+            Tuple[raw_text, error_reason]
+            error_reason is None on success, or one of:
+            "MODEL_NOT_FOUND" (HTTP 404), "HTTP_ERROR_<code >", "CONNECTION_ERROR", "TIMEOUT", "UNEXPECTED_ERROR"
+        """
         if self.backend == "ollama":
             url = f"{self.api_base}/api/generate"
             payload = {
@@ -325,10 +323,11 @@ class LocalCoTDiagnosticEngine:
         selected_option: str
     ) -> Tuple[DiagnosticOutputSchema, bool, int, bool, Optional[str]]:
         """
-        Executes Local CoT Diagnosis with guardrails, fail-fast error classification, and retries.
+        Executes Local CoT Diagnosis with guardrails, explicit failure classification, and retries.
 
         Returns:
             Tuple[DiagnosticOutputSchema, is_valid_parse, attempts_taken, used_fallback, error_reason]
+            error_reason distinguishes: TIMEOUT, HTTP_*, MODEL_NOT_FOUND, MALFORMED_OUTPUT, SCHEMA_VALIDATION_ERROR, RETRY_EXHAUSTED.
         """
         feedback_error: Optional[str] = None
         attempts = 0
@@ -346,21 +345,21 @@ class LocalCoTDiagnosticEngine:
                 logger.warning(f"Attempt {attempt} backend error: {err_reason}")
 
                 # Non-retriable fatal errors -> Fail Fast
-                if err_reason in fatal_errors:
+                if err_reason in fatal_errors or err_reason.startswith("HTTP_ERROR"):
                     if not self.enable_ollama_fallback:
                         raise RuntimeError(
-                            f"Diagnostic Engine failed fast on fatal error '{err_reason}' for model '{self.model_name}' at '{self.api_base}'."
+                            f"Diagnostic Engine failed fast on error '{err_reason}' for model '{self.model_name}' at '{self.api_base}'."
                         )
                     mock_dict = self._mock_inference(question, selected_option)
                     parsed = DiagnosticOutputSchema(**mock_dict)
                     return parsed, False, attempt, True, err_reason
                 
-                # Retriable errors (TIMEOUT, HTTP_500, etc.)
+                # Retriable errors (TIMEOUT, etc.)
                 continue
 
-            if not raw_output:
+            if not raw_output or not raw_output.strip():
                 last_error_reason = "MALFORMED_OUTPUT"
-                logger.warning(f"Attempt {attempt} returned empty output")
+                logger.warning(f"Attempt {attempt} returned empty/malformed output")
                 continue
 
             json_str = self._clean_and_extract_json(raw_output)
