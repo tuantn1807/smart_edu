@@ -182,12 +182,13 @@ class LocalCoTDiagnosticEngine:
         prompt.append(f"Học sinh chọn: [{selected_option}]")
         prompt.append(f"Khái niệm: {concept_name}")
 
-        if self.diagnosis_mode == "rubric_constrained":
+        # Zero-leakage prompt construction: In independent mode, absolutely no rubric hints or ground-truth IDs are passed.
+        if self.diagnosis_mode == "independent":
+            prompt.append("Lưu ý: Phân tích CoT độc lập hoàn toàn. Nếu không phát hiện hiểu lầm cụ thể hoặc đáp án không thuộc danh mục hiểu lầm đã biết, hãy gán misconception_id là 'unlabeled'.")
+        elif self.diagnosis_mode == "rubric_constrained":
             if selected_option in misconception_map:
                 cand = misconception_map[selected_option]
                 prompt.append(f"Gợi ý nhãn rubric Eedi: Tên='{cand.get('name')}'")
-        else:
-            prompt.append("Lưu ý: Nếu không phát hiện hiểu lầm cụ thể hoặc đáp án không thuộc danh mục hiểu lầm đã biết, hãy gán misconception_id là 'unlabeled'.")
 
         if feedback_error:
             prompt.append(f"\n⚠️ CHÚ Ý: Lần thử trước xuất output không hợp lệ với lỗi: {feedback_error}. Hãy sửa lại và chỉ xuất duy nhất 1 JSON hợp lệ!")
@@ -324,7 +325,7 @@ class LocalCoTDiagnosticEngine:
         selected_option: str
     ) -> Tuple[DiagnosticOutputSchema, bool, int, bool, Optional[str]]:
         """
-        Executes Local CoT Diagnosis with guardrails and retries.
+        Executes Local CoT Diagnosis with guardrails, fail-fast error classification, and retries.
 
         Returns:
             Tuple[DiagnosticOutputSchema, is_valid_parse, attempts_taken, used_fallback, error_reason]
@@ -333,16 +334,34 @@ class LocalCoTDiagnosticEngine:
         attempts = 0
         last_error_reason: Optional[str] = None
 
+        fatal_errors = {"MODEL_NOT_FOUND", "CONNECTION_ERROR", "SECURITY_VIOLATION"}
+
         for attempt in range(1, self.max_retries + 1):
             attempts = attempt
             prompt = self.build_few_shot_prompt(question, selected_option, feedback_error)
             raw_output, err_reason = self._call_backend(prompt)
 
-            if err_reason is not None or not raw_output:
-                last_error_reason = err_reason or "EMPTY_RESPONSE"
-                mock_dict = self._mock_inference(question, selected_option)
-                parsed = DiagnosticOutputSchema(**mock_dict)
-                return parsed, False, 1, self.enable_ollama_fallback, last_error_reason
+            if err_reason is not None:
+                last_error_reason = err_reason
+                logger.warning(f"Attempt {attempt} backend error: {err_reason}")
+
+                # Non-retriable fatal errors -> Fail Fast
+                if err_reason in fatal_errors:
+                    if not self.enable_ollama_fallback:
+                        raise RuntimeError(
+                            f"Diagnostic Engine failed fast on fatal error '{err_reason}' for model '{self.model_name}' at '{self.api_base}'."
+                        )
+                    mock_dict = self._mock_inference(question, selected_option)
+                    parsed = DiagnosticOutputSchema(**mock_dict)
+                    return parsed, False, attempt, True, err_reason
+                
+                # Retriable errors (TIMEOUT, HTTP_500, etc.)
+                continue
+
+            if not raw_output:
+                last_error_reason = "MALFORMED_OUTPUT"
+                logger.warning(f"Attempt {attempt} returned empty output")
+                continue
 
             json_str = self._clean_and_extract_json(raw_output)
             try:
@@ -354,8 +373,12 @@ class LocalCoTDiagnosticEngine:
                 last_error_reason = "SCHEMA_VALIDATION_ERROR"
                 logger.warning(f"Attempt {attempt} failed schema validation: {err}")
 
-        # If retries exceeded
+        # Retries exhausted
         last_error_reason = "RETRY_EXHAUSTED"
+        if not self.enable_ollama_fallback:
+            raise RuntimeError(
+                f"Diagnostic Engine exhausted retries ({attempts}/{self.max_retries}) with last error '{last_error_reason}'."
+            )
+
         fallback_dict = self._mock_inference(question, selected_option)
-        used_fallback = self.enable_ollama_fallback
-        return DiagnosticOutputSchema(**fallback_dict), False, attempts, used_fallback, last_error_reason
+        return DiagnosticOutputSchema(**fallback_dict), False, attempts, True, last_error_reason

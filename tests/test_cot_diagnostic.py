@@ -178,6 +178,13 @@ Done."""
         self.assertEqual(err_reason, "MODEL_NOT_FOUND")
 
     @patch.object(LocalCoTDiagnosticEngine, "_call_backend")
+    def test_diagnose_fail_fast_when_fallback_disabled(self, mock_backend):
+        engine_no_fallback = LocalCoTDiagnosticEngine(enable_ollama_fallback=False)
+        with patch.object(engine_no_fallback, "_call_backend", return_value=(None, "MODEL_NOT_FOUND")):
+            with self.assertRaises(RuntimeError):
+                engine_no_fallback.diagnose(self.sample_question, "A")
+
+    @patch.object(LocalCoTDiagnosticEngine, "_call_backend")
     def test_diagnostic_agent_llm_mode(self, mock_backend):
         mock_backend.return_value = (json.dumps({
             "misconception_id": "1001",
