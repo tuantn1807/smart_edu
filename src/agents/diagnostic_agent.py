@@ -57,16 +57,18 @@ class DiagnosticAgent(BaseAgent):
                 "concept_id": concept_id,
                 "concept_name": concept_name,
                 "detected_misconception": None,
-                "misconception_id": None,
+                "misconception_id": "unlabeled",
                 "mastery_score": new_mastery,
                 "cot_explanation": reasoning_cot,
                 "confidence_score": 1.0,
-                "engine": "rule_based" if not use_llm else "llm_cot"
+                "is_valid_parse": None,
+                "used_fallback": False,
+                "engine": "rule_based"
             }
         else:
             misconception_map = question.get("misconception_map", {})
             if use_llm:
-                schema_out, is_valid_parse, attempts = self.cot_engine.diagnose(question, selected_option)
+                schema_out, is_valid_parse, attempts, used_fallback = self.cot_engine.diagnose(question, selected_option)
                 misc_id = schema_out.misconception_id
                 cot_explanation = schema_out.cot_reasoning
                 confidence_score = schema_out.confidence_score
@@ -105,6 +107,7 @@ class DiagnosticAgent(BaseAgent):
                     "confidence_score": confidence_score,
                     "is_valid_parse": is_valid_parse,
                     "parse_attempts": attempts,
+                    "used_fallback": used_fallback,
                     "engine": "llm_cot"
                 }
             else:

@@ -4,6 +4,7 @@ Unit tests for Local CoT Diagnostic Engine & Guardrail Validation.
 
 import json
 import unittest
+from unittest.mock import patch
 from typing import Dict, Any, List
 
 from pydantic import ValidationError
@@ -100,20 +101,77 @@ Done."""
         schema = DiagnosticOutputSchema(**data)
         self.assertEqual(schema.misconception_id, "1001")
 
-    def test_few_shot_prompt_generation(self):
+    def test_few_shot_prompt_generation_no_label_leakage(self):
         prompt = self.engine.build_few_shot_prompt(self.sample_question, "A")
         self.assertIn("1/4 + 1/4", prompt)
-        self.assertIn("1001", prompt)
-        self.assertIn("cot_reasoning", prompt)
+        self.assertNotIn("Gợi ý nhãn rubric Eedi sẵn có", prompt)
+        self.assertNotIn("ID='1001'", prompt)
 
-    def test_engine_diagnosis_flow(self):
-        schema_out, is_valid_parse, attempts = self.engine.diagnose(self.sample_question, "A")
+    @patch.object(LocalCoTDiagnosticEngine, "_call_ollama")
+    def test_diagnose_success_first_try(self, mock_call):
+        mock_response = json.dumps({
+            "misconception_id": "1001",
+            "cot_reasoning": "1. Quan sát: A. 2. Phân tích: cộng mẫu. 3. Kết luận: 1001",
+            "confidence_score": 0.95
+        })
+        mock_call.return_value = mock_response
+
+        schema_out, is_valid_parse, attempts, used_fallback = self.engine.diagnose(self.sample_question, "A")
         self.assertTrue(is_valid_parse)
+        self.assertFalse(used_fallback)
+        self.assertEqual(attempts, 1)
         self.assertEqual(schema_out.misconception_id, "1001")
-        self.assertGreater(len(schema_out.cot_reasoning), 10)
-        self.assertGreaterEqual(attempts, 1)
 
-    def test_diagnostic_agent_llm_mode(self):
+    @patch.object(LocalCoTDiagnosticEngine, "_call_ollama")
+    def test_diagnose_retry_success(self, mock_call):
+        invalid_resp = "Invalid JSON without braces"
+        valid_resp = json.dumps({
+            "misconception_id": "1001",
+            "cot_reasoning": "Fixed JSON after retry",
+            "confidence_score": 0.90
+        })
+        mock_call.side_effect = [invalid_resp, valid_resp]
+
+        schema_out, is_valid_parse, attempts, used_fallback = self.engine.diagnose(self.sample_question, "A")
+        self.assertTrue(is_valid_parse)
+        self.assertFalse(used_fallback)
+        self.assertEqual(attempts, 2)
+        self.assertEqual(schema_out.misconception_id, "1001")
+
+    @patch.object(LocalCoTDiagnosticEngine, "_call_ollama")
+    def test_diagnose_all_retries_failed(self, mock_call):
+        mock_call.return_value = "Broken JSON response"
+
+        schema_out, is_valid_parse, attempts, used_fallback = self.engine.diagnose(self.sample_question, "A")
+        self.assertFalse(is_valid_parse)
+        self.assertTrue(used_fallback)
+        self.assertEqual(attempts, 3)
+
+    @patch.object(LocalCoTDiagnosticEngine, "_call_ollama")
+    def test_diagnose_ollama_offline_fallback_enabled(self, mock_call):
+        mock_call.return_value = None  # Service unreachable
+
+        schema_out, is_valid_parse, attempts, used_fallback = self.engine.diagnose(self.sample_question, "A")
+        self.assertFalse(is_valid_parse)
+        self.assertTrue(used_fallback)
+        self.assertEqual(attempts, 1)
+        self.assertEqual(schema_out.misconception_id, "1001")
+
+    @patch.object(LocalCoTDiagnosticEngine, "_call_ollama")
+    def test_diagnose_ollama_offline_fallback_disabled(self, mock_call):
+        engine_no_fallback = LocalCoTDiagnosticEngine(enable_ollama_fallback=False)
+        with patch.object(engine_no_fallback, "_call_ollama", return_value=None):
+            schema_out, is_valid_parse, attempts, used_fallback = engine_no_fallback.diagnose(self.sample_question, "A")
+            self.assertFalse(is_valid_parse)
+            self.assertFalse(used_fallback)
+
+    @patch.object(LocalCoTDiagnosticEngine, "_call_ollama")
+    def test_diagnostic_agent_llm_mode(self, mock_call):
+        mock_call.return_value = json.dumps({
+            "misconception_id": "1001",
+            "cot_reasoning": "Detailed CoT description",
+            "confidence_score": 0.95
+        })
         state = LearnerState("TEST_STUDENT", "Student Test")
         res = self.agent.process(
             {"question": self.sample_question, "selected_option": "A", "use_llm": True},
@@ -123,7 +181,7 @@ Done."""
         self.assertEqual(res["engine"], "llm_cot")
         self.assertEqual(res["misconception_id"], "1001")
         self.assertTrue(res["is_valid_parse"])
-        self.assertIn("cot_explanation", res)
+        self.assertFalse(res["used_fallback"])
 
     def test_diagnostic_agent_correct_answer(self):
         state = LearnerState("TEST_STUDENT", "Student Test")
@@ -133,6 +191,7 @@ Done."""
         )
         self.assertTrue(res["is_correct"])
         self.assertIsNone(res["detected_misconception"])
+        self.assertEqual(res["misconception_id"], "unlabeled")
 
     def test_macro_f1_calculation(self):
         y_true = ["101", "102", "101", "unlabeled"]

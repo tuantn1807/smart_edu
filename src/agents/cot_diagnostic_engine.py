@@ -158,12 +158,7 @@ class LocalCoTDiagnosticEngine:
         prompt.append(f"Học sinh chọn: [{selected_option}]")
         prompt.append(f"Khái niệm: {concept_name}")
 
-        # Provide candidate rubric information if available to aid exact ID prediction
-        if selected_option in misconception_map:
-            cand = misconception_map[selected_option]
-            prompt.append(f"Gợi ý nhãn rubric Eedi sẵn có cho lựa chọn {selected_option}: ID='{cand.get('misconception_id')}', Tên='{cand.get('name')}'")
-        else:
-            prompt.append(f"Gợi ý: Phương án [{selected_option}] chưa được gán nhãn cụ thể trong rubric (sử dụng 'unlabeled' nếu không tìm thấy ID phù hợp).")
+        prompt.append("Lưu ý: Nếu không phát hiện hiểu lầm cụ thể hoặc đáp án không thuộc danh mục hiểu lầm đã biết, hãy gán misconception_id là 'unlabeled'.")
 
         if feedback_error:
             prompt.append(f"\n⚠️ CHÚ Ý: Lần thử trước xuất output không hợp lệ với lỗi: {feedback_error}. Hãy sửa lại và chỉ xuất duy nhất 1 JSON hợp lệ!")
@@ -192,8 +187,11 @@ class LocalCoTDiagnosticEngine:
                 if response.status == 200:
                     resp_obj = json.loads(response.read().decode("utf-8"))
                     return resp_obj.get("response", "")
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as e:
+            logger.debug(f"Ollama connection/HTTP call failed: {e}")
+            return None
         except Exception as e:
-            logger.debug(f"Ollama call failed: {e}")
+            logger.warning(f"Unexpected error in Ollama call: {e}")
             return None
 
     def _clean_and_extract_json(self, raw_text: str) -> str:
@@ -263,12 +261,12 @@ class LocalCoTDiagnosticEngine:
         self,
         question: Dict[str, Any],
         selected_option: str
-    ) -> Tuple[DiagnosticOutputSchema, bool, int]:
+    ) -> Tuple[DiagnosticOutputSchema, bool, int, bool]:
         """
         Executes Local CoT Diagnosis with guardrails and retries.
 
         Returns:
-            Tuple[DiagnosticOutputSchema, is_valid_parse, attempts_taken]
+            Tuple[DiagnosticOutputSchema, is_valid_parse, attempts_taken, used_fallback]
         """
         feedback_error: Optional[str] = None
         attempts = 0
@@ -283,18 +281,22 @@ class LocalCoTDiagnosticEngine:
                 if self.enable_ollama_fallback:
                     mock_dict = self._mock_inference(question, selected_option)
                     parsed = DiagnosticOutputSchema(**mock_dict)
-                    return parsed, True, 1
+                    return parsed, False, 1, True
+                else:
+                    mock_dict = self._mock_inference(question, selected_option)
+                    parsed = DiagnosticOutputSchema(**mock_dict)
+                    return parsed, False, 1, False
 
-            if raw_output:
-                json_str = self._clean_and_extract_json(raw_output)
-                try:
-                    data = json.loads(json_str)
-                    parsed = DiagnosticOutputSchema(**data)
-                    return parsed, True, attempt
-                except (json.JSONDecodeError, ValidationError) as err:
-                    feedback_error = str(err)
-                    logger.warning(f"Attempt {attempt} failed schema validation: {err}")
+            json_str = self._clean_and_extract_json(raw_output)
+            try:
+                data = json.loads(json_str)
+                parsed = DiagnosticOutputSchema(**data)
+                return parsed, True, attempt, False
+            except (json.JSONDecodeError, ValidationError) as err:
+                feedback_error = str(err)
+                logger.warning(f"Attempt {attempt} failed schema validation: {err}")
 
         # If retries exceeded, fallback to deterministic mock representation
         fallback_dict = self._mock_inference(question, selected_option)
-        return DiagnosticOutputSchema(**fallback_dict), False, attempts
+        used_fallback = self.enable_ollama_fallback
+        return DiagnosticOutputSchema(**fallback_dict), False, attempts, used_fallback
