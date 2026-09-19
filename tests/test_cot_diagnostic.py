@@ -166,7 +166,7 @@ Done."""
         self.assertTrue(used_fallback)
         self.assertEqual(attempts, 1)
         self.assertEqual(err_reason, "CONNECTION_ERROR")
-        self.assertEqual(schema_out.misconception_id, "1001")
+        self.assertEqual(schema_out.misconception_id, "unlabeled")
 
     @patch.object(LocalCoTDiagnosticEngine, "_call_backend")
     def test_diagnose_model_not_found(self, mock_backend):

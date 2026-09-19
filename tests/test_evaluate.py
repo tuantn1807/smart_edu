@@ -60,7 +60,7 @@ class EvaluationTests(unittest.TestCase):
             self.assertEqual(diag['fallback_count'], diag['total_llm_evals'])
             self.assertEqual(diag['valid_json_parse_rate'], 0.0)
             self.assertEqual(diag['llm_evaluated_count'], 0)
-            self.assertGreater(diag['fallback_macro_f1'], 0.0)
+            self.assertEqual(diag['fallback_macro_f1'], 0.0)
 
     def test_mapping_and_graph_integrity(self):
         mapping = self.report['mapping']
