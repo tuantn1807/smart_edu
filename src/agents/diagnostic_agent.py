@@ -96,6 +96,7 @@ class DiagnosticAgent(BaseAgent):
 
                 diagnosis_result = {
                     "is_correct": False,
+                    "question_id": question.get("question_id", "UNKNOWN"),
                     "concept_id": concept_id,
                     "concept_name": concept_name,
                     "selected_option": selected_option,
@@ -141,6 +142,7 @@ class DiagnosticAgent(BaseAgent):
 
                 diagnosis_result = {
                     "is_correct": False,
+                    "question_id": question.get("question_id", "UNKNOWN"),
                     "concept_id": concept_id,
                     "concept_name": concept_name,
                     "selected_option": selected_option,

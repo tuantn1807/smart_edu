@@ -41,11 +41,17 @@ class TutorAgent(BaseAgent):
         current_question_id: Optional[str] = None,
     ) -> Tuple[str, int]:
         """
-        Determines the Graduated Hinting level scoped to the specific question / misconception context.
-        Turn 1 for current question/misconception -> Nudge
-        Turn 2 for current question/misconception -> Hint
-        Turn 3+ for current question/misconception -> Explanation
+        Determines the Graduated Hinting level strictly scoped to the tuple (question_id, misconception).
+        Turn 1 for current (question_id, misconception) -> Nudge
+        Turn 2 for current (question_id, misconception) -> Hint
+        Turn 3+ for current (question_id, misconception) -> Explanation
         """
+        if not current_question_id or not current_misconception:
+            return LEVEL_NUDGE, 1
+
+        curr_qid = str(current_question_id).strip()
+        curr_misc = str(current_misconception).strip()
+
         matching_turns = 0
         for entry in interaction_history:
             if entry.get("agent") == self.name or entry.get("role") == "assistant":
@@ -53,12 +59,9 @@ class TutorAgent(BaseAgent):
                 hist_qid = meta.get("question_id")
                 hist_misc = meta.get("misconception")
 
-                # Match by question_id if available, or by misconception
-                if current_question_id and hist_qid:
-                    if str(hist_qid) == str(current_question_id):
-                        matching_turns += 1
-                elif current_misconception and hist_misc:
-                    if str(hist_misc) == str(current_misconception):
+                # Both question_id and misconception must be present and match strictly
+                if hist_qid is not None and hist_misc is not None:
+                    if str(hist_qid).strip() == curr_qid and str(hist_misc).strip() == curr_misc:
                         matching_turns += 1
 
         turn_index = matching_turns + 1
@@ -90,8 +93,8 @@ class TutorAgent(BaseAgent):
         student_name = learner_state.student_name if learner_state else "Học sinh"
         history = learner_state.interaction_history if learner_state else []
 
-        # Extract context from diagnosis & question
-        question_id = diagnosis_result.get("question_id") or diagnosis_result.get("concept_id")
+        # Extract context strictly without concept_id fallback for question_id
+        question_id = diagnosis_result.get("question_id") or diagnosis_result.get("question", {}).get("question_id")
         detected_misc = diagnosis_result.get("detected_misconception")
         concept_name = diagnosis_result.get("concept_name", "Bài học")
         cot_explanation = diagnosis_result.get("cot_explanation", "")
@@ -100,7 +103,7 @@ class TutorAgent(BaseAgent):
         question_text = diagnosis_result.get("question_text", "")
         options = diagnosis_result.get("options", {})
 
-        # Determine graduated hinting level scoped to current question / misconception
+        # Determine graduated hinting level scoped strictly to (question_id, misconception)
         scaffolding_level, turn_index = self._determine_scaffolding_level(
             history, current_misconception=detected_misc, current_question_id=question_id
         )
