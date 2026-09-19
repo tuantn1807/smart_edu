@@ -96,6 +96,7 @@ class DiagnosticAgent(BaseAgent):
 
                 diagnosis_result = {
                     "is_correct": False,
+                    "question_id": question.get("question_id", "UNKNOWN"),
                     "concept_id": concept_id,
                     "concept_name": concept_name,
                     "selected_option": selected_option,
@@ -106,6 +107,8 @@ class DiagnosticAgent(BaseAgent):
                     "mastery_score": mastery,
                     "cot_explanation": cot_explanation,
                     "confidence_score": confidence_score,
+                    "question_text": question.get("question_text", ""),
+                    "options": question.get("options", {}),
                     "is_valid_parse": is_valid_parse,
                     "parse_attempts": attempts,
                     "used_fallback": used_fallback,
@@ -139,6 +142,7 @@ class DiagnosticAgent(BaseAgent):
 
                 diagnosis_result = {
                     "is_correct": False,
+                    "question_id": question.get("question_id", "UNKNOWN"),
                     "concept_id": concept_id,
                     "concept_name": concept_name,
                     "selected_option": selected_option,
@@ -149,6 +153,8 @@ class DiagnosticAgent(BaseAgent):
                     "mastery_score": mastery,
                     "cot_explanation": cot_explanation,
                     "confidence_score": 1.0,
+                    "question_text": question.get("question_text", ""),
+                    "options": question.get("options", {}),
                     "engine": "rule_based"
                 }
 

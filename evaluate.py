@@ -20,6 +20,7 @@ from src.agents.diagnostic_agent import UNLABELED_MISCONCEPTION, DiagnosticAgent
 from src.agents.kg_agent import KGAgent
 from src.agents.planner_agent import PlannerAgent
 from src.agents.tutor_agent import TutorAgent
+from src.agents.tutor_engine import compute_specificity_score
 from src.core.learner_state import LearnerState
 from src.data.concept_mapping import EediJunyiMapper
 from src.data.dataset_loaders import EediDatasetLoader, JunyiGraphLoader
@@ -288,6 +289,7 @@ def evaluate_planner_and_tutor(questions: List[Dict[str, Any]], mapper: EediJuny
     n_wrong_labeled = n_zpd_ok = 0
     n_unmapped_wrong = n_unmapped_no_review = 0
     n_tutor = n_tutor_scaffold = n_tutor_no_answer_leak = 0
+    n_tutor_specificity_ok = n_tutor_context_ok = 0
     with _silence():
         for index, question in enumerate(questions):
             labeled = next(iter(question['misconception_map']), None)
@@ -326,8 +328,11 @@ def evaluate_planner_and_tutor(questions: List[Dict[str, Any]], mapper: EediJuny
                 if (not has_review) and has_remediate and has_learn:
                     n_unmapped_no_review += 1
 
+            # Multi-turn Scaffolding Evaluation (3 turns: Nudge -> Hint -> Explanation)
             n_tutor += 1
-            tutor_result = tutor.process(
+
+            # Turn 1: Nudge
+            t1_res = tutor.process(
                 {
                     'student_query': 'Giải thích giúp em lỗi sai trong bài này.',
                     'diagnosis_result': diagnosis,
@@ -335,15 +340,65 @@ def evaluate_planner_and_tutor(questions: List[Dict[str, Any]], mapper: EediJuny
                 },
                 context,
             )
-            response = tutor_result.get('tutor_response', '')
+            r1 = t1_res.get('tutor_response', '')
+
+            # Turn 2: Hint
+            t2_res = tutor.process(
+                {
+                    'student_query': 'Em vẫn chưa biến đổi được, cho em gợi ý cụ thể hơn.',
+                    'diagnosis_result': diagnosis,
+                    'planner_result': plan,
+                },
+                context,
+            )
+            r2 = t2_res.get('tutor_response', '')
+
+            # Turn 3: Explanation
+            t3_res = tutor.process(
+                {
+                    'student_query': 'Thầy giải thích chi tiết bản chất lỗi sai giúp em với.',
+                    'diagnosis_result': diagnosis,
+                    'planner_result': plan,
+                },
+                context,
+            )
+            r3 = t3_res.get('tutor_response', '')
+
             correct_text = question['options'][question['correct_option']]
-            if 'Gợi ý' in response or 'Scaffolding' in response:
+            
+            # Scaffolding structure check
+            if (t1_res.get('scaffolding_level') == 'nudge' and
+                t2_res.get('scaffolding_level') == 'hint' and
+                t3_res.get('scaffolding_level') == 'explanation'):
                 n_tutor_scaffold += 1
-            if correct_text and correct_text not in response:
+
+            # Specificity check: Turn 2 Hint must be strictly more specific than Turn 1 Nudge
+            misc_name = diagnosis.get('detected_misconception')
+            s1 = compute_specificity_score(r1, misc_name)
+            s2 = compute_specificity_score(r2, misc_name)
+            if s2 > s1 and (misc_name and misc_name in r2) and (misc_name not in r1):
+                n_tutor_specificity_ok += 1
+
+            # Context retention check: 3 user turns + 3 tutor turns = 6 history entries in state
+            if len(state.interaction_history) == 6:
+                n_tutor_context_ok += 1
+
+            # Answer leakage check across all 3 turns
+            no_leak = True
+            for resp in (r1, r2, r3):
+                if correct_text and len(correct_text) > 1 and correct_text.lower() in resp.lower():
+                    no_leak = False
+                    break
+                if f"đáp án đúng là [{question['correct_option']}]" in resp.lower():
+                    no_leak = False
+                    break
+
+            if no_leak:
                 n_tutor_no_answer_leak += 1
+
     mapped_wrong = n_wrong_labeled - n_unmapped_wrong
     return {
-        'task': 'ZPD path structure and tutor template checks',
+        'task': 'ZPD path structure and multi-turn scaffolding tutor checks',
         'wrong_labeled_questions': n_wrong_labeled,
         'mapped_wrong_with_3_phase_path': n_zpd_ok,
         'mapped_wrong_with_3_phase_path_rate': _rate(n_zpd_ok, mapped_wrong),
@@ -353,8 +408,13 @@ def evaluate_planner_and_tutor(questions: List[Dict[str, Any]], mapper: EediJuny
         'tutor_queries': n_tutor,
         'tutor_uses_scaffolding_template': n_tutor_scaffold,
         'tutor_uses_scaffolding_template_rate': _rate(n_tutor_scaffold, n_tutor),
+        'tutor_specificity_increase_count': n_tutor_specificity_ok,
+        'tutor_specificity_increase_rate': _rate(n_tutor_specificity_ok, n_tutor),
+        'tutor_context_retention_count': n_tutor_context_ok,
+        'tutor_context_retention_rate': _rate(n_tutor_context_ok, n_tutor),
         'tutor_omits_correct_option_text': n_tutor_no_answer_leak,
         'tutor_omits_correct_option_text_rate': _rate(n_tutor_no_answer_leak, n_tutor),
+        'tutor_answer_leakage_rate': 1.0 - (_rate(n_tutor_no_answer_leak, n_tutor) or 0.0),
     }
 
 
@@ -427,11 +487,14 @@ def format_report(report: Dict[str, Any]) -> str:
         f"  Số ancestor trung bình (mapped): {k['mean_ancestor_count_mapped']}",
         f"  Unmapped không bịa cạnh tiên quyết: {pct(k['unmapped_no_invented_prerequisites_rate'])}",
         '',
-        '[Planner + Tutor — kiểm tra cấu trúc]',
+        '[Planner + Tutor — Lộ trình ZPD & Interactive Scaffolding]',
         f"  Mapped + sai có nhãn → lộ trình 3 pha: {pct(p['mapped_wrong_with_3_phase_path_rate'])}",
         f"  Unmapped + sai → không review_prerequisite giả: {pct(p['unmapped_wrong_no_review_prerequisite_rate'])}",
-        f"  Tutor dùng template scaffolding: {pct(p['tutor_uses_scaffolding_template_rate'])}",
-        f"  Tutor không chép nguyên đáp án đúng: {pct(p['tutor_omits_correct_option_text_rate'])}",
+        f"  Tutor hội thoại 3 cấp (Nudge -> Hint -> Exp): {pct(p['tutor_uses_scaffolding_template_rate'])}",
+        f"  Tutor gợi ý lần 2 cụ thể hơn lần 1 (Specificity Increase): {pct(p.get('tutor_specificity_increase_rate'))}",
+        f"  Tutor duy trì đúng ngữ cảnh 3 lượt liên tiếp (Context Retention): {pct(p.get('tutor_context_retention_rate'))}",
+        f"  Tutor bảo vệ đáp án đúng (Answer Protection Rate): {pct(p['tutor_omits_correct_option_text_rate'])}",
+        f"  Tutor tỷ lệ rò rỉ đáp án đúng (Leakage Rate ≤ 1.3%): {pct(p.get('tutor_answer_leakage_rate'))}",
         '',
         'Giới hạn:',
     ]
