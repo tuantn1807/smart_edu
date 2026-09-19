@@ -44,39 +44,137 @@ def _silence():
     return contextlib.redirect_stdout(io.StringIO())
 
 
+def _compute_macro_f1(y_true: List[str], y_pred: List[str]) -> float:
+    classes = set(y_true).union(set(y_pred))
+    if not classes:
+        return 0.0
+    f1_sum = 0.0
+    for cls in classes:
+        tp = sum(1 for gt, pr in zip(y_true, y_pred) if gt == cls and pr == cls)
+        fp = sum(1 for gt, pr in zip(y_true, y_pred) if gt != cls and pr == cls)
+        fn = sum(1 for gt, pr in zip(y_true, y_pred) if gt == cls and pr != cls)
+        if tp == 0:
+            f1 = 0.0
+        else:
+            precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+            recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+            f1 = (2 * precision * recall / (precision + recall)) if (precision + recall) > 0 else 0.0
+        f1_sum += f1
+    return f1_sum / len(classes)
+
+
+def _prediction_label(result: Dict[str, Any]) -> str:
+    if result.get("is_correct"):
+        return "unlabeled"
+    mid = result.get("misconception_id")
+    if mid is None or mid == "None" or mid == UNLABELED_MISCONCEPTION:
+        return "unlabeled"
+    return str(mid)
+
+
 def evaluate_diagnostic(questions: List[Dict[str, Any]]) -> Dict[str, Any]:
     agent = DiagnosticAgent()
     n_correct = n_correct_ok = 0
     n_labeled = n_labeled_match = 0
     n_unlabeled = n_unlabeled_fallback = 0
     n_options = 0
+
+    y_true_labeled: List[str] = []
+    y_pred_rule_labeled: List[str] = []
+    
+    y_true_llm_labeled: List[str] = []
+    y_pred_llm_labeled: List[str] = []
+
+    y_true_fallback_labeled: List[str] = []
+    y_pred_fallback_labeled: List[str] = []
+
+    n_valid_json = 0
+    n_llm_evals = 0
+    n_llm_requests = 0
+    n_fallback_count = 0
+
     with _silence():
         for index, question in enumerate(questions):
+            correct_opt = question.get('correct_option', '')
+            misconception_map = question.get('misconception_map', {})
+
             for option in question['options']:
                 n_options += 1
-                state = LearnerState(f'EVAL_D_{index}', 'Eval')
-                result = agent.process(
-                    {'question': question, 'selected_option': option},
+                state = LearnerState(f'EVAL_D_{index}_{option}', 'Eval')
+                is_correct_option = (option.upper() == correct_opt.upper())
+
+                # Ground truth label
+                label_info = misconception_map.get(option, {})
+                gt_misc_id = label_info.get('misconception_id')
+                if not is_correct_option and gt_misc_id is not None:
+                    gt_label = str(gt_misc_id)
+                else:
+                    gt_label = 'unlabeled'
+
+                # Rule-based processing
+                result_rule = agent.process(
+                    {'question': question, 'selected_option': option, 'use_llm': False},
                     {'learner_state': state},
                 )
-                if option == question['correct_option']:
+                pred_rule_id = _prediction_label(result_rule)
+
+                if is_correct_option:
                     n_correct += 1
-                    if result.get('is_correct') and result.get('detected_misconception') is None:
+                    if result_rule.get('is_correct') and result_rule.get('detected_misconception') is None:
                         n_correct_ok += 1
                     continue
-                label = question['misconception_map'].get(option)
-                if label:
+
+                # Incorrect options are evaluated for misconception diagnosis
+                state_llm = LearnerState(f'EVAL_DLLM_{index}_{option}', 'Eval')
+                result_llm = agent.process(
+                    {'question': question, 'selected_option': option, 'use_llm': True},
+                    {'learner_state': state_llm},
+                )
+                pred_llm_id = _prediction_label(result_llm)
+                n_llm_evals += 1
+
+                used_fallback = result_llm.get('used_fallback', False)
+                is_valid_parse = result_llm.get('is_valid_parse', False)
+
+                if used_fallback:
+                    n_fallback_count += 1
+                else:
+                    n_llm_requests += 1
+                    if is_valid_parse:
+                        n_valid_json += 1
+
+                if gt_label != 'unlabeled':
                     n_labeled += 1
-                    if (not result.get('is_correct')
-                            and result.get('detected_misconception') == label['name']):
+                    y_true_labeled.append(gt_label)
+                    y_pred_rule_labeled.append(pred_rule_id)
+
+                    if used_fallback:
+                        y_true_fallback_labeled.append(gt_label)
+                        y_pred_fallback_labeled.append(pred_llm_id)
+                    else:
+                        y_true_llm_labeled.append(gt_label)
+                        y_pred_llm_labeled.append(pred_llm_id)
+
+                    if (not result_rule.get('is_correct')
+                            and result_rule.get('detected_misconception') == label_info.get('name')):
                         n_labeled_match += 1
                 else:
                     n_unlabeled += 1
-                    if (not result.get('is_correct')
-                            and result.get('detected_misconception') == UNLABELED_MISCONCEPTION):
+                    if (not result_rule.get('is_correct')
+                            and result_rule.get('detected_misconception') == UNLABELED_MISCONCEPTION):
                         n_unlabeled_fallback += 1
+
+    macro_f1_rule = _compute_macro_f1(y_true_labeled, y_pred_rule_labeled) if y_true_labeled else 0.0
+    macro_f1_llm = _compute_macro_f1(y_true_llm_labeled, y_pred_llm_labeled) if y_true_llm_labeled else 0.0
+    macro_f1_fallback = _compute_macro_f1(y_true_fallback_labeled, y_pred_fallback_labeled) if y_true_fallback_labeled else 0.0
+    json_parse_rate = _rate(n_valid_json, n_llm_requests) if n_llm_requests > 0 else 0.0
+
     return {
-        'task': 'Eedi rubric lookup (not LLM diagnosis accuracy)',
+        'task': 'Eedi rubric lookup & Local CoT LLM Misconception Diagnosis',
+        'model_version': agent.cot_engine.model_name,
+        'random_seed': agent.cot_engine.seed,
+        'temperature': agent.cot_engine.temperature,
+        'diagnosis_mode': agent.cot_engine.diagnosis_mode,
         'options_scored': n_options,
         'correct_options': n_correct,
         'correct_no_false_misconception': n_correct_ok,
@@ -87,7 +185,17 @@ def evaluate_diagnostic(questions: List[Dict[str, Any]]) -> Dict[str, Any]:
         'unlabeled_wrong_options': n_unlabeled,
         'unlabeled_uses_fallback': n_unlabeled_fallback,
         'unlabeled_uses_fallback_rate': _rate(n_unlabeled_fallback, n_unlabeled),
+        'rule_based_macro_f1': macro_f1_rule,
+        'local_cot_llm_macro_f1': macro_f1_llm,
+        'fallback_macro_f1': macro_f1_fallback,
+        'valid_json_parse_rate': json_parse_rate,
+        'valid_json_count': n_valid_json,
+        'total_llm_evals': n_llm_evals,
+        'llm_evaluated_count': len(y_pred_llm_labeled),
+        'llm_requests': n_llm_requests,
+        'fallback_count': n_fallback_count,
     }
+
 
 
 def evaluate_mapping(questions: List[Dict[str, Any]], mapper: EediJunyiMapper,
@@ -294,7 +402,14 @@ def format_report(report: Dict[str, Any]) -> str:
         f"Eedi: {ds['eedi_questions']} câu / {ds['eedi_constructs']} constructs",
         f"Junyi: {ds['junyi_nodes']} node / {ds['junyi_edges']} cạnh ({ds['junyi_graph_kind']})",
         '',
-        '[Diagnostic Agent — tra cứu rubric Eedi, không phải điểm LLM]',
+        '[Diagnostic Agent — Tra cứu Rubric & Local CoT LLM Engine]',
+        f"  Mô hình LLM: {d.get('model_version')} (Mode: {d.get('diagnosis_mode', 'independent')}, Seed: {d.get('random_seed')}, Temp: {d.get('temperature')})",
+        f"  Tỷ lệ parse JSON hợp lệ (LLM): {pct(d.get('valid_json_parse_rate'))} ({d.get('valid_json_count')}/{d.get('llm_requests', 0)})",
+        f"  Số câu LLM thật xử lý: {d.get('llm_evaluated_count', 0)}",
+        f"  Số câu dùng fallback: {d.get('fallback_count', 0)} / {d.get('total_llm_evals', 0)}",
+        f"  Rule-based Baseline Macro-F1: {d.get('rule_based_macro_f1', 0.0):.4f}",
+        f"  Local CoT LLM Engine Macro-F1 (LLM thực): {d.get('local_cot_llm_macro_f1', 0.0):.4f}",
+        f"  Fallback Lookup Macro-F1: {d.get('fallback_macro_f1', 0.0):.4f}",
         f"  Đúng và không gán misconception giả: {pct(d['correct_no_false_misconception_rate'])}",
         f"  Sai có nhãn — khớp đúng tên misconception: {pct(d['labeled_wrong_exact_match_rate'])} "
         f"({d['labeled_wrong_exact_match']}/{d['labeled_wrong_options']})",
