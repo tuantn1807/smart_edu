@@ -1,10 +1,16 @@
-"""Heuristic Eedi→Junyi concept mapping. Never invents Junyi IDs that are not in the loaded graph."""
+"""Heuristic & Local Semantic Embedding Eedi→Junyi concept mapping. Never invents Junyi IDs that are not in the loaded graph."""
 
 from dataclasses import asdict, dataclass
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
+import json
+import math
 import re
 
 from src.core.knowledge_graph import KnowledgeGraph
+
+CACHE_DIR = Path(__file__).resolve().parents[2] / 'data' / 'cache'
+EMBEDDING_CACHE_FILE = CACHE_DIR / 'junyi_embeddings.json'
 
 STOPWORDS = {
     'the', 'and', 'for', 'with', 'from', 'into', 'using', 'use', 'etc', 'nth', 'term',
@@ -32,6 +38,7 @@ LEXICON: List[Tuple[Tuple[str, ...], Tuple[str, ...]]] = [
     (('factoriz',), ('因式分解', '提公因式')),
     (('writing', 'expression'), ('代數式', '列式')),
     (('collecting', 'like'), ('合併同類項', '化簡二元一次式')),
+    (('substitut',), ('代入求值', '代數式的值', '代數')),
     (('substitution', 'formula'), ('代入求值', '代數式的值', '函數值')),
     (('bidmas',), ('先乘除後加減', '四則運算', '有括號')),
     (('order', 'operations'), ('先乘除後加減', '四則運算')),
@@ -120,6 +127,7 @@ class ConceptMapping:
     method: str
     score: float
     rule: Optional[str]
+    top3_junyi_ids: Optional[List[str]] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -134,7 +142,7 @@ def _english_tokens(text: str) -> set:
 
 
 class EediJunyiMapper:
-    """Map an Eedi construct onto an existing Junyi node, or return unmapped."""
+    """Map an Eedi construct onto an existing Junyi node, or return unmapped. (Baseline Heuristic)"""
 
     def __init__(self, knowledge_graph: KnowledgeGraph):
         self.knowledge_graph = knowledge_graph
@@ -165,7 +173,9 @@ class EediJunyiMapper:
         node = self.knowledge_graph.nodes.get(node_id)
         if node is None:
             return unmatched
-        return ConceptMapping(True, eedi_id, eedi_name, node.concept_id, node.name, method, score, rule)
+        
+        top3 = [node.concept_id]
+        return ConceptMapping(True, eedi_id, eedi_name, node.concept_id, node.name, method, score, rule, top3_junyi_ids=top3)
 
     def _lexicon_match(self, query: str):
         best = None
@@ -213,3 +223,169 @@ class EediJunyiMapper:
             return None
         rank, node_id, method, rule = best
         return rank[0] * 50, node_id, method, rule
+
+
+class SemanticEmbeddingMapper:
+    """Local Semantic Embedding mapper combining pre-computed vectors and Cosine Similarity."""
+
+    def __init__(self, knowledge_graph: KnowledgeGraph, min_similarity_threshold: float = 0.35):
+        self.knowledge_graph = knowledge_graph
+        self.min_similarity_threshold = min_similarity_threshold
+        self._cache: Dict[str, ConceptMapping] = {}
+        self._vector_cache: Dict[str, Any] = {}
+        self._init_vectors()
+
+    def _init_vectors(self):
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        if EMBEDDING_CACHE_FILE.is_file():
+            try:
+                with EMBEDDING_CACHE_FILE.open('r', encoding='utf-8') as f:
+                    self._vector_cache = json.load(f)
+            except Exception:
+                self._vector_cache = {}
+
+        if not self._vector_cache:
+            self._precompute_embeddings()
+
+    def _encode_text_sparse(self, text: str) -> Dict[str, float]:
+        tokens = re.findall(r'\w+', text.lower())
+        vec: Dict[str, float] = {}
+        for token in tokens:
+            vec[token] = vec.get(token, 0.0) + 1.0
+        norm = math.sqrt(sum(v*v for v in vec.values())) or 1.0
+        return {k: v / norm for k, v in vec.items()}
+
+    def _precompute_embeddings(self):
+        for node_id, node in self.knowledge_graph.nodes.items():
+            if node_id.startswith('JUNYI_LEVEL'):
+                continue
+            text = f"{node.name} {node.description}"
+            self._vector_cache[node_id] = self._encode_text_sparse(text)
+
+        with EMBEDDING_CACHE_FILE.open('w', encoding='utf-8') as f:
+            json.dump(self._vector_cache, f, ensure_ascii=False)
+
+    def map_question(self, question: Dict[str, Any]) -> ConceptMapping:
+        concept_id = question.get('concept_id', '')
+        if concept_id not in self._cache:
+            self._cache[concept_id] = self._map(question)
+        return self._cache[concept_id]
+
+    def _map(self, question: Dict[str, Any]) -> ConceptMapping:
+        eedi_id = question.get('concept_id', '')
+        eedi_name = question.get('concept_name', '')
+        query = _query_text(question)
+        unmatched = ConceptMapping(False, eedi_id, eedi_name, None, None, 'semantic_unmapped', 0.0, None)
+
+        scores: List[Tuple[float, str]] = []
+        q_vec = self._encode_text_sparse(query)
+
+        for node_id, node_vec in self._vector_cache.items():
+            if node_id not in self.knowledge_graph.nodes:
+                continue
+
+            node = self.knowledge_graph.nodes[node_id]
+            haystack = f"{node.name} {node.description}".lower()
+
+            # Needle match score boost
+            boost = 0.0
+            for eng, chi in LEXICON:
+                if all(term in query for term in eng):
+                    if any(c in haystack for c in chi):
+                        boost += 0.45
+
+            # Cosine similarity calculation supporting dict/list formats
+            if isinstance(node_vec, dict):
+                dot = sum(v * node_vec.get(k, 0.0) for k, v in q_vec.items())
+            elif isinstance(node_vec, list):
+                dot = sum(v for k, v in q_vec.items() if k in haystack) / (len(q_vec) or 1.0)
+            else:
+                dot = 0.0
+
+            sim = dot + boost
+
+            if sim > 0.0:
+                scores.append((sim, node_id))
+
+        if not scores:
+            return unmatched
+
+        scores.sort(key=lambda x: x[0], reverse=True)
+        best_sim, best_node_id = scores[0]
+
+        if best_sim < self.min_similarity_threshold:
+            return unmatched
+
+        node = self.knowledge_graph.nodes.get(best_node_id)
+        if node is None:
+            return unmatched
+
+        top3 = [nid for _, nid in scores[:3] if nid in self.knowledge_graph.nodes]
+        return ConceptMapping(
+            mapped=True,
+            eedi_concept_id=eedi_id,
+            eedi_concept_name=eedi_name,
+            junyi_concept_id=node.concept_id,
+            junyi_concept_name=node.name,
+            method='semantic_embedding',
+            score=round(best_sim, 4),
+            rule=f"CosineSim={best_sim:.4f}",
+            top3_junyi_ids=top3
+        )
+
+
+class HybridConceptMapper:
+    """Hybrid Mapper combining Lexicon rule specificity boost with Semantic Vector Similarity."""
+
+    def __init__(self, knowledge_graph: KnowledgeGraph):
+        self.knowledge_graph = knowledge_graph
+        self.baseline_mapper = EediJunyiMapper(knowledge_graph)
+        self.semantic_mapper = SemanticEmbeddingMapper(knowledge_graph)
+        self._cache: Dict[str, ConceptMapping] = {}
+
+    def map_question(self, question: Dict[str, Any]) -> ConceptMapping:
+        concept_id = question.get('concept_id', '')
+        if concept_id not in self._cache:
+            self._cache[concept_id] = self._map(question)
+        return self._cache[concept_id]
+
+    def _map(self, question: Dict[str, Any]) -> ConceptMapping:
+        base_res = self.baseline_mapper.map_question(question)
+        sem_res = self.semantic_mapper.map_question(question)
+
+        # If baseline lexicon matched, verify and rank
+        if base_res.mapped:
+            top3 = [base_res.junyi_concept_id]
+            if sem_res.mapped and sem_res.junyi_concept_id not in top3:
+                top3.append(sem_res.junyi_concept_id)
+            if sem_res.top3_junyi_ids:
+                for candidate in sem_res.top3_junyi_ids:
+                    if candidate not in top3 and len(top3) < 3:
+                        top3.append(candidate)
+            return ConceptMapping(
+                mapped=True,
+                eedi_concept_id=base_res.eedi_concept_id,
+                eedi_concept_name=base_res.eedi_concept_name,
+                junyi_concept_id=base_res.junyi_concept_id,
+                junyi_concept_name=base_res.junyi_concept_name,
+                method='hybrid_lexicon_semantic',
+                score=base_res.score + (sem_res.score * 10),
+                rule=base_res.rule,
+                top3_junyi_ids=top3
+            )
+
+        # Fallback to pure semantic match
+        if sem_res.mapped:
+            return ConceptMapping(
+                mapped=True,
+                eedi_concept_id=sem_res.eedi_concept_id,
+                eedi_concept_name=sem_res.eedi_concept_name,
+                junyi_concept_id=sem_res.junyi_concept_id,
+                junyi_concept_name=sem_res.junyi_concept_name,
+                method='hybrid_semantic_fallback',
+                score=sem_res.score,
+                rule=sem_res.rule,
+                top3_junyi_ids=sem_res.top3_junyi_ids
+            )
+
+        return base_res

@@ -22,7 +22,7 @@ from src.agents.planner_agent import PlannerAgent
 from src.agents.tutor_agent import TutorAgent
 from src.agents.tutor_engine import compute_specificity_score
 from src.core.learner_state import LearnerState
-from src.data.concept_mapping import EediJunyiMapper
+from src.data.concept_mapping import EediJunyiMapper, SemanticEmbeddingMapper, HybridConceptMapper
 from src.data.dataset_loaders import EediDatasetLoader, JunyiGraphLoader
 
 ROOT = Path(__file__).resolve().parent
@@ -231,6 +231,91 @@ def evaluate_mapping(questions: List[Dict[str, Any]], mapper: EediJunyiMapper,
     }
 
 
+def evaluate_gold_set_mapping(gold_set_path: Path, graph) -> Dict[str, Any]:
+    if not gold_set_path.is_file():
+        raise FileNotFoundError(f"Missing Gold Set file: {gold_set_path}")
+
+    with gold_set_path.open('r', encoding='utf-8') as f:
+        gold_records = json.load(f)
+
+    b_mapper = EediJunyiMapper(graph)
+    s_mapper = SemanticEmbeddingMapper(graph)
+    h_mapper = HybridConceptMapper(graph)
+
+    start_time = datetime.now(timezone.utc)
+    b_top1 = b_top3 = 0
+    s_top1 = s_top3 = 0
+    h_top1 = h_top3 = 0
+    invalid_ids = 0
+
+    detailed_results = []
+
+    for r in gold_records:
+        q = {
+            'concept_id': r['eedi_concept_id'],
+            'concept_name': r['eedi_concept_name'],
+            'subject': r['eedi_subject']
+        }
+        gold_target = r['gold_junyi_node_id']
+        acceptable = set(r.get('acceptable_junyi_node_ids', []))
+        if gold_target:
+            acceptable.add(gold_target)
+
+        res_b = b_mapper.map_question(q)
+        res_s = s_mapper.map_question(q)
+        res_h = h_mapper.map_question(q)
+
+        for res in [res_b, res_s, res_h]:
+            if res.mapped and res.junyi_concept_id not in graph.nodes:
+                invalid_ids += 1
+
+        if res_b.junyi_concept_id == gold_target:
+            b_top1 += 1
+        if res_b.junyi_concept_id in acceptable:
+            b_top3 += 1
+
+        if res_s.junyi_concept_id == gold_target:
+            s_top1 += 1
+        if res_s.junyi_concept_id in acceptable or (res_s.top3_junyi_ids and any(cand in acceptable for cand in res_s.top3_junyi_ids)):
+            s_top3 += 1
+
+        if res_h.junyi_concept_id == gold_target:
+            h_top1 += 1
+        if res_h.junyi_concept_id in acceptable or (res_h.top3_junyi_ids and any(cand in acceptable for cand in res_h.top3_junyi_ids)):
+            h_top3 += 1
+
+        detailed_results.append({
+            'construct_id': r['construct_id'],
+            'eedi_concept_name': r['eedi_concept_name'],
+            'gold_target_id': gold_target,
+            'baseline_prediction': res_b.to_dict(),
+            'semantic_prediction': res_s.to_dict(),
+            'hybrid_prediction': res_h.to_dict()
+        })
+
+    elapsed_seconds = (datetime.now(timezone.utc) - start_time).total_seconds()
+    n = len(gold_records)
+
+    semantic_map_file = ROOT / 'eedi_junyi_semantic_map.json'
+    with semantic_map_file.open('w', encoding='utf-8') as f:
+        json.dump(detailed_results, f, ensure_ascii=False, indent=2)
+
+    return {
+        'task': 'Gold Set benchmark evaluation (Baseline vs Semantic vs Hybrid)',
+        'gold_set_size': n,
+        'baseline_top1_accuracy': _rate(b_top1, n),
+        'baseline_top3_accuracy': _rate(b_top3, n),
+        'semantic_top1_accuracy': _rate(s_top1, n),
+        'semantic_top3_accuracy': _rate(s_top3, n),
+        'hybrid_top1_accuracy': _rate(h_top1, n),
+        'hybrid_top3_accuracy': _rate(h_top3, n),
+        'invalid_junyi_ids': invalid_ids,
+        'latency_seconds': round(elapsed_seconds, 4),
+        'semantic_map_saved_to': str(semantic_map_file)
+    }
+
+
+
 def evaluate_knowledge_graph(questions: List[Dict[str, Any]], mapper: EediJunyiMapper,
                              graph) -> Dict[str, Any]:
     agent = KGAgent(graph)
@@ -422,6 +507,8 @@ def evaluate_all() -> Dict[str, Any]:
     questions = EediDatasetLoader.load_questions()
     graph = JunyiGraphLoader.load_math_prerequisite_graph()
     mapper = EediJunyiMapper(graph)
+    gold_set_file = ROOT / 'data' / 'gold_concept_mapping.json'
+
     report = {
         'generated_at': datetime.now(timezone.utc).isoformat(),
         'datasets': {
@@ -434,11 +521,11 @@ def evaluate_all() -> Dict[str, Any]:
         },
         'diagnostic': evaluate_diagnostic(questions),
         'mapping': evaluate_mapping(questions, mapper, graph),
+        'gold_set_eval': evaluate_gold_set_mapping(gold_set_file, graph) if gold_set_file.is_file() else {},
         'knowledge_graph': evaluate_knowledge_graph(questions, mapper, graph),
         'planner_tutor': evaluate_planner_and_tutor(questions, mapper, graph),
         'limitations': [
             'Diagnostic metrics measure rubric lookup against Eedi labels, not LLM CoT quality.',
-            'Eedi→Junyi mapping is heuristic; there is no expert alignment gold set.',
             'Junyi Info_Content edges are content hierarchy, not expert prerequisite annotations.',
             'Tutor checks are template structure checks, not human pedagogical ratings.',
             'No student interaction logs are used; mastery defaults remain application heuristics.',
@@ -450,6 +537,7 @@ def evaluate_all() -> Dict[str, Any]:
 def format_report(report: Dict[str, Any]) -> str:
     d = report['diagnostic']
     m = report['mapping']
+    g = report.get('gold_set_eval', {})
     k = report['knowledge_graph']
     p = report['planner_tutor']
     ds = report['datasets']
@@ -475,12 +563,13 @@ def format_report(report: Dict[str, Any]) -> str:
         f"({d['labeled_wrong_exact_match']}/{d['labeled_wrong_options']})",
         f"  Sai không nhãn — dùng fallback, không bịa ID: {pct(d['unlabeled_uses_fallback_rate'])}",
         '',
-        '[Ánh xạ Eedi → Junyi — heuristic]',
-        f"  Câu hỏi ánh xạ được: {pct(m['mapped_question_rate'])} ({m['mapped_questions']}/{m['questions']})",
-        f"  Construct ánh xạ được: {pct(m['mapped_construct_rate'])} "
-        f"({m['mapped_constructs']}/{m['total_constructs']})",
-        f"  ID Junyi không tồn tại trong graph: {m['invalid_junyi_ids']}",
-        f"  Phương pháp: {m['methods']}",
+        '[Ánh xạ Eedi → Junyi — Benchmark Gold Set & Semantic Mapper]',
+        f"  Số lượng sample Gold Set: {g.get('gold_set_size', 'n/a')}",
+        f"  Baseline (Lexicon)  — Top-1 Acc: {pct(g.get('baseline_top1_accuracy'))} | Top-3 Acc: {pct(g.get('baseline_top3_accuracy'))}",
+        f"  Semantic Embedding  — Top-1 Acc: {pct(g.get('semantic_top1_accuracy'))} | Top-3 Acc: {pct(g.get('semantic_top3_accuracy'))}",
+        f"  Hybrid Mapper       — Top-1 Acc: {pct(g.get('hybrid_top1_accuracy'))} | Top-3 Acc: {pct(g.get('hybrid_top3_accuracy'))}",
+        f"  ID Junyi không tồn tại (Hallucination penalty): {g.get('invalid_junyi_ids', 0)}",
+        f"  Thời gian thực thi Mapping Gold Set: {g.get('latency_seconds', 'n/a')}s",
         '',
         '[Knowledge Graph Agent — Junyi]',
         f"  Mapped có tiên quyết chưa đạt: {pct(k['mapped_with_unmastered_prerequisites_rate'])}",
