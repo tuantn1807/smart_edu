@@ -81,7 +81,12 @@ def evaluate_diagnostic(questions: List[Dict[str, Any]]) -> Dict[str, Any]:
 
     y_true_labeled: List[str] = []
     y_pred_rule_labeled: List[str] = []
+    
+    y_true_llm_labeled: List[str] = []
     y_pred_llm_labeled: List[str] = []
+
+    y_true_fallback_labeled: List[str] = []
+    y_pred_fallback_labeled: List[str] = []
 
     n_valid_json = 0
     n_llm_evals = 0
@@ -142,7 +147,13 @@ def evaluate_diagnostic(questions: List[Dict[str, Any]]) -> Dict[str, Any]:
                     n_labeled += 1
                     y_true_labeled.append(gt_label)
                     y_pred_rule_labeled.append(pred_rule_id)
-                    y_pred_llm_labeled.append(pred_llm_id)
+
+                    if used_fallback:
+                        y_true_fallback_labeled.append(gt_label)
+                        y_pred_fallback_labeled.append(pred_llm_id)
+                    else:
+                        y_true_llm_labeled.append(gt_label)
+                        y_pred_llm_labeled.append(pred_llm_id)
 
                     if (not result_rule.get('is_correct')
                             and result_rule.get('detected_misconception') == label_info.get('name')):
@@ -153,8 +164,9 @@ def evaluate_diagnostic(questions: List[Dict[str, Any]]) -> Dict[str, Any]:
                             and result_rule.get('detected_misconception') == UNLABELED_MISCONCEPTION):
                         n_unlabeled_fallback += 1
 
-    macro_f1_rule = _compute_macro_f1(y_true_labeled, y_pred_rule_labeled)
-    macro_f1_llm = _compute_macro_f1(y_true_labeled, y_pred_llm_labeled)
+    macro_f1_rule = _compute_macro_f1(y_true_labeled, y_pred_rule_labeled) if y_true_labeled else 0.0
+    macro_f1_llm = _compute_macro_f1(y_true_llm_labeled, y_pred_llm_labeled) if y_true_llm_labeled else 0.0
+    macro_f1_fallback = _compute_macro_f1(y_true_fallback_labeled, y_pred_fallback_labeled) if y_true_fallback_labeled else 0.0
     json_parse_rate = _rate(n_valid_json, n_llm_requests) if n_llm_requests > 0 else 0.0
 
     return {
@@ -162,6 +174,7 @@ def evaluate_diagnostic(questions: List[Dict[str, Any]]) -> Dict[str, Any]:
         'model_version': agent.cot_engine.model_name,
         'random_seed': agent.cot_engine.seed,
         'temperature': agent.cot_engine.temperature,
+        'diagnosis_mode': agent.cot_engine.diagnosis_mode,
         'options_scored': n_options,
         'correct_options': n_correct,
         'correct_no_false_misconception': n_correct_ok,
@@ -174,9 +187,11 @@ def evaluate_diagnostic(questions: List[Dict[str, Any]]) -> Dict[str, Any]:
         'unlabeled_uses_fallback_rate': _rate(n_unlabeled_fallback, n_unlabeled),
         'rule_based_macro_f1': macro_f1_rule,
         'local_cot_llm_macro_f1': macro_f1_llm,
+        'fallback_macro_f1': macro_f1_fallback,
         'valid_json_parse_rate': json_parse_rate,
         'valid_json_count': n_valid_json,
         'total_llm_evals': n_llm_evals,
+        'llm_evaluated_count': len(y_pred_llm_labeled),
         'llm_requests': n_llm_requests,
         'fallback_count': n_fallback_count,
     }
@@ -388,11 +403,13 @@ def format_report(report: Dict[str, Any]) -> str:
         f"Junyi: {ds['junyi_nodes']} node / {ds['junyi_edges']} cạnh ({ds['junyi_graph_kind']})",
         '',
         '[Diagnostic Agent — Tra cứu Rubric & Local CoT LLM Engine]',
-        f"  Mô hình LLM: {d.get('model_version')} (Seed: {d.get('random_seed')}, Temp: {d.get('temperature')})",
+        f"  Mô hình LLM: {d.get('model_version')} (Mode: {d.get('diagnosis_mode', 'independent')}, Seed: {d.get('random_seed')}, Temp: {d.get('temperature')})",
         f"  Tỷ lệ parse JSON hợp lệ (LLM): {pct(d.get('valid_json_parse_rate'))} ({d.get('valid_json_count')}/{d.get('llm_requests', 0)})",
-        f"  Số lượt dùng fallback (offline/retry fail): {d.get('fallback_count', 0)} / {d.get('total_llm_evals', 0)}",
+        f"  Số câu LLM thật xử lý: {d.get('llm_evaluated_count', 0)}",
+        f"  Số câu dùng fallback: {d.get('fallback_count', 0)} / {d.get('total_llm_evals', 0)}",
         f"  Rule-based Baseline Macro-F1: {d.get('rule_based_macro_f1', 0.0):.4f}",
-        f"  Local CoT LLM Engine Macro-F1: {d.get('local_cot_llm_macro_f1', 0.0):.4f}",
+        f"  Local CoT LLM Engine Macro-F1 (LLM thực): {d.get('local_cot_llm_macro_f1', 0.0):.4f}",
+        f"  Fallback Lookup Macro-F1: {d.get('fallback_macro_f1', 0.0):.4f}",
         f"  Đúng và không gán misconception giả: {pct(d['correct_no_false_misconception_rate'])}",
         f"  Sai có nhãn — khớp đúng tên misconception: {pct(d['labeled_wrong_exact_match_rate'])} "
         f"({d['labeled_wrong_exact_match']}/{d['labeled_wrong_options']})",

@@ -10,7 +10,9 @@ from __future__ import annotations
 import json
 import logging
 import re
+import socket
 import urllib.error
+import urllib.parse
 import urllib.request
 from typing import Any, Dict, List, Optional, Tuple
 from pydantic import BaseModel, Field, ValidationError
@@ -67,7 +69,7 @@ class LocalCoTDiagnosticEngine:
                 "1. Quan sát: Học sinh chọn phương án 'A' (x = 7) cho phương trình 2x + 4 = 10.\n"
                 "2. Phân tích lỗi: Học sinh đã tính 2x = 10 + 4 = 14, dẫn đến x = 7.\n"
                 "3. Suy luận nguyên nhân: Học sinh mắc lỗi chuyển vế không đổi dấu (chuyển +4 thành +4 thay vì -4).\n"
-                "4. Kết luận: Học sinh bị rổng kiến thức về quy tắc chuyển vế trong phương trình."
+                "4. Kết luận: Học sinh bị hổng kiến thức về quy tắc chuyển vế trong phương trình."
             ),
             "misconception_id": "312",
             "confidence_score": 0.92
@@ -93,6 +95,8 @@ class LocalCoTDiagnosticEngine:
         self,
         model_name: str = "qwen2.5:7b-instruct",
         api_base: str = "http://localhost:11434",
+        backend: str = "ollama",
+        diagnosis_mode: str = "independent",
         seed: int = 42,
         temperature: float = 0.1,
         max_retries: int = 3,
@@ -101,11 +105,31 @@ class LocalCoTDiagnosticEngine:
     ):
         self.model_name = model_name
         self.api_base = api_base.rstrip("/")
+        self.backend = backend.lower()
+        self.diagnosis_mode = diagnosis_mode.lower()
         self.seed = seed
         self.temperature = temperature
         self.max_retries = max_retries
         self.timeout = timeout
         self.enable_ollama_fallback = enable_ollama_fallback
+
+        if self.backend not in ("ollama", "vllm"):
+            raise ValueError(f"Unsupported backend '{self.backend}'. Must be 'ollama' or 'vllm'.")
+
+        if self.diagnosis_mode not in ("independent", "rubric_constrained"):
+            raise ValueError(f"Unsupported diagnosis_mode '{self.diagnosis_mode}'. Must be 'independent' or 'rubric_constrained'.")
+
+        self._validate_local_endpoint(self.api_base)
+
+    def _validate_local_endpoint(self, url: str) -> None:
+        """Validates that api_base targets a local host for privacy & local execution constraints."""
+        parsed = urllib.parse.urlparse(url)
+        hostname = (parsed.hostname or "").lower()
+        allowed_hosts = {"localhost", "127.0.0.1", "::1", "0.0.0.0"}
+        if hostname not in allowed_hosts:
+            raise ValueError(
+                f"Local execution constraint violation: api_base '{url}' hostname '{hostname}' is not a permitted local endpoint ({allowed_hosts})."
+            )
 
     def build_few_shot_prompt(
         self,
@@ -158,7 +182,12 @@ class LocalCoTDiagnosticEngine:
         prompt.append(f"Học sinh chọn: [{selected_option}]")
         prompt.append(f"Khái niệm: {concept_name}")
 
-        prompt.append("Lưu ý: Nếu không phát hiện hiểu lầm cụ thể hoặc đáp án không thuộc danh mục hiểu lầm đã biết, hãy gán misconception_id là 'unlabeled'.")
+        if self.diagnosis_mode == "rubric_constrained":
+            if selected_option in misconception_map:
+                cand = misconception_map[selected_option]
+                prompt.append(f"Gợi ý nhãn rubric Eedi: Tên='{cand.get('name')}'")
+        else:
+            prompt.append("Lưu ý: Nếu không phát hiện hiểu lầm cụ thể hoặc đáp án không thuộc danh mục hiểu lầm đã biết, hãy gán misconception_id là 'unlabeled'.")
 
         if feedback_error:
             prompt.append(f"\n⚠️ CHÚ Ý: Lần thử trước xuất output không hợp lệ với lỗi: {feedback_error}. Hãy sửa lại và chỉ xuất duy nhất 1 JSON hợp lệ!")
@@ -166,18 +195,28 @@ class LocalCoTDiagnosticEngine:
         prompt.append("\nHãy suy luận CoT và xuất JSON kết quả:")
         return "\n".join(prompt)
 
-    def _call_ollama(self, prompt: str) -> Optional[str]:
-        """Calls local Ollama REST API endpoint with seed & temperature parameters."""
-        url = f"{self.api_base}/api/generate"
-        payload = {
-            "model": self.model_name,
-            "prompt": prompt,
-            "stream": False,
-            "options": {
+    def _call_backend(self, prompt: str) -> Tuple[Optional[str], Optional[str]]:
+        """Calls local REST API endpoint (Ollama or vLLM). Returns (raw_text, error_reason)."""
+        if self.backend == "ollama":
+            url = f"{self.api_base}/api/generate"
+            payload = {
+                "model": self.model_name,
+                "prompt": prompt,
+                "stream": False,
+                "options": {
+                    "temperature": self.temperature,
+                    "seed": self.seed
+                }
+            }
+        else:  # vllm
+            url = f"{self.api_base}/v1/chat/completions"
+            payload = {
+                "model": self.model_name,
+                "messages": [{"role": "user", "content": prompt}],
                 "temperature": self.temperature,
                 "seed": self.seed
             }
-        }
+
         data = json.dumps(payload).encode("utf-8")
         req = urllib.request.Request(
             url, data=data, headers={"Content-Type": "application/json"}, method="POST"
@@ -186,24 +225,46 @@ class LocalCoTDiagnosticEngine:
             with urllib.request.urlopen(req, timeout=self.timeout) as response:
                 if response.status == 200:
                     resp_obj = json.loads(response.read().decode("utf-8"))
-                    return resp_obj.get("response", "")
-        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as e:
-            logger.debug(f"Ollama connection/HTTP call failed: {e}")
-            return None
+                    if self.backend == "ollama":
+                        return resp_obj.get("response", ""), None
+                    else:
+                        choices = resp_obj.get("choices", [])
+                        if choices and "message" in choices[0]:
+                            return choices[0]["message"].get("content", ""), None
+                        elif choices and "text" in choices[0]:
+                            return choices[0].get("text", ""), None
+                        return "", None
+                else:
+                    return None, f"HTTP_ERROR_{response.status}"
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                logger.error(f"Local model '{self.model_name}' not found on server ({e})")
+                return None, "MODEL_NOT_FOUND"
+            logger.debug(f"HTTP error {e.code}: {e.reason}")
+            return None, f"HTTP_ERROR_{e.code}"
+        except (urllib.error.URLError, OSError) as e:
+            logger.debug(f"Local endpoint connection failed: {e}")
+            return None, "CONNECTION_ERROR"
+        except (TimeoutError, socket.timeout) as e:
+            logger.debug(f"Local endpoint call timed out: {e}")
+            return None, "TIMEOUT"
         except Exception as e:
-            logger.warning(f"Unexpected error in Ollama call: {e}")
-            return None
+            logger.warning(f"Unexpected error calling local backend: {e}")
+            return None, "UNEXPECTED_ERROR"
+
+    def _call_ollama(self, prompt: str) -> Optional[str]:
+        """Backwards compatibility helper wrapper for _call_backend."""
+        raw, err = self._call_backend(prompt)
+        return raw
 
     def _clean_and_extract_json(self, raw_text: str) -> str:
         """Extracts JSON block from raw text (handling markdown fences or surrounding prose)."""
         if not raw_text:
             return ""
-        # Match ```json ... ``` or ``` ... ```
         fence_match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", raw_text, re.DOTALL)
         if fence_match:
             return fence_match.group(1).strip()
 
-        # Match outermost { ... }
         brace_match = re.search(r"\{.*\}", raw_text, re.DOTALL)
         if brace_match:
             return brace_match.group(0).strip()
@@ -215,7 +276,7 @@ class LocalCoTDiagnosticEngine:
         question: Dict[str, Any],
         selected_option: str
     ) -> Dict[str, Any]:
-        """Deterministic mock inference mode when local Ollama service is unavailable."""
+        """Deterministic mock inference mode when local service is unavailable."""
         correct_option = question.get("correct_option", "")
         misconception_map = question.get("misconception_map", {})
         concept_name = question.get("concept_name", "Khái niệm Toán")
@@ -261,42 +322,40 @@ class LocalCoTDiagnosticEngine:
         self,
         question: Dict[str, Any],
         selected_option: str
-    ) -> Tuple[DiagnosticOutputSchema, bool, int, bool]:
+    ) -> Tuple[DiagnosticOutputSchema, bool, int, bool, Optional[str]]:
         """
         Executes Local CoT Diagnosis with guardrails and retries.
 
         Returns:
-            Tuple[DiagnosticOutputSchema, is_valid_parse, attempts_taken, used_fallback]
+            Tuple[DiagnosticOutputSchema, is_valid_parse, attempts_taken, used_fallback, error_reason]
         """
         feedback_error: Optional[str] = None
         attempts = 0
+        last_error_reason: Optional[str] = None
 
         for attempt in range(1, self.max_retries + 1):
             attempts = attempt
             prompt = self.build_few_shot_prompt(question, selected_option, feedback_error)
-            raw_output = self._call_ollama(prompt)
+            raw_output, err_reason = self._call_backend(prompt)
 
-            if not raw_output:
-                # If Ollama is offline/unreachable and fallback is allowed
-                if self.enable_ollama_fallback:
-                    mock_dict = self._mock_inference(question, selected_option)
-                    parsed = DiagnosticOutputSchema(**mock_dict)
-                    return parsed, False, 1, True
-                else:
-                    mock_dict = self._mock_inference(question, selected_option)
-                    parsed = DiagnosticOutputSchema(**mock_dict)
-                    return parsed, False, 1, False
+            if err_reason is not None or not raw_output:
+                last_error_reason = err_reason or "EMPTY_RESPONSE"
+                mock_dict = self._mock_inference(question, selected_option)
+                parsed = DiagnosticOutputSchema(**mock_dict)
+                return parsed, False, 1, self.enable_ollama_fallback, last_error_reason
 
             json_str = self._clean_and_extract_json(raw_output)
             try:
                 data = json.loads(json_str)
                 parsed = DiagnosticOutputSchema(**data)
-                return parsed, True, attempt, False
+                return parsed, True, attempt, False, None
             except (json.JSONDecodeError, ValidationError) as err:
                 feedback_error = str(err)
+                last_error_reason = "SCHEMA_VALIDATION_ERROR"
                 logger.warning(f"Attempt {attempt} failed schema validation: {err}")
 
-        # If retries exceeded, fallback to deterministic mock representation
+        # If retries exceeded
+        last_error_reason = "RETRY_EXHAUSTED"
         fallback_dict = self._mock_inference(question, selected_option)
         used_fallback = self.enable_ollama_fallback
-        return DiagnosticOutputSchema(**fallback_dict), False, attempts, used_fallback
+        return DiagnosticOutputSchema(**fallback_dict), False, attempts, used_fallback, last_error_reason

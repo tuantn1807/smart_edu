@@ -9,19 +9,19 @@ from src.agents.cot_diagnostic_engine import LocalCoTDiagnosticEngine
 from src.data.dataset_loaders import EediDatasetLoader
 
 
-def mock_ollama_response(self, prompt: str):
+def mock_backend_response(self, prompt: str):
     """Simulates a valid LLM response for offline testing."""
-    return json.dumps({
+    return (json.dumps({
         "misconception_id": "unlabeled",
         "cot_reasoning": "Offline test CoT explanation",
         "confidence_score": 0.90
-    })
+    }), None)
 
 
 class EvaluationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        with patch.object(LocalCoTDiagnosticEngine, "_call_ollama", side_effect=mock_ollama_response, autospec=True):
+        with patch.object(LocalCoTDiagnosticEngine, "_call_backend", side_effect=mock_backend_response, autospec=True):
             cls.report = evaluate_all()
 
     def test_report_has_required_sections(self):
@@ -38,18 +38,29 @@ class EvaluationTests(unittest.TestCase):
         self.assertEqual(diagnostic['unlabeled_uses_fallback_rate'], 1.0)
         self.assertIn('rule_based_macro_f1', diagnostic)
         self.assertIn('local_cot_llm_macro_f1', diagnostic)
+        self.assertIn('fallback_macro_f1', diagnostic)
         self.assertGreaterEqual(diagnostic['valid_json_parse_rate'], 0.98)
         self.assertEqual(diagnostic['fallback_count'], 0)
         self.assertGreater(diagnostic['llm_requests'], 0)
         self.assertEqual(diagnostic['model_version'], 'qwen2.5:7b-instruct')
         self.assertEqual(diagnostic['random_seed'], 42)
 
+    def test_correct_option_excluded_from_llm_evals(self):
+        questions = EediDatasetLoader.load_questions()[:2]
+        with patch.object(LocalCoTDiagnosticEngine, "_call_backend", side_effect=mock_backend_response, autospec=True):
+            diag = evaluate_diagnostic(questions)
+            expected_wrong = diag['options_scored'] - diag['correct_options']
+            self.assertEqual(diag['total_llm_evals'], expected_wrong)
+            self.assertEqual(diag['llm_requests'], expected_wrong)
+
     def test_diagnostic_offline_fallback_tracking(self):
         questions = EediDatasetLoader.load_questions()[:3]
-        with patch.object(LocalCoTDiagnosticEngine, "_call_ollama", return_value=None):
+        with patch.object(LocalCoTDiagnosticEngine, "_call_backend", return_value=(None, "CONNECTION_ERROR")):
             diag = evaluate_diagnostic(questions)
             self.assertEqual(diag['fallback_count'], diag['total_llm_evals'])
             self.assertEqual(diag['valid_json_parse_rate'], 0.0)
+            self.assertEqual(diag['llm_evaluated_count'], 0)
+            self.assertGreater(diag['fallback_macro_f1'], 0.0)
 
     def test_mapping_and_graph_integrity(self):
         mapping = self.report['mapping']
