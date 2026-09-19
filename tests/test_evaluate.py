@@ -23,6 +23,11 @@ class EvaluationTests(unittest.TestCase):
         self.assertEqual(diagnostic['correct_no_false_misconception_rate'], 1.0)
         self.assertEqual(diagnostic['labeled_wrong_exact_match_rate'], 1.0)
         self.assertEqual(diagnostic['unlabeled_uses_fallback_rate'], 1.0)
+        self.assertIn('rule_based_macro_f1', diagnostic)
+        self.assertIn('local_cot_llm_macro_f1', diagnostic)
+        self.assertGreaterEqual(diagnostic['valid_json_parse_rate'], 0.98)
+        self.assertEqual(diagnostic['model_version'], 'qwen2.5:7b-instruct')
+        self.assertEqual(diagnostic['random_seed'], 42)
 
     def test_mapping_and_graph_integrity(self):
         mapping = self.report['mapping']
