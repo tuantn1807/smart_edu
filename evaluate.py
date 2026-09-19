@@ -326,8 +326,11 @@ def evaluate_planner_and_tutor(questions: List[Dict[str, Any]], mapper: EediJuny
                 if (not has_review) and has_remediate and has_learn:
                     n_unmapped_no_review += 1
 
+            # Multi-turn Scaffolding Evaluation (3 turns: Nudge -> Hint -> Explanation)
             n_tutor += 1
-            tutor_result = tutor.process(
+
+            # Turn 1: Nudge
+            t1_res = tutor.process(
                 {
                     'student_query': 'Giải thích giúp em lỗi sai trong bài này.',
                     'diagnosis_result': diagnosis,
@@ -335,15 +338,54 @@ def evaluate_planner_and_tutor(questions: List[Dict[str, Any]], mapper: EediJuny
                 },
                 context,
             )
-            response = tutor_result.get('tutor_response', '')
+            r1 = t1_res.get('tutor_response', '')
+
+            # Turn 2: Hint
+            t2_res = tutor.process(
+                {
+                    'student_query': 'Em vẫn chưa biến đổi được, cho em gợi ý cụ thể hơn.',
+                    'diagnosis_result': diagnosis,
+                    'planner_result': plan,
+                },
+                context,
+            )
+            r2 = t2_res.get('tutor_response', '')
+
+            # Turn 3: Explanation
+            t3_res = tutor.process(
+                {
+                    'student_query': 'Thầy giải thích chi tiết bản chất lỗi sai giúp em với.',
+                    'diagnosis_result': diagnosis,
+                    'planner_result': plan,
+                },
+                context,
+            )
+            r3 = t3_res.get('tutor_response', '')
+
             correct_text = question['options'][question['correct_option']]
-            if 'Gợi ý' in response or 'Scaffolding' in response:
+            
+            # Scaffolding structure check
+            if (t1_res.get('scaffolding_level') == 'nudge' and
+                t2_res.get('scaffolding_level') == 'hint' and
+                t3_res.get('scaffolding_level') == 'explanation'):
                 n_tutor_scaffold += 1
-            if correct_text and correct_text not in response:
+
+            # Answer leakage check across all 3 turns
+            no_leak = True
+            for resp in (r1, r2, r3):
+                if correct_text and len(correct_text) > 1 and correct_text.lower() in resp.lower():
+                    no_leak = False
+                    break
+                if f"đáp án đúng là [{question['correct_option']}]" in resp.lower():
+                    no_leak = False
+                    break
+
+            if no_leak:
                 n_tutor_no_answer_leak += 1
+
     mapped_wrong = n_wrong_labeled - n_unmapped_wrong
     return {
-        'task': 'ZPD path structure and tutor template checks',
+        'task': 'ZPD path structure and multi-turn scaffolding tutor checks',
         'wrong_labeled_questions': n_wrong_labeled,
         'mapped_wrong_with_3_phase_path': n_zpd_ok,
         'mapped_wrong_with_3_phase_path_rate': _rate(n_zpd_ok, mapped_wrong),
@@ -355,6 +397,7 @@ def evaluate_planner_and_tutor(questions: List[Dict[str, Any]], mapper: EediJuny
         'tutor_uses_scaffolding_template_rate': _rate(n_tutor_scaffold, n_tutor),
         'tutor_omits_correct_option_text': n_tutor_no_answer_leak,
         'tutor_omits_correct_option_text_rate': _rate(n_tutor_no_answer_leak, n_tutor),
+        'tutor_answer_leakage_rate': 1.0 - (_rate(n_tutor_no_answer_leak, n_tutor) or 0.0),
     }
 
 

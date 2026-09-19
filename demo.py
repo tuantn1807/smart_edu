@@ -64,10 +64,17 @@ def run_student_session(framework: PAAFFramework, student_id: str, student_name:
     print()
 
     print("-" * 80)
-    print("📌 [TUTOR AGENT - Interactive Scaffolding Dialogue]:")
-    print(f"Học sinh thắc mắc: '{student_query}'")
-    tutor_res = framework.interact_with_tutor(pipeline_result, student_query)
-    print(f"\nTutor Agent phản hồi:\n{tutor_res['tutor_response']}")
+    print("📌 [TUTOR AGENT - Interactive Scaffolding Dialogue (Multi-turn Loop)]:")
+    sample_queries = [
+        "Giải thích giúp em lỗi sai trong bài này.",
+        "Em chưa biến đổi được, thầy/cô cho em gợi ý cụ thể hơn.",
+        "Thầy/cô giải thích chi tiết bản chất lỗi sai giúp em với."
+    ]
+    for turn_idx, query in enumerate(sample_queries, 1):
+        print(f"\n💬 [Lượt {turn_idx}] Học sinh thắc mắc: '{query}'")
+        tutor_res = framework.interact_with_tutor(pipeline_result, query)
+        print(f"👉 Tutor Agent (Level: {tutor_res['scaffolding_level'].upper()}):")
+        print(f"{tutor_res['tutor_response']}")
     print("=" * 80 + "\n\n")
 
 

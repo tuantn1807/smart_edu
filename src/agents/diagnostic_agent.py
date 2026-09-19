@@ -106,6 +106,8 @@ class DiagnosticAgent(BaseAgent):
                     "mastery_score": mastery,
                     "cot_explanation": cot_explanation,
                     "confidence_score": confidence_score,
+                    "question_text": question.get("question_text", ""),
+                    "options": question.get("options", {}),
                     "is_valid_parse": is_valid_parse,
                     "parse_attempts": attempts,
                     "used_fallback": used_fallback,
@@ -149,6 +151,8 @@ class DiagnosticAgent(BaseAgent):
                     "mastery_score": mastery,
                     "cot_explanation": cot_explanation,
                     "confidence_score": 1.0,
+                    "question_text": question.get("question_text", ""),
+                    "options": question.get("options", {}),
                     "engine": "rule_based"
                 }
 
