@@ -299,7 +299,7 @@ class LocalCoTDiagnosticEngine:
                 last_error = "SCHEMA_VALIDATION_ERROR"
                 logger.warning("Attempt %s schema error: %s", attempts, error)
 
-        error_reason = last_error or "RETRY_EXHAUSTED"
+        error_reason = "RETRY_EXHAUSTED"
         logger.error("Diagnostic retries exhausted; last error was %s", last_error)
         if not self.enable_ollama_fallback:
             raise RuntimeError(f"Diagnostic Engine failed: {error_reason}; last error: {last_error}")
