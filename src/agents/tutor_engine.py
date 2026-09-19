@@ -23,6 +23,24 @@ LEVEL_HINT = "hint"
 LEVEL_EXPLANATION = "explanation"
 
 
+def compute_specificity_score(text: str, detected_misconception: Optional[str] = None) -> float:
+    """
+    Calculates quantitative specificity score for a tutor response.
+    Considers text length, presence of specific misconception label, and step-by-step guidance indicators.
+    """
+    if not text:
+        return 0.0
+
+    score = len(text) / 100.0
+    if detected_misconception and detected_misconception in text:
+        score += 5.0
+    if "🔍 **Gợi ý cụ thể" in text or "nhãn lỗi" in text.lower():
+        score += 3.0
+    if "📘 **Giải thích" in text or "bản chất" in text.lower():
+        score += 4.0
+    return score
+
+
 class LocalScaffoldingTutorEngine:
     """Tutor Engine implementing Graduated Hinting and Multi-turn Scaffolding Dialogue."""
 
@@ -91,7 +109,6 @@ class LocalScaffoldingTutorEngine:
             f"Đề bài: {question_text}",
             f"Các lựa chọn: {', '.join([f'[{k}] {v}' for k, v in options.items()])}",
             f"Học sinh chọn: [{selected_option}]",
-            f"Lỗi hiểu lầm phát hiện: {detected_misconception or 'Chưa xác định'}",
             f"Phân tích CoT: {cot_explanation or 'Chưa có phân tích'}",
             "",
         ]
@@ -113,17 +130,18 @@ class LocalScaffoldingTutorEngine:
 
         if scaffolding_level == LEVEL_NUDGE:
             prompt.append(
-                "Yêu cầu Level 1 (Nudge - Gợi mở): Nhắc nhở nhẹ nhàng, đặt 1-2 câu hỏi gợi mở yêu cầu học sinh tự đọc lại đề bài hoặc kiểm tra bước đầu tiên. KHÔNG chỉ ra chi tiết lỗi sai."
+                "Yêu cầu Level 1 (Nudge - Gợi mở): Đặt 1-2 câu hỏi gợi mở tổng quát để học sinh tự đọc lại đề bài và tự kiểm tra bước ban đầu. "
+                "TUYỆT ĐỐI KHÔNG nêu tên lỗi hiểu lầm ('" + str(detected_misconception) + "') và KHÔNG ghi công thức chi tiết."
             )
         elif scaffolding_level == LEVEL_HINT:
             prompt.append(
-                "Yêu cầu Level 2 (Hint - Gợi ý cụ thể): Chỉ ra chính xác khái niệm/công thức hoặc vị trí bước tính bị vướng (liên quan đến lỗi: "
-                f"'{detected_misconception}'). Hướng dẫn học sinh cách kiểm tra bước đó nhưng VẪN KHÔNG cho đáp án."
+                "Yêu cầu Level 2 (Hint - Gợi ý cụ thể): Nêu rõ tên nhãn lỗi phát hiện ('" + str(detected_misconception) + "') "
+                "và chỉ ra bước tính/công thức cụ thể bị vướng để hướng dẫn học sinh cách tự sửa. VẪN KHÔNG tiết lộ đáp án."
             )
         else:  # LEVEL_EXPLANATION
             prompt.append(
-                "Yêu cầu Level 3 (Explanation - Giải thích bản chất): Phân tích chi tiết nguyên nhân sư phạm vì sao cách suy nghĩ ban đầu dẫn đến lỗi sai, "
-                "gợi ý quy tắc đúng cần áp dụng để tự giải lại bài toán. Tuyệt đối KHÔNG viết ra đáp án trắc nghiệm."
+                "Yêu cầu Level 3 (Explanation - Giải thích bản chất): Phân tích chi tiết nguyên nhân vì sao lỗi '" + str(detected_misconception) + "' "
+                "dẫn đến kết quả sai, và giải thích từng bước logic toán học chuẩn để học sinh tự giải lại. VẪN KHÔNG tiết lộ đáp án trắc nghiệm."
             )
 
         prompt.append("\nHãy viết phản hồi của Tutor AI:")
@@ -182,29 +200,30 @@ class LocalScaffoldingTutorEngine:
     ) -> str:
         """
         Guardrail: Ensures the correct answer option text or explicit statements like
-        'Đáp án đúng là B' are not leaked to the student.
+        'Đáp án đúng là B' or raw option math expressions are not leaked to the student.
         """
         if not text:
             return text
 
         correct_text = options.get(correct_option, "").strip()
 
-        # Sanitize explicit leaks of answer choice letter like "Đáp án đúng là B" or "Chọn B"
+        # 1. Sanitize explicit leaks of answer choice letter like "Đáp án đúng là B", "Chọn [B]", "Đáp án B"
         if correct_option:
             pattern_letter = re.compile(
-                rf"(đáp án đúng là|đáp án là|chọn|phương án đúng là)\s*\[?{re.escape(correct_option)}\]?",
+                rf"(đáp án đúng là|đáp án là|chọn phương án|chọn|phương án đúng là|kết quả là|kết quả đúng là|key is)\s*:?\s*\[?{re.escape(correct_option)}\]?",
                 re.IGNORECASE,
             )
             text = pattern_letter.sub(
                 r"\1 [bảo mật - hãy tự suy luận]", text
             )
 
-        # Sanitize exact text of the correct option if it is specific and non-trivial (> 1 char)
-        if correct_text and len(correct_text) > 1 and correct_text.lower() in text.lower():
-            # Check if correct option text is leaked in context of telling student the answer
-            leak_pattern = re.compile(re.escape(correct_text), re.IGNORECASE)
-            # Only redact if it looks like a raw answer disclosure
-            text = leak_pattern.sub("[bằng kết quả đúng mà bạn cần tự tính]", text)
+        # 2. Sanitize exact text of the correct option if it is specific and non-trivial (> 1 char)
+        if correct_text:
+            clean_opt = re.sub(r"\\\(|\\\)|\\\$|\$|\\text\{|\}", "", correct_text).strip()
+            if len(clean_opt) > 1:
+                # Check for raw option text presence in context of telling answer
+                leak_pattern = re.compile(re.escape(clean_opt), re.IGNORECASE)
+                text = leak_pattern.sub("[kết quả mà bạn cần tự tính]", text)
 
         return text
 
@@ -222,28 +241,28 @@ class LocalScaffoldingTutorEngine:
 
         if scaffolding_level == LEVEL_NUDGE:
             return (
-                f"Chào bạn {student_name}! Ở bài tập '{concept_name}', thầy/cô thấy bạn đang gặp chút vướng mắc.\n\n"
+                f"Chào bạn {student_name}! Ở bài tập thuộc chủ đề '{concept_name}', thầy/cô thấy bạn đang gặp chút vướng mắc.\n\n"
                 f"💡 **Gợi mở (Nudge):**\n"
-                f"1. Hãy đọc kỹ lại yêu cầu bài toán một lần nữa.\n"
-                f"2. Bạn có thể nêu lại công thức hoặc quy tắc ban đầu mà bạn đã sử dụng để làm bài này không?"
+                f"1. Hãy đọc kỹ lại yêu cầu bài toán một lần nữa để xác định rõ thông tin đề bài cho.\n"
+                f"2. Bạn có thể nêu lại công thức hoặc quy tắc ban đầu mà bạn đã áp dụng cho bài làm này không?"
             )
         elif scaffolding_level == LEVEL_HINT:
             return (
                 f"Chào bạn {student_name}! Phân tích cho thấy bài làm của bạn dường như đang vướng ở lỗi '{misc_str}'.\n\n"
                 f"🔍 **Gợi ý cụ thể (Hint):**\n"
-                f"1. Hãy chú ý đến bước biến đổi liên quan đến '{concept_name}'.\n"
-                f"2. Đối chiếu bước tính của bạn với nhãn lỗi '{misc_str}' để xem bạn đã bỏ sót điều kiện hay quy tắc quy đồng/đổi dấu nào.\n"
-                f"3. Bạn thử tính lại từ vị trí đó xem sao nhé!"
+                f"1. Nhãn lỗi phát hiện: '{misc_str}'.\n"
+                f"2. Hãy chú ý đến bước biến đổi liên quan đến chủ đề '{concept_name}'. Xem lại quy tắc áp dụng và kiểm tra phép tính/phương pháp quy đồng/đổi dấu.\n"
+                f"3. Bạn thử kiểm tra lại bước tính đó xem sao nhé!"
             )
         else:  # LEVEL_EXPLANATION
             return (
-                f"Chào bạn {student_name}! Thầy/cô sẽ giải thích rõ hơn về bản chất của lỗi '{misc_str}' nhé.\n\n"
+                f"Chào bạn {student_name}! Thầy/cô sẽ giải thích sâu hơn về bản chất của lỗi '{misc_str}' nhé.\n\n"
                 f"📘 **Giải thích chuyên sâu (Explanation):**\n"
-                f"Khi giải bài toán thuộc chủ đề '{concept_name}', lỗi '{misc_str}' thường xảy ra khi áp dụng sai quy tắc cơ bản (ví dụ: thực hiện phép tính không đồng nhất hoặc chuyển vế sai dấu).\n"
-                f"Để khắc phục, bạn cần tuân thủ từng bước:\n"
-                f"- Bước 1: Xác định đúng tính chất/công thức chuẩn của bài toán.\n"
-                f"- Bước 2: Thực hiện phép biến đổi chính xác theo từng hàng.\n"
-                f"Hãy áp dụng quy tắc này và tự tìm lại kết quả chính xác nhé!"
+                f"Nguyên nhân mắc lỗi '{misc_str}' trong chủ đề '{concept_name}' thường do ngộ nhận hoặc áp dụng sai quy tắc biến đổi toán học.\n"
+                f"Để khắc phục, bạn cần làm theo từng bước:\n"
+                f"- Bước 1: Xác định đúng công thức/tính chất chuẩn của bài toán.\n"
+                f"- Bước 2: Thực hiện phép biến đổi tương đương theo từng dòng một cách cẩn thận.\n"
+                f"Hãy áp dụng quy tắc chuẩn này để tự tính lại kết quả nhé!"
             )
 
     def generate_scaffolding_response(
@@ -302,4 +321,5 @@ __all__ = [
     "LEVEL_NUDGE",
     "LEVEL_HINT",
     "LEVEL_EXPLANATION",
+    "compute_specificity_score",
 ]

@@ -35,20 +35,33 @@ class TutorAgent(BaseAgent):
         )
 
     def _determine_scaffolding_level(
-        self, interaction_history: List[Dict[str, Any]], current_misconception: Optional[str]
+        self,
+        interaction_history: List[Dict[str, Any]],
+        current_misconception: Optional[str],
+        current_question_id: Optional[str] = None,
     ) -> Tuple[str, int]:
         """
-        Determines the Graduated Hinting level based on interaction history turn count.
-        Turn 1 -> Nudge
-        Turn 2 -> Hint
-        Turn 3+ -> Explanation
+        Determines the Graduated Hinting level scoped to the specific question / misconception context.
+        Turn 1 for current question/misconception -> Nudge
+        Turn 2 for current question/misconception -> Hint
+        Turn 3+ for current question/misconception -> Explanation
         """
-        # Count previous tutor responses in history
-        tutor_turns = [
-            h for h in interaction_history
-            if h.get("agent") == self.name or h.get("role") == "assistant"
-        ]
-        turn_index = len(tutor_turns) + 1
+        matching_turns = 0
+        for entry in interaction_history:
+            if entry.get("agent") == self.name or entry.get("role") == "assistant":
+                meta = entry.get("metadata", {})
+                hist_qid = meta.get("question_id")
+                hist_misc = meta.get("misconception")
+
+                # Match by question_id if available, or by misconception
+                if current_question_id and hist_qid:
+                    if str(hist_qid) == str(current_question_id):
+                        matching_turns += 1
+                elif current_misconception and hist_misc:
+                    if str(hist_misc) == str(current_misconception):
+                        matching_turns += 1
+
+        turn_index = matching_turns + 1
 
         if turn_index == 1:
             level = LEVEL_NUDGE
@@ -78,6 +91,7 @@ class TutorAgent(BaseAgent):
         history = learner_state.interaction_history if learner_state else []
 
         # Extract context from diagnosis & question
+        question_id = diagnosis_result.get("question_id") or diagnosis_result.get("concept_id")
         detected_misc = diagnosis_result.get("detected_misconception")
         concept_name = diagnosis_result.get("concept_name", "Bài học")
         cot_explanation = diagnosis_result.get("cot_explanation", "")
@@ -86,8 +100,10 @@ class TutorAgent(BaseAgent):
         question_text = diagnosis_result.get("question_text", "")
         options = diagnosis_result.get("options", {})
 
-        # Determine graduated hinting level
-        scaffolding_level, turn_index = self._determine_scaffolding_level(history, detected_misc)
+        # Determine graduated hinting level scoped to current question / misconception
+        scaffolding_level, turn_index = self._determine_scaffolding_level(
+            history, current_misconception=detected_misc, current_question_id=question_id
+        )
 
         # Generate Scaffolding Response via Tutor Engine
         tutor_response, used_llm = self.engine.generate_scaffolding_response(
@@ -110,7 +126,7 @@ class TutorAgent(BaseAgent):
                 role="user",
                 message=student_query,
                 agent_name="User",
-                metadata={"turn_index": turn_index}
+                metadata={"turn_index": turn_index, "question_id": question_id, "misconception": detected_misc}
             )
             learner_state.add_interaction(
                 role="assistant",
@@ -119,6 +135,7 @@ class TutorAgent(BaseAgent):
                 metadata={
                     "scaffolding_level": scaffolding_level,
                     "turn_index": turn_index,
+                    "question_id": question_id,
                     "misconception": detected_misc,
                     "used_llm": used_llm,
                 }
