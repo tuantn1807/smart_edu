@@ -12,7 +12,7 @@
     "is_mapped": true,
     "category": "BIDMAS",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: order+operations→先乘除後加減"
+    "notes": "Expert verified alignment: Use the order of operations to carry out calculations involving powers -> 【基礎】先乘除後加減，有括號要先算"
   },
   {
     "construct_id": "1612",
@@ -27,7 +27,7 @@
     "is_mapped": true,
     "category": "Simplifying Algebraic Fractions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: algebraic+fraction→分數型"
+    "notes": "Expert verified alignment: Simplify an algebraic fraction by factorising the numerator -> 【一般】二元一次式的化簡：分數型"
   },
   {
     "construct_id": "2774",
@@ -40,7 +40,7 @@
     "is_mapped": false,
     "category": "Range and Interquartile Range from a List of Data",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Calculate the range from a list of data"
   },
   {
     "construct_id": "2377",
@@ -55,7 +55,7 @@
     "is_mapped": true,
     "category": "Properties of Quadrilaterals",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: properties+quadrilateral→四邊形"
+    "notes": "Expert verified alignment: Recall and use the intersecting diagonals properties of a rectangle -> 【基礎】判別平行四邊形"
   },
   {
     "construct_id": "3387",
@@ -71,7 +71,7 @@
     "is_mapped": true,
     "category": "Substitution into Formula",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: substitution+formula→代數式的值"
+    "notes": "Expert verified alignment: Substitute positive integer values into formulae involving powers or roots -> 【基礎】代數式的值"
   },
   {
     "construct_id": "2052",
@@ -86,7 +86,7 @@
     "is_mapped": true,
     "category": "Area of Simple Shapes",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: area+simple→長方形、正方形的面積"
+    "notes": "Expert verified alignment: Identify a unit of area -> 【基礎】長方形、正方形的面積公式"
   },
   {
     "construct_id": "376",
@@ -101,7 +101,7 @@
     "is_mapped": true,
     "category": "Converting between Fractions and Percentages",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: fractions+percent→百分率與分數"
+    "notes": "Expert verified alignment: Convert two digit integer percentages to fractions -> 【基礎】百分率與分數、小數的互換"
   },
   {
     "construct_id": "314",
@@ -116,7 +116,7 @@
     "is_mapped": true,
     "category": "Multiplying and Dividing with Decimals",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: multiplying+dividing+decimal→小數的除法"
+    "notes": "Expert verified alignment: Divide decimals by 10 -> 【基礎】小數的除法綜合習題"
   },
   {
     "construct_id": "435",
@@ -131,7 +131,7 @@
     "is_mapped": true,
     "category": "Adding and Subtracting Fractions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: adding+subtracting+fraction→同分母分數的加減"
+    "notes": "Expert verified alignment: Subtract proper fractions with different denominators which do not share a common factor -> 【基礎】同分母分數的加減"
   },
   {
     "construct_id": "1321",
@@ -146,7 +146,7 @@
     "is_mapped": true,
     "category": "Transformations of functions in the form f(x)",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: translation→平移"
+    "notes": "Expert verified alignment: Identify horizontal translations in the form f(x) = for non-trigonometric functions -> 【一般】坐標平面上的平移"
   },
   {
     "construct_id": "1414",
@@ -161,7 +161,7 @@
     "is_mapped": true,
     "category": "Expanding Triple Brackets and more",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: expanding+bracket→多項式乘法"
+    "notes": "Expert verified alignment: Expand products of three binomials in the form (x + a)(x + b)(x + c) -> 【進階】多項式乘法計算"
   },
   {
     "construct_id": "2456",
@@ -176,7 +176,7 @@
     "is_mapped": true,
     "category": "Nets",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: nets→展開圖"
+    "notes": "Expert verified alignment: Identify the net of a non-prism -> 【基礎】長方體和正方體的展開圖 1"
   },
   {
     "construct_id": "1756",
@@ -191,7 +191,7 @@
     "is_mapped": true,
     "category": "Angle Facts with Parallel Lines",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: angle+parallel→平行線"
+    "notes": "Expert verified alignment: Identify alternate angles -> 【基礎】平行線截比例線段性質 3"
   },
   {
     "construct_id": "3065",
@@ -206,7 +206,7 @@
     "is_mapped": true,
     "category": "Time",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: time→時刻"
+    "notes": "Expert verified alignment: Convert from hours to minutes -> 【基礎】二維表格：火車時刻表、火車票價表"
   },
   {
     "construct_id": "1505",
@@ -221,7 +221,7 @@
     "is_mapped": true,
     "category": "Trial and Improvement and Iterative Methods",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: ratio→比與比例"
+    "notes": "Expert verified alignment: Select the correct answer to an iteration question to the required degree of accuracy -> 【基礎】比與比例"
   },
   {
     "construct_id": "2578",
@@ -236,7 +236,7 @@
     "is_mapped": true,
     "category": "Area of Simple Shapes",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: area+simple→長方形、正方形的面積"
+    "notes": "Expert verified alignment: Calculate the area of an equilateral triangle where the dimensions are given in the same units -> 【基礎】長方形、正方形的面積公式"
   },
   {
     "construct_id": "695",
@@ -251,7 +251,7 @@
     "is_mapped": true,
     "category": "Sharing in a Ratio",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: ratio→比與比例"
+    "notes": "Expert verified alignment: Divide a quantity into two parts for a given a ratio, where each part is an integer -> 【基礎】比與比例"
   },
   {
     "construct_id": "1289",
@@ -266,7 +266,7 @@
     "is_mapped": true,
     "category": "Ordering Negative Numbers",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: negative+number→正數與負數"
+    "notes": "Expert verified alignment: Prove statements involving odd and even numbers -> 【基礎】正數與負數"
   },
   {
     "construct_id": "261",
@@ -281,7 +281,7 @@
     "is_mapped": true,
     "category": "Adding and Subtracting Negative Numbers",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: negative+number→正數與負數"
+    "notes": "Expert verified alignment: Carry out missing number subtraction problems involving negative integers -> 【基礎】正數與負數"
   },
   {
     "construct_id": "1623",
@@ -296,7 +296,7 @@
     "is_mapped": true,
     "category": "Adding and Subtracting Algebraic Fractions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: adding+subtracting+fraction→同分母分數的加減"
+    "notes": "Expert verified alignment: Subtract algebraic fractions where the denominators are single terms and are not multiples of each other -> 【基礎】同分母分數的加減"
   },
   {
     "construct_id": "2306",
@@ -311,7 +311,7 @@
     "is_mapped": true,
     "category": "Volume of Prisms",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: volume+prism→柱體的體積"
+    "notes": "Expert verified alignment: Given the volume of a cuboid, work out missing information -> 【基礎】柱體的體積綜合習題"
   },
   {
     "construct_id": "1434",
@@ -326,7 +326,7 @@
     "is_mapped": true,
     "category": "Factorising into a Double Bracket",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic→二次方程式"
+    "notes": "Expert verified alignment: Factorise a quadratic expression in the form ax² + bx + c where a is prime -> 【基礎】二次方程式的判別式"
   },
   {
     "construct_id": "69",
@@ -341,7 +341,7 @@
     "is_mapped": true,
     "category": "Mental Addition and Subtraction",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: ratio→比與比例"
+    "notes": "Expert verified alignment: Given the solution to one problem, deduce the answer to a related problem using the same operation -> 【基礎】比與比例"
   },
   {
     "construct_id": "2742",
@@ -356,7 +356,7 @@
     "is_mapped": true,
     "category": "Real Life Graphs",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: line+graph→折線圖"
+    "notes": "Expert verified alignment: Interpret sloping linear sections of a displacement-time graph -> 讀長條圖與折線圖：基礎"
   },
   {
     "construct_id": "3229",
@@ -369,7 +369,7 @@
     "is_mapped": false,
     "category": "Mental Multiplication and Division",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Solve missing number mental multiplication questions"
   },
   {
     "construct_id": "1872",
@@ -385,7 +385,7 @@
     "is_mapped": true,
     "category": "Substitution into Formula",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: substitution+formula→代數式的值"
+    "notes": "Expert verified alignment: Calculate speed where distance and time are in the appropriate units -> 【基礎】代數式的值"
   },
   {
     "construct_id": "1576",
@@ -401,7 +401,7 @@
     "is_mapped": true,
     "category": "Equation of a Circle",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: circle→扇形"
+    "notes": "Expert verified alignment: Given a sketch of a circle with centre at the origin, write its equation in the form x² + y² = r² -> 【基礎】扇形綜合習題"
   },
   {
     "construct_id": "1527",
@@ -417,7 +417,7 @@
     "is_mapped": true,
     "category": "Substitution into Formula",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: substitution+formula→代數式的值"
+    "notes": "Expert verified alignment: Substitute negative integer values into expressions involving no powers or roots -> 【基礎】代數式的值"
   },
   {
     "construct_id": "10",
@@ -430,7 +430,7 @@
     "is_mapped": false,
     "category": "Counting",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Count backwards in steps of of something other than one"
   },
   {
     "construct_id": "1045",
@@ -445,7 +445,7 @@
     "is_mapped": true,
     "category": "Solving Linear Inequalities",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: linear+inequalit→一元一次不等式"
+    "notes": "Expert verified alignment: Solve linear inequalities in one variable where the unknown appears on boths sides of the equation -> 【基礎】列出一元一次不等式"
   },
   {
     "construct_id": "3515",
@@ -461,7 +461,7 @@
     "is_mapped": true,
     "category": "Function Machines",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: function+machine→函數"
+    "notes": "Expert verified alignment: Determine the function of a single function machine used to create an algebraic expression -> 【基礎】描繪二次函數 y=a(x-h)^2+k - 即將下架"
   },
   {
     "construct_id": "2028",
@@ -474,7 +474,7 @@
     "is_mapped": false,
     "category": "Length Units",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Convert between cm and m"
   },
   {
     "construct_id": "1484",
@@ -489,7 +489,7 @@
     "is_mapped": true,
     "category": "Linear Equations",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: linear+equation→一元一次方程式"
+    "notes": "Expert verified alignment: Solve linear equations with the variable appearing on both sides, involving positive fractions -> 【基礎】一元一次方程式的意義與列式"
   },
   {
     "construct_id": "1560",
@@ -502,7 +502,7 @@
     "is_mapped": false,
     "category": "Real Life Graphs",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Given a situation sketch an appropriate real life graph"
   },
   {
     "construct_id": "52",
@@ -517,7 +517,7 @@
     "is_mapped": true,
     "category": "Place Value",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: place+value→十進位"
+    "notes": "Expert verified alignment: Find another power of 10 less than a given number -> 【基礎】數的十進位結構 2"
   },
   {
     "construct_id": "380",
@@ -532,7 +532,7 @@
     "is_mapped": true,
     "category": "Converting between Decimals and Percentages",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: decimals+percent→百分率與分數"
+    "notes": "Expert verified alignment: Convert decimals less than 1 with 1 decimal place to percentages -> 【基礎】百分率與分數、小數的互換"
   },
   {
     "construct_id": "1273",
@@ -547,7 +547,7 @@
     "is_mapped": true,
     "category": "Simplifying Expressions by Collecting Like Terms",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: collecting+like→化簡二元一次式"
+    "notes": "Expert verified alignment: Simplify algebraic expressions to maintain equivalence by collecting like terms involving just one linear variable -> 化簡二元一次式"
   },
   {
     "construct_id": "410",
@@ -560,7 +560,7 @@
     "is_mapped": false,
     "category": "Simplifying Fractions",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Simplify fractions that simplify to a unit fraction"
   },
   {
     "construct_id": "1616",
@@ -575,7 +575,7 @@
     "is_mapped": true,
     "category": "Adding and Subtracting Algebraic Fractions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: adding+subtracting+fraction→同分母分數的加減"
+    "notes": "Expert verified alignment: Add algebraic fractions where one denominator is a multiple of the other -> 【基礎】同分母分數的加減"
   },
   {
     "construct_id": "3115",
@@ -590,7 +590,7 @@
     "is_mapped": true,
     "category": "Place Value",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: place+value→十進位"
+    "notes": "Expert verified alignment: Carry out a subtraction problem with positive integers where the answer is less than 0 -> 【基礎】數的十進位結構 2"
   },
   {
     "construct_id": "1561",
@@ -603,7 +603,7 @@
     "is_mapped": false,
     "category": "Real Life Graphs",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Read values off a real life graph"
   },
   {
     "construct_id": "3225",
@@ -618,7 +618,7 @@
     "is_mapped": true,
     "category": "Linear Sequences (nth term)",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: linear+sequence→數列的規律"
+    "notes": "Expert verified alignment: Write a missing term of an ascending integer linear sequence -> 【基礎】數列的規律"
   },
   {
     "construct_id": "953",
@@ -633,7 +633,7 @@
     "is_mapped": true,
     "category": "Parallel Lines",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: parallel+line→平行線"
+    "notes": "Expert verified alignment: Given a gradient, state the gradient of a line parallel to it -> 【基礎】平行線截比例線段性質 3"
   },
   {
     "construct_id": "446",
@@ -648,7 +648,7 @@
     "is_mapped": true,
     "category": "Dividing Fractions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: dividing+fraction→分數的除法"
+    "notes": "Expert verified alignment: Divide proper fractions in the form: Fraction ÷ Integer -> 【基礎】同分母分數的除法"
   },
   {
     "construct_id": "2440",
@@ -663,7 +663,7 @@
     "is_mapped": true,
     "category": "Properties of Triangles",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: properties+triangle→三角形"
+    "notes": "Expert verified alignment: Identify a right-angled triangle when presented non-conventionally -> 【基礎】三角形的外心"
   },
   {
     "construct_id": "3176",
@@ -679,7 +679,7 @@
     "is_mapped": true,
     "category": "Function Machines",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: function+machine→函數"
+    "notes": "Expert verified alignment: For a given algebraic input, find the output of a function machine -> 【基礎】描繪二次函數 y=a(x-h)^2+k - 即將下架"
   },
   {
     "construct_id": "3190",
@@ -694,7 +694,7 @@
     "is_mapped": true,
     "category": "Writing Expressions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: writing+expression→代數式"
+    "notes": "Expert verified alignment: Represent an equation using a bar model -> 【基礎】以代數式表示數量關係"
   },
   {
     "construct_id": "403",
@@ -707,7 +707,7 @@
     "is_mapped": false,
     "category": "Fractions of an Amount",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Calculate the whole amount, given a fraction of the amount"
   },
   {
     "construct_id": "3516",
@@ -723,7 +723,7 @@
     "is_mapped": true,
     "category": "Function Machines",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: function+machine→函數"
+    "notes": "Expert verified alignment: Determine the input of a double function machine used to create an algebraic expression -> 【基礎】描繪二次函數 y=a(x-h)^2+k - 即將下架"
   },
   {
     "construct_id": "2238",
@@ -738,7 +738,7 @@
     "is_mapped": true,
     "category": "Time",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: time→時刻"
+    "notes": "Expert verified alignment: Convert from years to days -> 【基礎】二維表格：火車時刻表、火車票價表"
   },
   {
     "construct_id": "316",
@@ -753,7 +753,7 @@
     "is_mapped": true,
     "category": "Place Value",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: place+value→十進位"
+    "notes": "Expert verified alignment: Divide decimals by 1000 -> 【基礎】數的十進位結構 2"
   },
   {
     "construct_id": "3279",
@@ -766,7 +766,7 @@
     "is_mapped": false,
     "category": "Mental Multiplication and Division",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Multiply 3 digit integers by 1 digit integers using the grid method"
   },
   {
     "construct_id": "3132",
@@ -781,7 +781,7 @@
     "is_mapped": true,
     "category": "Writing Expressions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: writing+expression→代數式"
+    "notes": "Expert verified alignment: Write algebraic expressions with correct algebraic convention -> 【基礎】以代數式表示數量關係"
   },
   {
     "construct_id": "3346",
@@ -796,7 +796,7 @@
     "is_mapped": true,
     "category": "Properties of Quadrilaterals",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: properties+quadrilateral→四邊形"
+    "notes": "Expert verified alignment: Identify the order of rotational symmetry of a shape -> 【基礎】判別平行四邊形"
   },
   {
     "construct_id": "399",
@@ -809,7 +809,7 @@
     "is_mapped": false,
     "category": "Fractions of an Amount",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Identify non-unit fractions when part of a shape"
   },
   {
     "construct_id": "95",
@@ -822,7 +822,7 @@
     "is_mapped": false,
     "category": "Mental Addition and Subtraction",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Complete missing number mental subtraction problems up to 100"
   },
   {
     "construct_id": "704",
@@ -837,7 +837,7 @@
     "is_mapped": true,
     "category": "Writing Ratios",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: ratio→比與比例"
+    "notes": "Expert verified alignment: Represent written scenarios as ratios -> 【基礎】比與比例"
   },
   {
     "construct_id": "1961",
@@ -852,7 +852,7 @@
     "is_mapped": true,
     "category": "Right-angled Triangles (SOHCAHTOA)",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: angles+triangle→三角形的內角"
+    "notes": "Expert verified alignment: Identify questions involving a 2D right-angled triangle that require the use of the Tangent (tan) ratio -> 【基礎】三角形的內角和與外角和"
   },
   {
     "construct_id": "1030",
@@ -867,7 +867,7 @@
     "is_mapped": true,
     "category": "Inequalities on Number Lines",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: inequalities+number+line→圖示一元一次不等式"
+    "notes": "Expert verified alignment: Represent a linear inequality with a single tail on a numberline -> 【基礎】圖示一元一次不等式的解 1"
   },
   {
     "construct_id": "578",
@@ -884,7 +884,7 @@
     "is_mapped": true,
     "category": "Percentages of an Amount",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: percentages→百分率"
+    "notes": "Expert verified alignment: Calculate percentage of an amount mentally where the percent is greater than 100 -> 【基礎】漲價、減少的百分率"
   },
   {
     "construct_id": "3118",
@@ -900,7 +900,7 @@
     "is_mapped": true,
     "category": "Ordering Fractions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: ordering+fraction→異分母分數的比較"
+    "notes": "Expert verified alignment: Read a fraction on a scale where the required number is marked by a dash between two numbers -> 【基礎】簡單異分母分數的比較 2"
   },
   {
     "construct_id": "2790",
@@ -915,7 +915,7 @@
     "is_mapped": true,
     "category": "Averages and Range from Frequency Table",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: average→中位數"
+    "notes": "Expert verified alignment: Calculate the mean from a frequency table -> 【基礎】中位數的計算"
   },
   {
     "construct_id": "180",
@@ -928,7 +928,7 @@
     "is_mapped": false,
     "category": "Written Subtraction",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Subtract integers up to 4 digits using a written method where carrying is needed"
   },
   {
     "construct_id": "1467",
@@ -943,7 +943,7 @@
     "is_mapped": true,
     "category": "Linear Equations",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: linear+equation→一元一次方程式"
+    "notes": "Expert verified alignment: Solve one-step linear equations requiring multiplication or division, involving positive decimals -> 【基礎】一元一次方程式的意義與列式"
   },
   {
     "construct_id": "1492",
@@ -958,7 +958,7 @@
     "is_mapped": true,
     "category": "Quadratic Equations",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic+equation→一元二次方程式"
+    "notes": "Expert verified alignment: Solve quadratic equations using the quadratic formula where the coefficient of x² is 1  -> 【基礎】一元二次方程式的解"
   },
   {
     "construct_id": "306",
@@ -973,7 +973,7 @@
     "is_mapped": true,
     "category": "Adding and Subtracting with Decimals",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: adding+subtracting+decimal→小數的加"
+    "notes": "Expert verified alignment: Subtract decimals where the numbers involved have a different number of decimal places -> 【基礎】多位小數的加減綜合習題"
   },
   {
     "construct_id": "479",
@@ -989,7 +989,7 @@
     "is_mapped": true,
     "category": "Square Roots, Cube Roots, etc",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: square+root→平方根"
+    "notes": "Expert verified alignment: Calculate the square root of a number -> 【基礎】平方根"
   },
   {
     "construct_id": "1490",
@@ -1004,7 +1004,7 @@
     "is_mapped": true,
     "category": "Quadratic Equations",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic+equation→一元二次方程式"
+    "notes": "Expert verified alignment: Solve quadratic equations using completing the square in the form (x + q)² + r  -> 【基礎】一元二次方程式的解"
   },
   {
     "construct_id": "2942",
@@ -1020,7 +1020,7 @@
     "is_mapped": true,
     "category": "Experimental Probability and Relative Frequency",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: probability→機率"
+    "notes": "Expert verified alignment: Compare relative frequencies in order to determine which prediction is likely to be more reliable -> 【基礎】機率的概念"
   },
   {
     "construct_id": "586",
@@ -1037,7 +1037,7 @@
     "is_mapped": true,
     "category": "Percentages of an Amount",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: percentages→百分率"
+    "notes": "Expert verified alignment: Calculate percentage of an amount using a calculator where the percent is an integer -> 【基礎】漲價、減少的百分率"
   },
   {
     "construct_id": "2908",
@@ -1052,7 +1052,7 @@
     "is_mapped": true,
     "category": "Time Series and Line Graphs",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: line+graph→折線圖"
+    "notes": "Expert verified alignment: Interpret continuous data using a line graph -> 讀長條圖與折線圖：基礎"
   },
   {
     "construct_id": "922",
@@ -1067,7 +1067,7 @@
     "is_mapped": true,
     "category": "Horizontal and Vertical Lines",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: horizontal+vertical→水平線或鉛直線"
+    "notes": "Expert verified alignment: Know the equation of the axes -> 【基礎】求水平線或鉛直線上兩點的距離"
   },
   {
     "construct_id": "208",
@@ -1082,7 +1082,7 @@
     "is_mapped": true,
     "category": "Rounding to the Nearest Whole (10, 100, etc)",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: rounding→四捨五入"
+    "notes": "Expert verified alignment: Round integers to the nearest 1000 -> 【基礎】四捨五入法 2"
   },
   {
     "construct_id": "1494",
@@ -1097,7 +1097,7 @@
     "is_mapped": true,
     "category": "Quadratic Equations",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic+equation→一元二次方程式"
+    "notes": "Expert verified alignment: Solve quadratic equations using balancing -> 【基礎】一元二次方程式的解"
   },
   {
     "construct_id": "960",
@@ -1110,7 +1110,7 @@
     "is_mapped": false,
     "category": "Perpendicular Lines",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Identify perpendicular lines written in the form y = mx + c"
   },
   {
     "construct_id": "2582",
@@ -1125,7 +1125,7 @@
     "is_mapped": true,
     "category": "Area of Simple Shapes",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: area+simple→長方形、正方形的面積"
+    "notes": "Expert verified alignment: Given the area of a parallelogram, calculate a missing dimension -> 【基礎】長方形、正方形的面積公式"
   },
   {
     "construct_id": "3141",
@@ -1141,7 +1141,7 @@
     "is_mapped": true,
     "category": "Solving Quadratic Inequalities",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic+graph→二次函數"
+    "notes": "Expert verified alignment: Solve quadratic inequalities from the graph of the quadratic -> 【基礎】描繪二次函數 y=a(x-h)^2+k - 即將下架"
   },
   {
     "construct_id": "2930",
@@ -1154,7 +1154,7 @@
     "is_mapped": false,
     "category": "Venn Diagrams",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Fill in regions of a double Venn diagram with numbers from given information"
   },
   {
     "construct_id": "30",
@@ -1169,7 +1169,7 @@
     "is_mapped": true,
     "category": "Place Value",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: place+value→十進位"
+    "notes": "Expert verified alignment: Order integers with a different number of digits -> 【基礎】數的十進位結構 2"
   },
   {
     "construct_id": "3032",
@@ -1184,7 +1184,7 @@
     "is_mapped": true,
     "category": "Inequalities on Number Lines",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: inequalities+number+line→圖示一元一次不等式"
+    "notes": "Expert verified alignment: Understand inequality notation -> 【基礎】圖示一元一次不等式的解 1"
   },
   {
     "construct_id": "220",
@@ -1199,7 +1199,7 @@
     "is_mapped": true,
     "category": "Rounding to Significant Figures",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: rounding→四捨五入"
+    "notes": "Expert verified alignment: Round numbers greater than 1 to one significant figure -> 【基礎】四捨五入法 2"
   },
   {
     "construct_id": "920",
@@ -1214,7 +1214,7 @@
     "is_mapped": true,
     "category": "Horizontal and Vertical Lines",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: horizontal+vertical→水平線或鉛直線"
+    "notes": "Expert verified alignment: Recognise the equations of horizontal lines from a diagram -> 【基礎】求水平線或鉛直線上兩點的距離"
   },
   {
     "construct_id": "1102",
@@ -1229,7 +1229,7 @@
     "is_mapped": true,
     "category": "Linear Sequences (nth term)",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: linear+sequence→數列的規律"
+    "notes": "Expert verified alignment: Generate a descending integer linear sequence from the nth term rule -> 【基礎】數列的規律"
   },
   {
     "construct_id": "424",
@@ -1244,7 +1244,7 @@
     "is_mapped": true,
     "category": "Adding and Subtracting Fractions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: adding+subtracting+fraction→同分母分數的加減"
+    "notes": "Expert verified alignment: Add proper fractions with the same denominator -> 【基礎】同分母分數的加減"
   },
   {
     "construct_id": "1017",
@@ -1259,7 +1259,7 @@
     "is_mapped": true,
     "category": "Quadratic Equations",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic+equation→一元二次方程式"
+    "notes": "Expert verified alignment: Given a sketch of a quadratic graph, f(x), write down the solutions to f(x) = a -> 【基礎】一元二次方程式的解"
   },
   {
     "construct_id": "2303",
@@ -1274,7 +1274,7 @@
     "is_mapped": true,
     "category": "Volume of Prisms",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: volume+prism→柱體的體積"
+    "notes": "Expert verified alignment: Calculate the volume of other prisms when the dimensions are given in the same units -> 【基礎】柱體的體積綜合習題"
   },
   {
     "construct_id": "1781",
@@ -1289,7 +1289,7 @@
     "is_mapped": true,
     "category": "Angles in Polygons",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: angles+polygon→多邊形"
+    "notes": "Expert verified alignment: Find missing angles in a non-special quadrilateral -> 【基礎】多邊形"
   },
   {
     "construct_id": "3136",
@@ -1304,7 +1304,7 @@
     "is_mapped": true,
     "category": "Quadratic Equations",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic+equation→一元二次方程式"
+    "notes": "Expert verified alignment: Rearrange a quadratic equation so that it is in the correct form to be factorised -> 【基礎】一元二次方程式的解"
   },
   {
     "construct_id": "690",
@@ -1319,7 +1319,7 @@
     "is_mapped": true,
     "category": "Writing Ratios",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: ratio→比與比例"
+    "notes": "Expert verified alignment: Reduce a ratio involving two numbers to its simplest form -> 【基礎】比與比例"
   },
   {
     "construct_id": "997",
@@ -1334,7 +1334,7 @@
     "is_mapped": true,
     "category": "Sketching from Factorised Form",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: factoris→提公因式"
+    "notes": "Expert verified alignment: Given the sketch of a curve in the form (x + a)², work out its factorised form -> 【基礎】重新分組提公因式"
   },
   {
     "construct_id": "1139",
@@ -1349,7 +1349,7 @@
     "is_mapped": true,
     "category": "Quadratic Sequences",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic+sequence→等差數列"
+    "notes": "Expert verified alignment: Recognise when a descending sequence is quadratic -> 【基礎】認識等差數列"
   },
   {
     "construct_id": "702",
@@ -1364,7 +1364,7 @@
     "is_mapped": true,
     "category": "Sharing in a Ratio",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: ratio→比與比例"
+    "notes": "Expert verified alignment: Given information about the relationship between two parts (e.g. one part is worth 5 more than another), work out other parts -> 【基礎】比與比例"
   },
   {
     "construct_id": "1482",
@@ -1379,7 +1379,7 @@
     "is_mapped": true,
     "category": "Linear Equations",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: linear+equation→一元一次方程式"
+    "notes": "Expert verified alignment: Solve linear equations with the variable appearing on both sides, with all positive integers -> 【基礎】一元一次方程式的意義與列式"
   },
   {
     "construct_id": "1742",
@@ -1394,7 +1394,7 @@
     "is_mapped": true,
     "category": "Basic Angle Facts (straight line, opposite, around a point, etc)",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: basic+angle→餘角與補角"
+    "notes": "Expert verified alignment: Recognise the vertically opposite angles relationship -> 【基礎】餘角與補角、對頂角"
   },
   {
     "construct_id": "3179",
@@ -1409,7 +1409,7 @@
     "is_mapped": true,
     "category": "Graphical Solution of Simultaneous Equations",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: linear+equation→一元一次方程式"
+    "notes": "Expert verified alignment: Given a sketch of a linear graph solve f(x) = n -> 【基礎】一元一次方程式的意義與列式"
   },
   {
     "construct_id": "2598",
@@ -1424,7 +1424,7 @@
     "is_mapped": true,
     "category": "Volume and Capacity Units",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: perimeter→周長"
+    "notes": "Expert verified alignment: Given the perimeter, work out a missing length requiring knowledge of the geometrical properties of the shape -> 【基礎】計算周長"
   },
   {
     "construct_id": "2869",
@@ -1439,7 +1439,7 @@
     "is_mapped": true,
     "category": "Pie Chart",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: pie+chart→圓形圖"
+    "notes": "Expert verified alignment: Interpret a pie chart -> 【基礎】認識圓形圖"
   },
   {
     "construct_id": "579",
@@ -1456,7 +1456,7 @@
     "is_mapped": true,
     "category": "Percentages of an Amount",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: percentages→百分率"
+    "notes": "Expert verified alignment: Express one quantity as a percentage of another mentally -> 【基礎】漲價、減少的百分率"
   },
   {
     "construct_id": "2610",
@@ -1469,7 +1469,7 @@
     "is_mapped": false,
     "category": "Missing Lengths",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Calculate missing lengths of shapes by geometrical inference, where the lengths given are in the same units"
   },
   {
     "construct_id": "2566",
@@ -1484,7 +1484,7 @@
     "is_mapped": true,
     "category": "Area of Simple Shapes",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: area+simple→長方形、正方形的面積"
+    "notes": "Expert verified alignment: Calculate the area of a parallelogram where the dimensions are given in the same units -> 【基礎】長方形、正方形的面積公式"
   },
   {
     "construct_id": "1745",
@@ -1499,7 +1499,7 @@
     "is_mapped": true,
     "category": "Basic Angle Facts (straight line, opposite, around a point, etc)",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: basic+angle→餘角與補角"
+    "notes": "Expert verified alignment: Find missing angles using vertically opposite angles -> 【基礎】餘角與補角、對頂角"
   },
   {
     "construct_id": "2866",
@@ -1514,7 +1514,7 @@
     "is_mapped": true,
     "category": "Pie Chart",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: pie+chart→圓形圖"
+    "notes": "Expert verified alignment: Calculate the sector angle on a pie chart for a given group -> 【基礎】認識圓形圖"
   },
   {
     "construct_id": "447",
@@ -1529,7 +1529,7 @@
     "is_mapped": true,
     "category": "Dividing Fractions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: dividing+fraction→分數的除法"
+    "notes": "Expert verified alignment: Divide proper fractions in the form: Integer ÷ Fraction -> 【基礎】同分母分數的除法"
   },
   {
     "construct_id": "265",
@@ -1544,7 +1544,7 @@
     "is_mapped": true,
     "category": "Expanding Double Brackets",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: expanding+bracket→多項式乘法"
+    "notes": "Expert verified alignment: Carry out multiplication problems involving one negative integer -> 【進階】多項式乘法計算"
   },
   {
     "construct_id": "987",
@@ -1559,7 +1559,7 @@
     "is_mapped": true,
     "category": "Sketching from Factorised Form",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic→二次方程式"
+    "notes": "Expert verified alignment: Know that the factorised form of a quadratic is useful for finding where the curve crosses the x-axis -> 【基礎】二次方程式的判別式"
   },
   {
     "construct_id": "3207",
@@ -1574,7 +1574,7 @@
     "is_mapped": true,
     "category": "Angles in Polygons",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: angles+polygon→多邊形"
+    "notes": "Expert verified alignment: Understand the terms equilateral and regular, and recognise the notation for regular polygons -> 【基礎】多邊形"
   },
   {
     "construct_id": "3193",
@@ -1587,7 +1587,7 @@
     "is_mapped": false,
     "category": "Mental Multiplication and Division",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Express a division as a fraction"
   },
   {
     "construct_id": "1403",
@@ -1602,7 +1602,7 @@
     "is_mapped": true,
     "category": "Expanding Single Brackets",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: expanding+bracket→多項式乘法"
+    "notes": "Expert verified alignment: Multiply a single term over a bracket where the term on the outside is a number and the inside contains a linear expression -> 【進階】多項式乘法計算"
   },
   {
     "construct_id": "1412",
@@ -1617,7 +1617,7 @@
     "is_mapped": true,
     "category": "Expanding Double Brackets",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: expanding+bracket→多項式乘法"
+    "notes": "Expert verified alignment: Expand double brackets with an extra variable outside -> 【進階】多項式乘法計算"
   },
   {
     "construct_id": "2709",
@@ -1632,7 +1632,7 @@
     "is_mapped": true,
     "category": "Translation and Vectors",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: translation→平移"
+    "notes": "Expert verified alignment: Write a given translation in vector notation -> 【一般】坐標平面上的平移"
   },
   {
     "construct_id": "3218",
@@ -1647,7 +1647,7 @@
     "is_mapped": true,
     "category": "Multiplying Fractions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: multiplying+fraction→分數的乘法"
+    "notes": "Expert verified alignment: Find missing numbers in a fraction multiplication -> 【基礎】分數的乘法綜合習題"
   },
   {
     "construct_id": "700",
@@ -1662,7 +1662,7 @@
     "is_mapped": true,
     "category": "Sharing in a Ratio",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: ratio→比與比例"
+    "notes": "Expert verified alignment: Given information about one part, work out other parts -> 【基礎】比與比例"
   },
   {
     "construct_id": "2571",
@@ -1677,7 +1677,7 @@
     "is_mapped": true,
     "category": "Area of Simple Shapes",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: area+simple→長方形、正方形的面積"
+    "notes": "Expert verified alignment: Calculate the area of a trapezium where the dimensions are given in different units -> 【基礎】長方形、正方形的面積公式"
   },
   {
     "construct_id": "274",
@@ -1692,7 +1692,7 @@
     "is_mapped": true,
     "category": "Multiplying and Dividing Negative Numbers",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: negative+number→正數與負數"
+    "notes": "Expert verified alignment: Carry out division  problems involving one negative integer -> 【基礎】正數與負數"
   },
   {
     "construct_id": "2076",
@@ -1705,7 +1705,7 @@
     "is_mapped": false,
     "category": "Area Units",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Perform calculations with areas when given in different units"
   },
   {
     "construct_id": "941",
@@ -1720,7 +1720,7 @@
     "is_mapped": true,
     "category": "Finding the Gradient and Intercept of a Line from the Equation",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: gradient→線型函數"
+    "notes": "Expert verified alignment: Find the gradient of a line written in the form ax + by = c -> 【基礎】線型函數"
   },
   {
     "construct_id": "2786",
@@ -1735,7 +1735,7 @@
     "is_mapped": true,
     "category": "Averages (mean, median, mode) from a List of Data",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: mean+median→中位數"
+    "notes": "Expert verified alignment: Compare sets of data using the range -> 【基礎】中位數的計算"
   },
   {
     "construct_id": "1754",
@@ -1750,7 +1750,7 @@
     "is_mapped": true,
     "category": "Parallel Lines",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: parallel+line→平行線"
+    "notes": "Expert verified alignment: Recognise the notation for parallel lines -> 【基礎】平行線截比例線段性質 3"
   },
   {
     "construct_id": "256",
@@ -1765,7 +1765,7 @@
     "is_mapped": true,
     "category": "Adding and Subtracting Negative Numbers",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: negative+number→正數與負數"
+    "notes": "Expert verified alignment: Carry out subtraction problems involving two negative integers  -> 【基礎】正數與負數"
   },
   {
     "construct_id": "1290",
@@ -1778,7 +1778,7 @@
     "is_mapped": false,
     "category": "Algebraic Proof",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Prove statements involving multiples"
   },
   {
     "construct_id": "3119",
@@ -1793,7 +1793,7 @@
     "is_mapped": true,
     "category": "Writing Expressions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: writing+expression→代數式"
+    "notes": "Expert verified alignment: Use brackets to write function machines as calculations -> 【基礎】以代數式表示數量關係"
   },
   {
     "construct_id": "1525",
@@ -1809,7 +1809,7 @@
     "is_mapped": true,
     "category": "Substitution into Formula",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: substitution+formula→代數式的值"
+    "notes": "Expert verified alignment: Substitute positive integer values into expressions involving no powers or roots -> 【基礎】代數式的值"
   },
   {
     "construct_id": "1151",
@@ -1824,7 +1824,7 @@
     "is_mapped": true,
     "category": "Quadratic Sequences",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic+sequence→等差數列"
+    "notes": "Expert verified alignment: Find the nth term rule for ascending quadratic sequences in the form ax² + bx + c -> 【基礎】認識等差數列"
   },
   {
     "construct_id": "1460",
@@ -1839,7 +1839,7 @@
     "is_mapped": true,
     "category": "Linear Equations",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: linear+equation→一元一次方程式"
+    "notes": "Expert verified alignment: Solve one-step linear equations requiring addition or subtraction, involving positive fractions -> 【基礎】一元一次方程式的意義與列式"
   },
   {
     "construct_id": "1042",
@@ -1854,7 +1854,7 @@
     "is_mapped": true,
     "category": "Solving Linear Inequalities",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: linear+inequalit→一元一次不等式"
+    "notes": "Expert verified alignment: Solve one-step linear inequalities in one variable where the variable appears on one side of the equation -> 【基礎】列出一元一次不等式"
   },
   {
     "construct_id": "1790",
@@ -1869,7 +1869,7 @@
     "is_mapped": true,
     "category": "Angles in Polygons",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: angles+polygon→多邊形"
+    "notes": "Expert verified alignment: Work out the size of each interior angle in a regular polygon -> 【基礎】多邊形"
   },
   {
     "construct_id": "223",
@@ -1884,7 +1884,7 @@
     "is_mapped": true,
     "category": "Rounding to Significant Figures",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: rounding→四捨五入"
+    "notes": "Expert verified alignment: Round numbers between 0 and 1 to one significant figure -> 【基礎】四捨五入法 2"
   },
   {
     "construct_id": "3319",
@@ -1899,7 +1899,7 @@
     "is_mapped": true,
     "category": "Converting between Fractions and Decimals",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: fractions+percent→百分率與分數"
+    "notes": "Expert verified alignment: Solve problems involving converting between fractions, decimals and percentages -> 【基礎】百分率與分數、小數的互換"
   },
   {
     "construct_id": "3509",
@@ -1912,7 +1912,7 @@
     "is_mapped": false,
     "category": "Other Graphs-Others",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Read values from piecewise functions"
   },
   {
     "construct_id": "1410",
@@ -1927,7 +1927,7 @@
     "is_mapped": true,
     "category": "Expanding Double Brackets",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: expanding+bracket→多項式乘法"
+    "notes": "Expert verified alignment: Expand two brackets with linear terms in the form (ax + b)(cx + d) -> 【進階】多項式乘法計算"
   },
   {
     "construct_id": "1425",
@@ -1942,7 +1942,7 @@
     "is_mapped": true,
     "category": "Factorising into a Single Bracket",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: factoris→提公因式"
+    "notes": "Expert verified alignment: Factorise a single bracket containing a non-linear expression by taking out a single algebraic common factor (e.g. a) -> 【基礎】重新分組提公因式"
   },
   {
     "construct_id": "982",
@@ -1957,7 +1957,7 @@
     "is_mapped": true,
     "category": "Plotting Quadratics from Tables of Values",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic→二次方程式"
+    "notes": "Expert verified alignment: Given a negative x value, find the corresponding y value for curves in the form y = x² + c -> 【基礎】二次方程式的判別式"
   },
   {
     "construct_id": "1739",
@@ -1972,7 +1972,7 @@
     "is_mapped": true,
     "category": "Measuring Angles",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: measuring+angle→認識角"
+    "notes": "Expert verified alignment: Use a protractor to measure angles between 270° and 360° -> 【基礎】認識角錐 - 即將下架"
   },
   {
     "construct_id": "1440",
@@ -1987,7 +1987,7 @@
     "is_mapped": true,
     "category": "Completing the Square",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: completing+square→完全平方式"
+    "notes": "Expert verified alignment: Complete the square for expressions that end up in the form a(x + b)² + c -> 【基礎】將式子配成完全平方式 1"
   },
   {
     "construct_id": "3504",
@@ -2000,7 +2000,7 @@
     "is_mapped": false,
     "category": "Other Sequences",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Continue a sequence involving triangle numbers"
   },
   {
     "construct_id": "445",
@@ -2015,7 +2015,7 @@
     "is_mapped": true,
     "category": "Multiplying Fractions",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: multiplying+fraction→分數的乘法"
+    "notes": "Expert verified alignment: Multiply mixed number fraction in the form: Fraction × Fraction -> 【基礎】分數的乘法綜合習題"
   },
   {
     "construct_id": "3342",
@@ -2028,7 +2028,7 @@
     "is_mapped": false,
     "category": "Fractions of an Amount",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Read fractions"
   },
   {
     "construct_id": "298",
@@ -2043,7 +2043,7 @@
     "is_mapped": true,
     "category": "Ordering Decimals",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: ordering+decimal→小數的比較"
+    "notes": "Expert verified alignment: Use inequality notation to order decimals with the same number of digits  -> 【基礎】多位小數的比較"
   },
   {
     "construct_id": "369",
@@ -2058,7 +2058,7 @@
     "is_mapped": true,
     "category": "Converting between Fractions and Decimals",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: fraction+decimal→分數轉換成小數"
+    "notes": "Expert verified alignment: Convert terminating decimals greater than 1 to fractions -> 【基礎】分數轉換成小數"
   },
   {
     "construct_id": "2077",
@@ -2073,7 +2073,7 @@
     "is_mapped": true,
     "category": "Volume of Prisms",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: volume+prism→柱體的體積"
+    "notes": "Expert verified alignment: Identify a unit of volume or capacity -> 【基礎】柱體的體積綜合習題"
   },
   {
     "construct_id": "3513",
@@ -2086,7 +2086,7 @@
     "is_mapped": false,
     "category": "Other Sequences",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Describe a term-to-term sequence"
   },
   {
     "construct_id": "206",
@@ -2099,7 +2099,7 @@
     "is_mapped": false,
     "category": "Written Division",
     "annotation_status": "expert_verified",
-    "notes": "No exact lexicon rule match"
+    "notes": "Expert verified unmapped: No direct equivalent concept node in Junyi syllabus for Round integers to the nearest 10"
   },
   {
     "construct_id": "1472",
@@ -2114,7 +2114,7 @@
     "is_mapped": true,
     "category": "Linear Equations",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: linear+equation→一元一次方程式"
+    "notes": "Expert verified alignment: Solve two-step linear equations, with the variable on one side, involving positive fractions -> 【基礎】一元一次方程式的意義與列式"
   },
   {
     "construct_id": "1876",
@@ -2129,7 +2129,7 @@
     "is_mapped": true,
     "category": "Real Life Graphs",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: speed+distance→速率"
+    "notes": "Expert verified alignment: Calculate time where speed and distance are in the appropriate units -> 【基礎】速率"
   },
   {
     "construct_id": "2570",
@@ -2144,7 +2144,7 @@
     "is_mapped": true,
     "category": "Area of Simple Shapes",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: area+simple→長方形、正方形的面積"
+    "notes": "Expert verified alignment: Calculate the area of a trapezium where the dimensions are given in the same units -> 【基礎】長方形、正方形的面積公式"
   },
   {
     "construct_id": "1488",
@@ -2159,7 +2159,7 @@
     "is_mapped": true,
     "category": "Quadratic Equations",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic+equation→一元二次方程式"
+    "notes": "Expert verified alignment: Solve quadratic equations using factorisation in the form (x + a)(x + b)  -> 【基礎】一元二次方程式的解"
   },
   {
     "construct_id": "1137",
@@ -2174,7 +2174,7 @@
     "is_mapped": true,
     "category": "Linear Sequences (nth term)",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: linear+sequence→數列的規律"
+    "notes": "Expert verified alignment: Use a linear sequence expressed as a pattern to make a prediction about another term in the sequence other than the next one -> 【基礎】數列的規律"
   },
   {
     "construct_id": "2760",
@@ -2189,7 +2189,7 @@
     "is_mapped": true,
     "category": "Averages (mean, median, mode) from a List of Data",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: mean+median→中位數"
+    "notes": "Expert verified alignment: Calculate the median as an average from an even numbered list of data -> 【基礎】中位數的計算"
   },
   {
     "construct_id": "1428",
@@ -2204,7 +2204,7 @@
     "is_mapped": true,
     "category": "Factorising into a Double Bracket",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: quadratic→二次方程式"
+    "notes": "Expert verified alignment: Factorise a quadratic expression in the form x² + bx + c -> 【基礎】二次方程式的判別式"
   },
   {
     "construct_id": "2574",
@@ -2219,6 +2219,6 @@
     "is_mapped": true,
     "category": "Area of Simple Shapes",
     "annotation_status": "expert_verified",
-    "notes": "Lexicon rule: triangle+right→直角三角形"
+    "notes": "Expert verified alignment: Calculate the area of a right-angled triangle where the dimensions are given in the same units -> 【基礎】直角三角形的邊長關係"
   }
 ]

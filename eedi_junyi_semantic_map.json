@@ -7,15 +7,15 @@
       "mapped": true,
       "eedi_concept_id": "EEDI_CONSTRUCT_856",
       "eedi_concept_name": "Use the order of operations to carry out calculations involving powers",
-      "junyi_concept_id": "JUNYI_JZfQaPLUEZBed+XMOOWufLndpgukChiiKsqH/d+cxlI=",
-      "junyi_concept_name": "【基礎】四則計算：先乘除後加減",
+      "junyi_concept_id": "JUNYI_OByIaYY/56y05bpjY1K3Dg+OS32Y/fB3yVjKfBqFIIY=",
+      "junyi_concept_name": "【基礎】先乘除後加減，有括號要先算",
       "method": "lexicon",
       "score": 126,
-      "rule": "order+operations→先乘除後加減",
+      "rule": "order+operations→有括號要先算",
       "top3_junyi_ids": [
+        "JUNYI_OByIaYY/56y05bpjY1K3Dg+OS32Y/fB3yVjKfBqFIIY=",
         "JUNYI_JZfQaPLUEZBed+XMOOWufLndpgukChiiKsqH/d+cxlI=",
-        "JUNYI_XPxKzkvjDB7yK2AQPahFqPB7cnoHs5/dy4T498HoX5M=",
-        "JUNYI_OByIaYY/56y05bpjY1K3Dg+OS32Y/fB3yVjKfBqFIIY="
+        "JUNYI_XPxKzkvjDB7yK2AQPahFqPB7cnoHs5/dy4T498HoX5M="
       ]
     },
     "semantic_prediction": {
@@ -33,15 +33,15 @@
       "mapped": true,
       "eedi_concept_id": "EEDI_CONSTRUCT_856",
       "eedi_concept_name": "Use the order of operations to carry out calculations involving powers",
-      "junyi_concept_id": "JUNYI_JZfQaPLUEZBed+XMOOWufLndpgukChiiKsqH/d+cxlI=",
-      "junyi_concept_name": "【基礎】四則計算：先乘除後加減",
+      "junyi_concept_id": "JUNYI_OByIaYY/56y05bpjY1K3Dg+OS32Y/fB3yVjKfBqFIIY=",
+      "junyi_concept_name": "【基礎】先乘除後加減，有括號要先算",
       "method": "hybrid_lexicon_semantic",
       "score": 0.504,
-      "rule": "order+operations→先乘除後加減",
+      "rule": "order+operations→有括號要先算",
       "top3_junyi_ids": [
+        "JUNYI_OByIaYY/56y05bpjY1K3Dg+OS32Y/fB3yVjKfBqFIIY=",
         "JUNYI_JZfQaPLUEZBed+XMOOWufLndpgukChiiKsqH/d+cxlI=",
-        "JUNYI_XPxKzkvjDB7yK2AQPahFqPB7cnoHs5/dy4T498HoX5M=",
-        "JUNYI_OByIaYY/56y05bpjY1K3Dg+OS32Y/fB3yVjKfBqFIIY="
+        "JUNYI_XPxKzkvjDB7yK2AQPahFqPB7cnoHs5/dy4T498HoX5M="
       ]
     }
   },
@@ -111,34 +111,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2774",
       "eedi_concept_name": "Calculate the range from a list of data",
-      "junyi_concept_id": "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-      "junyi_concept_name": "【一般】二次函數圖形與 x 軸的交點個數 - 即將下架",
-      "method": "semantic_embedding",
-      "score": 0.1946,
-      "rule": "CosineSim=0.1946",
-      "top3_junyi_ids": [
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_fuM14IacAZTrOR0wL7pjHs3d+dmNJ7EMH4s6iLNNg7A="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2774",
       "eedi_concept_name": "Calculate the range from a list of data",
-      "junyi_concept_id": "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-      "junyi_concept_name": "【一般】二次函數圖形與 x 軸的交點個數 - 即將下架",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.0778,
-      "rule": "CosineSim=0.1946",
-      "top3_junyi_ids": [
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_fuM14IacAZTrOR0wL7pjHs3d+dmNJ7EMH4s6iLNNg7A="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -211,19 +203,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3387",
       "eedi_concept_name": "Substitute positive integer values into formulae involving powers or roots",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.18,
-      "rule": "CosineSim=0.1800",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -311,19 +299,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_376",
       "eedi_concept_name": "Convert two digit integer percentages to fractions",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2286,
-      "rule": "CosineSim=0.2286",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -361,19 +345,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_314",
       "eedi_concept_name": "Divide decimals by 10",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2214,
-      "rule": "CosineSim=0.2214",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y=",
-        "JUNYI_LcAN7TMK1vKQDUSPxjKDIARJeOwJX98jW9S6vZylVKs="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -411,19 +391,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_435",
       "eedi_concept_name": "Subtract proper fractions with different denominators which do not share a common factor",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2885,
-      "rule": "CosineSim=0.2885",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_r9uHkHNbfdzRkBW9Gogqi1vmxUXafa57W8BEsdMqCZs=",
-        "JUNYI_x9oDEpreQSuEiyFzA4syO+1WLv+obKycS0yqA80CQFw="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -459,19 +435,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1321",
       "eedi_concept_name": "Identify horizontal translations in the form f(x) = for non-trigonometric functions",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2088,
-      "rule": "CosineSim=0.2088",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Ng8Iw8PYfUoT3Pv0dKtEs6DvpuenM9W6STSDlwcc2f0=",
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -483,9 +455,7 @@
       "score": 0.448,
       "rule": "translation→平移",
       "top3_junyi_ids": [
-        "JUNYI_b1IGwey9JYxxOGjLTGRvkWIsfmIlerNqghEc8OtDB8o=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Ng8Iw8PYfUoT3Pv0dKtEs6DvpuenM9W6STSDlwcc2f0="
+        "JUNYI_b1IGwey9JYxxOGjLTGRvkWIsfmIlerNqghEc8OtDB8o="
       ]
     }
   },
@@ -755,19 +725,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2578",
       "eedi_concept_name": "Calculate the area of an equilateral triangle where the dimensions are given in the same units",
-      "junyi_concept_id": "JUNYI_FzlL3BMs4RcndF+5SIruQoA/ds42iWUt+cuErOyosIg=",
-      "junyi_concept_name": "【進階】柱體、錐體和球",
-      "method": "semantic_embedding",
-      "score": 0.2968,
-      "rule": "CosineSim=0.2968",
-      "top3_junyi_ids": [
-        "JUNYI_FzlL3BMs4RcndF+5SIruQoA/ds42iWUt+cuErOyosIg=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -805,19 +771,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_695",
       "eedi_concept_name": "Divide a quantity into two parts for a given a ratio, where each part is an integer",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.1947,
-      "rule": "CosineSim=0.1947",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE=",
-        "JUNYI_LcAN7TMK1vKQDUSPxjKDIARJeOwJX98jW9S6vZylVKs="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -905,19 +867,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_261",
       "eedi_concept_name": "Carry out missing number subtraction problems involving negative integers",
-      "junyi_concept_id": "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-      "junyi_concept_name": "【基礎】小數乘以 0.1、0.01 以及 0.001",
-      "method": "semantic_embedding",
-      "score": 0.2226,
-      "rule": "CosineSim=0.2226",
-      "top3_junyi_ids": [
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -1005,19 +963,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2306",
       "eedi_concept_name": "Given the volume of a cuboid, work out missing information",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2342,
-      "rule": "CosineSim=0.2342",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -1155,19 +1109,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2742",
       "eedi_concept_name": "Interpret sloping linear sections of a displacement-time graph",
-      "junyi_concept_id": "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-      "junyi_concept_name": "【一般】二次函數圖形與 x 軸的交點個數 - 即將下架",
-      "method": "semantic_embedding",
-      "score": 0.2982,
-      "rule": "CosineSim=0.2982",
-      "top3_junyi_ids": [
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_y2cIQJI2w9BzUTARUpwIfpZKS7NOEaAdBnn0A7fA7Bk=",
-        "JUNYI_LkGxmLWesEPJgooW03RGU1eRXKGzJKoyurxRYeh0KOI="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -1297,19 +1247,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1576",
       "eedi_concept_name": "Given a sketch of a circle with centre at the origin, write its equation in the form x² + y² = r²",
-      "junyi_concept_id": "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
-      "junyi_concept_name": "【基礎】先移項，再利用平方根解一元二次方程式：方程式的解有根號",
-      "method": "semantic_embedding",
-      "score": 0.2368,
-      "rule": "CosineSim=0.2368",
-      "top3_junyi_ids": [
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_LcAN7TMK1vKQDUSPxjKDIARJeOwJX98jW9S6vZylVKs="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -1347,19 +1293,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1527",
       "eedi_concept_name": "Substitute negative integer values into expressions involving no powers or roots",
-      "junyi_concept_id": "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-      "junyi_concept_name": "【基礎】小數乘以 0.1、0.01 以及 0.001",
-      "method": "semantic_embedding",
-      "score": 0.2227,
-      "rule": "CosineSim=0.2227",
-      "top3_junyi_ids": [
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -1393,34 +1335,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_10",
       "eedi_concept_name": "Count backwards in steps of of something other than one",
-      "junyi_concept_id": "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-      "junyi_concept_name": "【一般】二次函數圖形與 x 軸的交點個數 - 即將下架",
-      "method": "semantic_embedding",
-      "score": 0.2224,
-      "rule": "CosineSim=0.2224",
-      "top3_junyi_ids": [
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_10",
       "eedi_concept_name": "Count backwards in steps of of something other than one",
-      "junyi_concept_id": "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-      "junyi_concept_name": "【一般】二次函數圖形與 x 軸的交點個數 - 即將下架",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.089,
-      "rule": "CosineSim=0.2224",
-      "top3_junyi_ids": [
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -1443,19 +1377,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1045",
       "eedi_concept_name": "Solve linear inequalities in one variable where the unknown appears on boths sides of the equation",
-      "junyi_concept_id": "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-      "junyi_concept_name": "【基礎】若 ab=0，則 a=0 或 b=0",
-      "method": "semantic_embedding",
-      "score": 0.1857,
-      "rule": "CosineSim=0.1857",
-      "top3_junyi_ids": [
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE=",
-        "JUNYI_NoSFhTWBKqUGlYjm2smtD46bykxeTrKtsQuV3y6aJQ0="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -1493,19 +1423,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3515",
       "eedi_concept_name": "Determine the function of a single function machine used to create an algebraic expression",
-      "junyi_concept_id": "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-      "junyi_concept_name": "【基礎】小數乘以 0.1、0.01 以及 0.001",
-      "method": "semantic_embedding",
-      "score": 0.1912,
-      "rule": "CosineSim=0.1912",
-      "top3_junyi_ids": [
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_AftCWTe9HWCQtI7qOgUITUl2eWnLhe6p09IHSLTFB2o="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -1623,34 +1549,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1560",
       "eedi_concept_name": "Given a situation sketch an appropriate real life graph",
-      "junyi_concept_id": "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M=",
-      "junyi_concept_name": "【基礎】長方形、正方形的面積公式",
-      "method": "semantic_embedding",
-      "score": 0.2559,
-      "rule": "CosineSim=0.2559",
-      "top3_junyi_ids": [
-        "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M=",
-        "JUNYI_ZOO50WfENqtWGe4uBkJcqW4nppgtuJKCAoqx34z8eOw=",
-        "JUNYI_yC2VB5lJ5y/sgxAF1VTGmJEeWwn9WiP2T6dEfU6m9jg="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1560",
       "eedi_concept_name": "Given a situation sketch an appropriate real life graph",
-      "junyi_concept_id": "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M=",
-      "junyi_concept_name": "【基礎】長方形、正方形的面積公式",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.1024,
-      "rule": "CosineSim=0.2559",
-      "top3_junyi_ids": [
-        "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M=",
-        "JUNYI_ZOO50WfENqtWGe4uBkJcqW4nppgtuJKCAoqx34z8eOw=",
-        "JUNYI_yC2VB5lJ5y/sgxAF1VTGmJEeWwn9WiP2T6dEfU6m9jg="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -1673,19 +1591,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_52",
       "eedi_concept_name": "Find another power of 10 less than a given number",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.249,
-      "rule": "CosineSim=0.2490",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -1723,19 +1637,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_380",
       "eedi_concept_name": "Convert decimals less than 1 with 1 decimal place to percentages",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2914,
-      "rule": "CosineSim=0.2914",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -1772,19 +1682,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1273",
       "eedi_concept_name": "Simplify algebraic expressions to maintain equivalence by collecting like terms involving just one linear variable",
-      "junyi_concept_id": "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE=",
-      "junyi_concept_name": "【基礎】在數線上標示 0 與 1 之間的小數 2",
-      "method": "semantic_embedding",
-      "score": 0.2763,
-      "rule": "CosineSim=0.2763",
-      "top3_junyi_ids": [
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -1797,8 +1703,7 @@
       "rule": "collecting+like→化簡二元一次式",
       "top3_junyi_ids": [
         "JUNYI_WR85TYAmgzldheol7nA1RzEqixyhrnrQsG8iD/RhpHU=",
-        "JUNYI_rWyTBc21lUbZZOxzXwmYY6yQCzZdvnkrd7TYKnb2mkc=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
+        "JUNYI_rWyTBc21lUbZZOxzXwmYY6yQCzZdvnkrd7TYKnb2mkc="
       ]
     }
   },
@@ -1818,34 +1723,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_410",
       "eedi_concept_name": "Simplify fractions that simplify to a unit fraction",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2943,
-      "rule": "CosineSim=0.2943",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_410",
       "eedi_concept_name": "Simplify fractions that simplify to a unit fraction",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.1177,
-      "rule": "CosineSim=0.2943",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -1918,19 +1815,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3115",
       "eedi_concept_name": "Carry out a subtraction problem with positive integers where the answer is less than 0",
-      "junyi_concept_id": "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-      "junyi_concept_name": "【基礎】小數乘以 0.1、0.01 以及 0.001",
-      "method": "semantic_embedding",
-      "score": 0.2947,
-      "rule": "CosineSim=0.2947",
-      "top3_junyi_ids": [
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -1964,34 +1857,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1561",
       "eedi_concept_name": "Read values off a real life graph",
-      "junyi_concept_id": "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-      "junyi_concept_name": "【基礎】若 ab=0，則 a=0 或 b=0",
-      "method": "semantic_embedding",
-      "score": 0.2396,
-      "rule": "CosineSim=0.2396",
-      "top3_junyi_ids": [
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1561",
       "eedi_concept_name": "Read values off a real life graph",
-      "junyi_concept_id": "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-      "junyi_concept_name": "【基礎】若 ab=0，則 a=0 或 b=0",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.0958,
-      "rule": "CosineSim=0.2396",
-      "top3_junyi_ids": [
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -2014,19 +1899,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3225",
       "eedi_concept_name": "Write a missing term of an ascending integer linear sequence",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2655,
-      "rule": "CosineSim=0.2655",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_LcAN7TMK1vKQDUSPxjKDIARJeOwJX98jW9S6vZylVKs="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -2064,19 +1945,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_953",
       "eedi_concept_name": "Given a gradient, state the gradient of a line parallel to it",
-      "junyi_concept_id": "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-      "junyi_concept_name": "【一般】二次函數圖形與 x 軸的交點個數 - 即將下架",
-      "method": "semantic_embedding",
-      "score": 0.2309,
-      "rule": "CosineSim=0.2309",
-      "top3_junyi_ids": [
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_BOsRDO+HYK8BWQZeW6NYvjKlmA4tI7BV6Y9tC1RIpQI=",
-        "JUNYI_y2cIQJI2w9BzUTARUpwIfpZKS7NOEaAdBnn0A7fA7Bk="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -2214,19 +2091,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3176",
       "eedi_concept_name": "For a given algebraic input, find the output of a function machine",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.1634,
-      "rule": "CosineSim=0.1634",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_AftCWTe9HWCQtI7qOgUITUl2eWnLhe6p09IHSLTFB2o="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -2264,19 +2137,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3190",
       "eedi_concept_name": "Represent an equation using a bar model",
-      "junyi_concept_id": "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-      "junyi_concept_name": "【基礎】若 ab=0，則 a=0 或 b=0",
-      "method": "semantic_embedding",
-      "score": 0.2569,
-      "rule": "CosineSim=0.2569",
-      "top3_junyi_ids": [
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-        "JUNYI_AftCWTe9HWCQtI7qOgUITUl2eWnLhe6p09IHSLTFB2o=",
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -2310,34 +2179,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_403",
       "eedi_concept_name": "Calculate the whole amount, given a fraction of the amount",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2427,
-      "rule": "CosineSim=0.2427",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_403",
       "eedi_concept_name": "Calculate the whole amount, given a fraction of the amount",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.0971,
-      "rule": "CosineSim=0.2427",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -2360,19 +2221,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3516",
       "eedi_concept_name": "Determine the input of a double function machine used to create an algebraic expression",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.207,
-      "rule": "CosineSim=0.2070",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -2456,19 +2313,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_316",
       "eedi_concept_name": "Divide decimals by 1000",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2473,
-      "rule": "CosineSim=0.2473",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -2552,19 +2405,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3132",
       "eedi_concept_name": "Write algebraic expressions with correct algebraic convention",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2724,
-      "rule": "CosineSim=0.2724",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
-        "JUNYI_LcAN7TMK1vKQDUSPxjKDIARJeOwJX98jW9S6vZylVKs="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -2602,19 +2451,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3346",
       "eedi_concept_name": "Identify the order of rotational symmetry of a shape",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2428,
-      "rule": "CosineSim=0.2428",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Ng8Iw8PYfUoT3Pv0dKtEs6DvpuenM9W6STSDlwcc2f0=",
-        "JUNYI_FzlL3BMs4RcndF+5SIruQoA/ds42iWUt+cuErOyosIg="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -2744,19 +2589,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_704",
       "eedi_concept_name": "Represent written scenarios as ratios",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2667,
-      "rule": "CosineSim=0.2667",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y=",
-        "JUNYI_mWLymE1Nkn97ABCS6bLlR35/Hk/RnkkXXFmQaVMAFTQ="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -2844,19 +2685,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1030",
       "eedi_concept_name": "Represent a linear inequality with a single tail on a numberline",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.199,
-      "rule": "CosineSim=0.1990",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -2944,19 +2781,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3118",
       "eedi_concept_name": "Read a fraction on a scale where the required number is marked by a dash between two numbers",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2781,
-      "rule": "CosineSim=0.2781",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -3036,34 +2869,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_180",
       "eedi_concept_name": "Subtract integers up to 4 digits using a written method where carrying is needed",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2556,
-      "rule": "CosineSim=0.2556",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_180",
       "eedi_concept_name": "Subtract integers up to 4 digits using a written method where carrying is needed",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.1022,
-      "rule": "CosineSim=0.2556",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -3086,19 +2911,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1467",
       "eedi_concept_name": "Solve one-step linear equations requiring multiplication or division, involving positive decimals",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2079,
-      "rule": "CosineSim=0.2079",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -3136,19 +2957,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1492",
       "eedi_concept_name": "Solve quadratic equations using the quadratic formula where the coefficient of x² is 1 ",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.166,
-      "rule": "CosineSim=0.1660",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -3186,19 +3003,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_306",
       "eedi_concept_name": "Subtract decimals where the numbers involved have a different number of decimal places",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2877,
-      "rule": "CosineSim=0.2877",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -3236,32 +3049,28 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_479",
       "eedi_concept_name": "Calculate the square root of a number",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2284,
-      "rule": "CosineSim=0.2284",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
       "eedi_concept_id": "EEDI_CONSTRUCT_479",
       "eedi_concept_name": "Calculate the square root of a number",
-      "junyi_concept_id": "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
-      "junyi_concept_name": "【基礎】先移項，再利用平方根解一元二次方程式：方程式的解有根號",
+      "junyi_concept_id": "JUNYI_EeGMnhrm4kMsHkyciCkRHDKmLKUY/jHQd5H7C/vPDNM=",
+      "junyi_concept_name": "【基礎】利用平方根解一元二次方程式：方程式的解沒有根號",
       "method": "hybrid_lexicon_semantic",
-      "score": 0.4959,
+      "score": 0.492,
       "rule": "square+root→平方根",
       "top3_junyi_ids": [
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
         "JUNYI_EeGMnhrm4kMsHkyciCkRHDKmLKUY/jHQd5H7C/vPDNM=",
+        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
         "JUNYI_7weJLTdGePcbI6VZb5/eh77sHGzpnDTZXxgPlao6EMY="
       ]
     }
@@ -3286,19 +3095,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1490",
       "eedi_concept_name": "Solve quadratic equations using completing the square in the form (x + q)² + r ",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.1838,
-      "rule": "CosineSim=0.1838",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -3382,19 +3187,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_586",
       "eedi_concept_name": "Calculate percentage of an amount using a calculator where the percent is an integer",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2868,
-      "rule": "CosineSim=0.2868",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y=",
-        "JUNYI_x9oDEpreQSuEiyFzA4syO+1WLv+obKycS0yqA80CQFw="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -3432,19 +3233,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2908",
       "eedi_concept_name": "Interpret continuous data using a line graph",
-      "junyi_concept_id": "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-      "junyi_concept_name": "【一般】二次函數圖形與 x 軸的交點個數 - 即將下架",
-      "method": "semantic_embedding",
-      "score": 0.1825,
-      "rule": "CosineSim=0.1825",
-      "top3_junyi_ids": [
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_mWLymE1Nkn97ABCS6bLlR35/Hk/RnkkXXFmQaVMAFTQ=",
-        "JUNYI_fuM14IacAZTrOR0wL7pjHs3d+dmNJ7EMH4s6iLNNg7A="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -3582,19 +3379,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1494",
       "eedi_concept_name": "Solve quadratic equations using balancing",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2387,
-      "rule": "CosineSim=0.2387",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y=",
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -3728,19 +3521,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3141",
       "eedi_concept_name": "Solve quadratic inequalities from the graph of the quadratic",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2446,
-      "rule": "CosineSim=0.2446",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_LcAN7TMK1vKQDUSPxjKDIARJeOwJX98jW9S6vZylVKs=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -3774,34 +3563,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2930",
       "eedi_concept_name": "Fill in regions of a double Venn diagram with numbers from given information",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2604,
-      "rule": "CosineSim=0.2604",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2930",
       "eedi_concept_name": "Fill in regions of a double Venn diagram with numbers from given information",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.1042,
-      "rule": "CosineSim=0.2604",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -3824,19 +3605,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_30",
       "eedi_concept_name": "Order integers with a different number of digits",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2389,
-      "rule": "CosineSim=0.2389",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -3874,19 +3651,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3032",
       "eedi_concept_name": "Understand inequality notation",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2461,
-      "rule": "CosineSim=0.2461",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-        "JUNYI_LcAN7TMK1vKQDUSPxjKDIARJeOwJX98jW9S6vZylVKs="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -3924,19 +3697,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_220",
       "eedi_concept_name": "Round numbers greater than 1 to one significant figure",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2376,
-      "rule": "CosineSim=0.2376",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -3974,19 +3743,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_920",
       "eedi_concept_name": "Recognise the equations of horizontal lines from a diagram",
-      "junyi_concept_id": "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-      "junyi_concept_name": "【一般】二次函數圖形與 x 軸的交點個數 - 即將下架",
-      "method": "semantic_embedding",
-      "score": 0.2716,
-      "rule": "CosineSim=0.2716",
-      "top3_junyi_ids": [
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_BOsRDO+HYK8BWQZeW6NYvjKlmA4tI7BV6Y9tC1RIpQI=",
-        "JUNYI_2dZAIlKn+MzyIa5L8xpWkRhS6Njmw4EYe2vwwwNsRQ4="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -4024,19 +3789,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1102",
       "eedi_concept_name": "Generate a descending integer linear sequence from the nth term rule",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2654,
-      "rule": "CosineSim=0.2654",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_NoSFhTWBKqUGlYjm2smtD46bykxeTrKtsQuV3y6aJQ0="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -4074,19 +3835,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_424",
       "eedi_concept_name": "Add proper fractions with the same denominator",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.271,
-      "rule": "CosineSim=0.2710",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -4124,19 +3881,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1017",
       "eedi_concept_name": "Given a sketch of a quadratic graph, f(x), write down the solutions to f(x) = a",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2556,
-      "rule": "CosineSim=0.2556",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-        "JUNYI_BrTqq0RU5pT0MuL93VJfFGwV8IhRCgcWmdz0Qfp0i+Y="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -4270,19 +4023,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3136",
       "eedi_concept_name": "Rearrange a quadratic equation so that it is in the correct form to be factorised",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2306,
-      "rule": "CosineSim=0.2306",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -4616,19 +4365,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3179",
       "eedi_concept_name": "Given a sketch of a linear graph solve f(x) = n",
-      "junyi_concept_id": "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-      "junyi_concept_name": "【基礎】若 ab=0，則 a=0 或 b=0",
-      "method": "semantic_embedding",
-      "score": 0.1701,
-      "rule": "CosineSim=0.1701",
-      "top3_junyi_ids": [
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -4812,34 +4557,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2610",
       "eedi_concept_name": "Calculate missing lengths of shapes by geometrical inference, where the lengths given are in the same units",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2343,
-      "rule": "CosineSim=0.2343",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-        "JUNYI_FzlL3BMs4RcndF+5SIruQoA/ds42iWUt+cuErOyosIg="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2610",
       "eedi_concept_name": "Calculate missing lengths of shapes by geometrical inference, where the lengths given are in the same units",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.0937,
-      "rule": "CosineSim=0.2343",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-        "JUNYI_FzlL3BMs4RcndF+5SIruQoA/ds42iWUt+cuErOyosIg="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -4862,19 +4599,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2566",
       "eedi_concept_name": "Calculate the area of a parallelogram where the dimensions are given in the same units",
-      "junyi_concept_id": "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-      "junyi_concept_name": "【基礎】公里、公尺和公分的換算及大小比較",
-      "method": "semantic_embedding",
-      "score": 0.2941,
-      "rule": "CosineSim=0.2941",
-      "top3_junyi_ids": [
-        "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -5258,19 +4991,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1403",
       "eedi_concept_name": "Multiply a single term over a bracket where the term on the outside is a number and the inside contains a linear expression",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2193,
-      "rule": "CosineSim=0.2193",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_LcAN7TMK1vKQDUSPxjKDIARJeOwJX98jW9S6vZylVKs=",
-        "JUNYI_NoSFhTWBKqUGlYjm2smtD46bykxeTrKtsQuV3y6aJQ0="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -5446,19 +5175,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_700",
       "eedi_concept_name": "Given information about one part, work out other parts",
-      "junyi_concept_id": "JUNYI_x9oDEpreQSuEiyFzA4syO+1WLv+obKycS0yqA80CQFw=",
-      "junyi_concept_name": "【基礎】分數除法的應用：比率、面積與相當問題",
-      "method": "semantic_embedding",
-      "score": 0.2961,
-      "rule": "CosineSim=0.2961",
-      "top3_junyi_ids": [
-        "JUNYI_x9oDEpreQSuEiyFzA4syO+1WLv+obKycS0yqA80CQFw=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_LcAN7TMK1vKQDUSPxjKDIARJeOwJX98jW9S6vZylVKs="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -5496,19 +5221,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2571",
       "eedi_concept_name": "Calculate the area of a trapezium where the dimensions are given in different units",
-      "junyi_concept_id": "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-      "junyi_concept_name": "【基礎】公里、公尺和公分的換算及大小比較",
-      "method": "semantic_embedding",
-      "score": 0.2898,
-      "rule": "CosineSim=0.2898",
-      "top3_junyi_ids": [
-        "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -5592,34 +5313,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2076",
       "eedi_concept_name": "Perform calculations with areas when given in different units",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2689,
-      "rule": "CosineSim=0.2689",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2076",
       "eedi_concept_name": "Perform calculations with areas when given in different units",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.1076,
-      "rule": "CosineSim=0.2689",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -5642,19 +5355,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_941",
       "eedi_concept_name": "Find the gradient of a line written in the form ax + by = c",
-      "junyi_concept_id": "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-      "junyi_concept_name": "【一般】二次函數圖形與 x 軸的交點個數 - 即將下架",
-      "method": "semantic_embedding",
-      "score": 0.2228,
-      "rule": "CosineSim=0.2228",
-      "top3_junyi_ids": [
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_d78kpes0fgN20aS/f8XWcwktKDL/e+vtWguyMOrdHbw=",
-        "JUNYI_NoSFhTWBKqUGlYjm2smtD46bykxeTrKtsQuV3y6aJQ0="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -5692,19 +5401,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2786",
       "eedi_concept_name": "Compare sets of data using the range",
-      "junyi_concept_id": "JUNYI_fuM14IacAZTrOR0wL7pjHs3d+dmNJ7EMH4s6iLNNg7A=",
-      "junyi_concept_name": "【基礎】二維表格：食物營養標示、資源回收統計表、天氣預報表",
-      "method": "semantic_embedding",
-      "score": 0.1818,
-      "rule": "CosineSim=0.1818",
-      "top3_junyi_ids": [
-        "JUNYI_fuM14IacAZTrOR0wL7pjHs3d+dmNJ7EMH4s6iLNNg7A=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_tsZO34MHUt335zNWrd05l1ILk9vvcWzIR2hEk6dNYc4="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -5742,19 +5447,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1754",
       "eedi_concept_name": "Recognise the notation for parallel lines",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2945,
-      "rule": "CosineSim=0.2945",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_BOsRDO+HYK8BWQZeW6NYvjKlmA4tI7BV6Y9tC1RIpQI=",
-        "JUNYI_2dZAIlKn+MzyIa5L8xpWkRhS6Njmw4EYe2vwwwNsRQ4="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -5792,19 +5493,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_256",
       "eedi_concept_name": "Carry out subtraction problems involving two negative integers ",
-      "junyi_concept_id": "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-      "junyi_concept_name": "【基礎】小數乘以 0.1、0.01 以及 0.001",
-      "method": "semantic_embedding",
-      "score": 0.2075,
-      "rule": "CosineSim=0.2075",
-      "top3_junyi_ids": [
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -5888,19 +5585,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3119",
       "eedi_concept_name": "Use brackets to write function machines as calculations",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2041,
-      "rule": "CosineSim=0.2041",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_mWLymE1Nkn97ABCS6bLlR35/Hk/RnkkXXFmQaVMAFTQ=",
-        "JUNYI_FzlL3BMs4RcndF+5SIruQoA/ds42iWUt+cuErOyosIg="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -5938,19 +5631,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1525",
       "eedi_concept_name": "Substitute positive integer values into expressions involving no powers or roots",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2105,
-      "rule": "CosineSim=0.2105",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6038,19 +5727,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1460",
       "eedi_concept_name": "Solve one-step linear equations requiring addition or subtraction, involving positive fractions",
-      "junyi_concept_id": "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-      "junyi_concept_name": "【基礎】若 ab=0，則 a=0 或 b=0",
-      "method": "semantic_embedding",
-      "score": 0.1679,
-      "rule": "CosineSim=0.1679",
-      "top3_junyi_ids": [
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6088,19 +5773,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1042",
       "eedi_concept_name": "Solve one-step linear inequalities in one variable where the variable appears on one side of the equation",
-      "junyi_concept_id": "JUNYI_NoSFhTWBKqUGlYjm2smtD46bykxeTrKtsQuV3y6aJQ0=",
-      "junyi_concept_name": "【基礎】二次函數 y=a(x-h)^2 的圖形 - 即將下架",
-      "method": "semantic_embedding",
-      "score": 0.1749,
-      "rule": "CosineSim=0.1749",
-      "top3_junyi_ids": [
-        "JUNYI_NoSFhTWBKqUGlYjm2smtD46bykxeTrKtsQuV3y6aJQ0=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6188,19 +5869,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_223",
       "eedi_concept_name": "Round numbers between 0 and 1 to one significant figure",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2362,
-      "rule": "CosineSim=0.2362",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6238,19 +5915,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3319",
       "eedi_concept_name": "Solve problems involving converting between fractions, decimals and percentages",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2985,
-      "rule": "CosineSim=0.2985",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6284,34 +5957,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3509",
       "eedi_concept_name": "Read values from piecewise functions",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2783,
-      "rule": "CosineSim=0.2783",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_FzlL3BMs4RcndF+5SIruQoA/ds42iWUt+cuErOyosIg="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3509",
       "eedi_concept_name": "Read values from piecewise functions",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.1113,
-      "rule": "CosineSim=0.2783",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_FzlL3BMs4RcndF+5SIruQoA/ds42iWUt+cuErOyosIg="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -6334,19 +5999,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1410",
       "eedi_concept_name": "Expand two brackets with linear terms in the form (ax + b)(cx + d)",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.1947,
-      "rule": "CosineSim=0.1947",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_LcAN7TMK1vKQDUSPxjKDIARJeOwJX98jW9S6vZylVKs=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6384,19 +6045,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1425",
       "eedi_concept_name": "Factorise a single bracket containing a non-linear expression by taking out a single algebraic common factor (e.g. a)",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2804,
-      "rule": "CosineSim=0.2804",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_NoSFhTWBKqUGlYjm2smtD46bykxeTrKtsQuV3y6aJQ0=",
-        "JUNYI_d78kpes0fgN20aS/f8XWcwktKDL/e+vtWguyMOrdHbw="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6434,19 +6091,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_982",
       "eedi_concept_name": "Given a negative x value, find the corresponding y value for curves in the form y = x² + c",
-      "junyi_concept_id": "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-      "junyi_concept_name": "【一般】二次函數圖形與 x 軸的交點個數 - 即將下架",
-      "method": "semantic_embedding",
-      "score": 0.2358,
-      "rule": "CosineSim=0.2358",
-      "top3_junyi_ids": [
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_NoSFhTWBKqUGlYjm2smtD46bykxeTrKtsQuV3y6aJQ0="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6484,19 +6137,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1739",
       "eedi_concept_name": "Use a protractor to measure angles between 270° and 360°",
-      "junyi_concept_id": "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-      "junyi_concept_name": "【基礎】公里、公尺和公分的換算及大小比較",
-      "method": "semantic_embedding",
-      "score": 0.2162,
-      "rule": "CosineSim=0.2162",
-      "top3_junyi_ids": [
-        "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-        "JUNYI_y2cIQJI2w9BzUTARUpwIfpZKS7NOEaAdBnn0A7fA7Bk=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6534,19 +6183,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1440",
       "eedi_concept_name": "Complete the square for expressions that end up in the form a(x + b)² + c",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2766,
-      "rule": "CosineSim=0.2766",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_GQxT3JGAhbU5cjX/+o/dFINzhYOTlP9i7GeQGgOIfHs=",
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6580,34 +6225,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3504",
       "eedi_concept_name": "Continue a sequence involving triangle numbers",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2732,
-      "rule": "CosineSim=0.2732",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_FzlL3BMs4RcndF+5SIruQoA/ds42iWUt+cuErOyosIg="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3504",
       "eedi_concept_name": "Continue a sequence involving triangle numbers",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.1093,
-      "rule": "CosineSim=0.2732",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_FzlL3BMs4RcndF+5SIruQoA/ds42iWUt+cuErOyosIg="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -6726,19 +6363,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_298",
       "eedi_concept_name": "Use inequality notation to order decimals with the same number of digits ",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2324,
-      "rule": "CosineSim=0.2324",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6776,19 +6409,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_369",
       "eedi_concept_name": "Convert terminating decimals greater than 1 to fractions",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2546,
-      "rule": "CosineSim=0.2546",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_uL6KHETQYCoqBED2zQuy+zkxtwJwdoa9myALWa6dHRE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6826,19 +6455,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2077",
       "eedi_concept_name": "Identify a unit of volume or capacity",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.1807,
-      "rule": "CosineSim=0.1807",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-        "JUNYI_x9oDEpreQSuEiyFzA4syO+1WLv+obKycS0yqA80CQFw="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -6872,34 +6497,26 @@
       "top3_junyi_ids": []
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3513",
       "eedi_concept_name": "Describe a term-to-term sequence",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2783,
-      "rule": "CosineSim=0.2783",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_mWLymE1Nkn97ABCS6bLlR35/Hk/RnkkXXFmQaVMAFTQ=",
-        "JUNYI_fuM14IacAZTrOR0wL7pjHs3d+dmNJ7EMH4s6iLNNg7A="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_3513",
       "eedi_concept_name": "Describe a term-to-term sequence",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "hybrid_semantic_fallback",
-      "score": 0.1113,
-      "rule": "CosineSim=0.2783",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_mWLymE1Nkn97ABCS6bLlR35/Hk/RnkkXXFmQaVMAFTQ=",
-        "JUNYI_fuM14IacAZTrOR0wL7pjHs3d+dmNJ7EMH4s6iLNNg7A="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     }
   },
   {
@@ -7014,19 +6631,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1876",
       "eedi_concept_name": "Calculate time where speed and distance are in the appropriate units",
-      "junyi_concept_id": "JUNYI_y2cIQJI2w9BzUTARUpwIfpZKS7NOEaAdBnn0A7fA7Bk=",
-      "junyi_concept_name": "【進階】速率固定，利用時間的倍數求出距離",
-      "method": "semantic_embedding",
-      "score": 0.2311,
-      "rule": "CosineSim=0.2311",
-      "top3_junyi_ids": [
-        "JUNYI_y2cIQJI2w9BzUTARUpwIfpZKS7NOEaAdBnn0A7fA7Bk=",
-        "JUNYI_LkGxmLWesEPJgooW03RGU1eRXKGzJKoyurxRYeh0KOI=",
-        "JUNYI_U7WkGZRG7Ap28BleazYLuVCBEN3TdSTYP43SOFuOb54="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -7035,7 +6648,7 @@
       "junyi_concept_id": "JUNYI_y2cIQJI2w9BzUTARUpwIfpZKS7NOEaAdBnn0A7fA7Bk=",
       "junyi_concept_name": "【進階】速率固定，利用時間的倍數求出距離",
       "method": "hybrid_lexicon_semantic",
-      "score": 0.5804,
+      "score": 0.488,
       "rule": "speed+distance→速率",
       "top3_junyi_ids": [
         "JUNYI_y2cIQJI2w9BzUTARUpwIfpZKS7NOEaAdBnn0A7fA7Bk=",
@@ -7064,19 +6677,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2570",
       "eedi_concept_name": "Calculate the area of a trapezium where the dimensions are given in the same units",
-      "junyi_concept_id": "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-      "junyi_concept_name": "【基礎】公里、公尺和公分的換算及大小比較",
-      "method": "semantic_embedding",
-      "score": 0.2834,
-      "rule": "CosineSim=0.2834",
-      "top3_junyi_ids": [
-        "JUNYI_qNy9Nb6Srhtd8sHME31WQothbe0qdQQ7I4xK9F+2Ns0=",
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -7114,19 +6723,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1488",
       "eedi_concept_name": "Solve quadratic equations using factorisation in the form (x + a)(x + b) ",
-      "junyi_concept_id": "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-      "junyi_concept_name": "【基礎】三位數除以一位數-被除數的百位數是除數的倍數",
-      "method": "semantic_embedding",
-      "score": 0.2838,
-      "rule": "CosineSim=0.2838",
-      "top3_junyi_ids": [
-        "JUNYI_4h8h7HJckqx804hyKFBQcjS2w4U2iK5KAgIjUD62vJk=",
-        "JUNYI_iifaTxiiTf4efLofMvQKfjMIGBdh4KuZsWv1TYIQd90=",
-        "JUNYI_OeaYHhfKV2vXQKqvs8/5Yx7sQiFDFEmf2r6cWd3apKE="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -7164,19 +6769,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_1137",
       "eedi_concept_name": "Use a linear sequence expressed as a pattern to make a prediction about another term in the sequence other than the next one",
-      "junyi_concept_id": "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-      "junyi_concept_name": "【一般】二次函數圖形與 x 軸的交點個數 - 即將下架",
-      "method": "semantic_embedding",
-      "score": 0.2137,
-      "rule": "CosineSim=0.2137",
-      "top3_junyi_ids": [
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_NoSFhTWBKqUGlYjm2smtD46bykxeTrKtsQuV3y6aJQ0=",
-        "JUNYI_O+qdSyYcmKAzs4PPZikdBQWMw5MMHcW5ROV8s8sFljc="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,
@@ -7214,19 +6815,15 @@
       ]
     },
     "semantic_prediction": {
-      "mapped": true,
+      "mapped": false,
       "eedi_concept_id": "EEDI_CONSTRUCT_2760",
       "eedi_concept_name": "Calculate the median as an average from an even numbered list of data",
-      "junyi_concept_id": "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-      "junyi_concept_name": "【一般】二次函數圖形與 x 軸的交點個數 - 即將下架",
-      "method": "semantic_embedding",
-      "score": 0.1631,
-      "rule": "CosineSim=0.1631",
-      "top3_junyi_ids": [
-        "JUNYI_Pj38dvOZ+H6eylMm22y2HUPJ/2MqKuSTsaOIkGFdExM=",
-        "JUNYI_fuM14IacAZTrOR0wL7pjHs3d+dmNJ7EMH4s6iLNNg7A=",
-        "JUNYI_tsZO34MHUt335zNWrd05l1ILk9vvcWzIR2hEk6dNYc4="
-      ]
+      "junyi_concept_id": null,
+      "junyi_concept_name": null,
+      "method": "semantic_unmapped",
+      "score": 0.0,
+      "rule": null,
+      "top3_junyi_ids": []
     },
     "hybrid_prediction": {
       "mapped": true,

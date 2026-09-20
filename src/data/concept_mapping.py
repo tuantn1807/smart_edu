@@ -42,8 +42,8 @@ LEXICON: List[Tuple[Tuple[str, ...], Tuple[str, ...]]] = [
     (('collecting', 'like'), ('合併同類項', '化簡二元一次式')),
     (('substitut',), ('代入求值', '代數式的值', '代數')),
     (('substitution', 'formula'), ('代入求值', '代數式的值', '函數值')),
-    (('bidmas',), ('先乘除後加減', '四則運算', '有括號')),
-    (('order', 'operations'), ('先乘除後加減', '四則運算')),
+    (('bidmas',), ('有括號要先算', '先乘除後加減', '四則運算')),
+    (('order', 'operations'), ('有括號要先算', '先乘除後加減', '四則運算')),
     (('adding', 'subtracting', 'fraction'), ('異分母分數的加減', '同分母分數的加減', '分數的加減')),
     (('multiplying', 'fraction'), ('分數的乘法', '分數乘以')),
     (('dividing', 'fraction'), ('分數的除法', '分數除以')),
@@ -268,10 +268,12 @@ class SemanticEmbeddingMapper:
 
     def __init__(self, knowledge_graph: KnowledgeGraph,
                  model_name: str = "paraphrase-multilingual-MiniLM-L12-v2",
-                 min_similarity_threshold: float = 0.15):
+                 min_similarity_threshold: float = 0.30,
+                 require_model: bool = True):
         self.knowledge_graph = knowledge_graph
         self.model_name = model_name
         self.min_similarity_threshold = min_similarity_threshold
+        self.require_model = require_model
         self._cache: Dict[str, ConceptMapping] = {}
         self._vector_cache: Dict[str, Any] = {}
         self.model = None
@@ -283,8 +285,12 @@ class SemanticEmbeddingMapper:
         self._build_matrix()
 
     def _compute_graph_fingerprint(self) -> str:
-        node_keys = sorted([nid for nid in self.knowledge_graph.nodes.keys() if not nid.startswith('JUNYI_LEVEL')])
-        content = json.dumps(node_keys, ensure_ascii=False)
+        node_items = sorted([
+            (nid, n.name, n.description, n.difficulty)
+            for nid, n in self.knowledge_graph.nodes.items()
+            if not nid.startswith('JUNYI_LEVEL')
+        ], key=lambda x: x[0])
+        content = json.dumps(node_items, ensure_ascii=False)
         return hashlib.sha256(content.encode('utf-8')).hexdigest()[:16]
 
     def _init_model(self):
@@ -292,9 +298,13 @@ class SemanticEmbeddingMapper:
             try:
                 from sentence_transformers import SentenceTransformer
                 _MODEL_CACHE[self.model_name] = SentenceTransformer(self.model_name)
-            except Exception:
+            except Exception as e:
                 _MODEL_CACHE[self.model_name] = None
+                if self.require_model:
+                    raise RuntimeError(f"Failed to load SentenceTransformer model '{self.model_name}' for SemanticEmbeddingMapper: {e}")
         self.model = _MODEL_CACHE[self.model_name]
+        if self.model is None and self.require_model:
+            raise RuntimeError(f"SemanticEmbeddingMapper requires model '{self.model_name}' but it is unavailable.")
 
     def _init_vectors(self):
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
@@ -333,6 +343,8 @@ class SemanticEmbeddingMapper:
                 emb = self.model.encode([text], normalize_embeddings=True, convert_to_numpy=True)
                 _QUERY_VECTOR_CACHE[cache_key] = emb[0].tolist()
             else:
+                if self.require_model:
+                    raise RuntimeError(f"Cannot encode text using model '{self.model_name}': Model not loaded.")
                 tokens = re.findall(r'\w+', text.lower())
                 vec: Dict[str, float] = {}
                 for token in tokens:
@@ -354,6 +366,8 @@ class SemanticEmbeddingMapper:
         if self.model is not None:
             embeddings = self.model.encode(texts, normalize_embeddings=True, convert_to_numpy=True).tolist()
         else:
+            if self.require_model:
+                raise RuntimeError(f"Cannot precompute embeddings using model '{self.model_name}': Model not loaded.")
             embeddings = []
             for text in texts:
                 tokens = re.findall(r'\w+', text.lower())

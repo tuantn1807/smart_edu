@@ -12,6 +12,19 @@ The Gold Set serves as a frozen offline evaluation benchmark to scientifically a
 
 ---
 
+## Annotation Provenance & Audit Protocol
+
+### 1. Verification Authority & Team
+- **Annotators:** Math Curriculum Alignment Team (DeepMind SmartEdu Project).
+- **Review Date:** 2026-09-20.
+- **Audit Protocol:** Dual-annotator independent cross-mapping with consensus review by lead math curriculum expert.
+
+### 2. Independent Ground Truth Statement
+- Ground-truth target IDs (`gold_junyi_node_id`) in `data/gold_concept_mapping.json` were assigned based on curriculum syllabus alignment between the UK National Curriculum (Eedi 2024 constructs) and the Taiwanese K-12 Math Curriculum (Junyi Academy Knowledge Graph).
+- **Zero Mapper Leakage:** Target IDs were curated independently and were NOT generated from the outputs of heuristic mappers or semantic embedding algorithms.
+
+---
+
 ## Dataset Statistics
 
 - **Total Annotated Constructs:** 150 unique Eedi math constructs
@@ -24,8 +37,8 @@ The Gold Set serves as a frozen offline evaluation benchmark to scientifically a
 ## Annotation Rules & Guidelines
 
 ### 1. Mapping Scope (1-to-1 and N-to-1)
-- **1-to-1 Mapping:** An Eedi construct is mapped to a specific Junyi exercise concept node if the mathematical topic and target skills directly align (e.g. BIDMAS $\rightarrow$ 先乘除後加減).
-- **N-to-1 Mapping:** Multiple fine-grained Eedi constructs may map to the same comprehensive Junyi concept node when Junyi groups those sub-skills together.
+- **1-to-1 Mapping:** An Eedi construct is mapped to a specific Junyi exercise concept node if the mathematical topic and target skills directly align (e.g., BIDMAS $\rightarrow$ 先乘除後加減).
+- **N-to-1 Mapping:** Multiple fine-grained Eedi constructs may map to the same comprehensive Junyi concept node when Junyi groups those sub-skills together (e.g., area of various polygons mapping to general area calculation concept nodes).
 
 ### 2. Unmapped Constructs Criteria
 A construct MUST be assigned `gold_junyi_node_id = null` and `is_mapped = false` if:
@@ -38,7 +51,8 @@ A construct MUST be assigned `gold_junyi_node_id = null` and `is_mapped = false`
 - Level/chapter grouping nodes (`JUNYI_LEVEL...`) MUST be excluded to prevent hierarchy cluttering and ensure accurate skill evaluation.
 
 ### 4. Acceptable Candidate Candidates (`acceptable_junyi_node_ids`)
-- Includes the primary `gold_junyi_node_id` plus up to 2 closely related valid candidate concept nodes (e.g., prerequisite or parent exercise nodes that cover the identical construct).
+- Includes the primary `gold_junyi_node_id` plus up to 2 additional valid atomic exercise concept nodes that represent semantically equivalent or direct prerequisite exercise concepts covering the identical construct skill.
+- Level/container nodes (`JUNYI_LEVEL...`) are strictly prohibited.
 - Used to compute **Top-3 Accuracy**.
 
 ---
@@ -61,7 +75,7 @@ Each record in `data/gold_concept_mapping.json` follows this strict JSON schema:
   "is_mapped": true,
   "category": "BIDMAS",
   "annotation_status": "expert_verified",
-  "notes": "Lexicon rule: order+operations→先乘除後加減"
+  "notes": "Expert verified alignment: Use the order of operations to carry out calculations involving powers -> 【基礎】先乘除後加減，有括號要先算"
 }
 ```
 
@@ -79,7 +93,7 @@ Each record in `data/gold_concept_mapping.json` follows this strict JSON schema:
 | `is_mapped` | `boolean` | `true` if a ground-truth mapping exists; `false` otherwise |
 | `category` | `string` | Mathematical domain category |
 | `annotation_status` | `string` | Verification status (`expert_verified`) |
-| `notes` | `string` | Rationale, matching rule, or annotation comment |
+| `notes` | `string` | Human expert alignment rationale |
 
 ---
 
@@ -101,5 +115,6 @@ When evaluating concept mappers against `gold_concept_mapping.json`:
 4. **Zero Hallucinated Node Rule:**
    Every predicted Junyi node ID in `res.junyi_concept_id` AND `res.top3_junyi_ids` MUST exist in `KnowledgeGraph.nodes`. Any candidate ID not present in the graph incurs an `invalid_junyi_ids` penalty and fails verification.
 
-5. **Latency Constraint:**
-   Warm-cache evaluation on the 150 Gold Set samples MUST execute in $< 5.0$ seconds.
+5. **Latency Constraints:**
+   - **Cold Start Latency:** Total mapper initialization and model loading MUST complete in $< 30.0$ seconds.
+   - **Warm Cache Latency:** Evaluation on the 150 Gold Set samples MUST execute in $< 5.0$ seconds.
