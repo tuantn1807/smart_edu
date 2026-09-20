@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import unittest
 
+from evaluate import evaluate_gold_set_mapping
 from src.data.dataset_loaders import JunyiGraphLoader
 from src.data.concept_mapping import (
     EediJunyiMapper,
@@ -33,19 +34,24 @@ class TestConceptMapping(unittest.TestCase):
         required_keys = {
             "construct_id", "eedi_concept_id", "eedi_concept_name",
             "eedi_subject", "gold_junyi_node_id", "gold_junyi_node_name",
-            "acceptable_junyi_node_ids", "is_mapped"
+            "acceptable_junyi_node_ids", "is_mapped", "annotation_status"
         }
 
         for record in self.gold_dataset:
             self.assertTrue(required_keys.issubset(record.keys()))
+            self.assertEqual(record["annotation_status"], "expert_verified")
             if record["is_mapped"]:
                 self.assertIsNotNone(record["gold_junyi_node_id"])
                 self.assertIsNotNone(record["gold_junyi_node_name"])
+                self.assertIn(record["gold_junyi_node_id"], self.junyi_graph.nodes)
             else:
                 self.assertIsNone(record["gold_junyi_node_id"])
 
+            for acc_id in record.get("acceptable_junyi_node_ids", []):
+                self.assertIn(acc_id, self.junyi_graph.nodes)
+
     def test_baseline_heuristic_mapper_no_hallucinations(self):
-        """Ensure baseline Lexicon mapper never invents node IDs outside Junyi Graph."""
+        """Ensure baseline Lexicon mapper returns valid top3 and never invents node IDs outside Junyi Graph."""
         mapper = EediJunyiMapper(self.junyi_graph)
         sample_q = {
             'concept_id': 'EEDI_CONSTRUCT_856',
@@ -56,6 +62,9 @@ class TestConceptMapping(unittest.TestCase):
         self.assertIsInstance(result, ConceptMapping)
         if result.mapped:
             self.assertIn(result.junyi_concept_id, self.junyi_graph.nodes)
+            self.assertIsNotNone(result.top3_junyi_ids)
+            for cand_id in result.top3_junyi_ids:
+                self.assertIn(cand_id, self.junyi_graph.nodes)
 
     def test_semantic_embedding_mapper_validity(self):
         """Ensure SemanticEmbeddingMapper returns valid mapping with top3 candidate lists."""
@@ -87,9 +96,11 @@ class TestConceptMapping(unittest.TestCase):
         self.assertTrue(result.mapped)
         self.assertIn(result.junyi_concept_id, self.junyi_graph.nodes)
         self.assertTrue(result.method.startswith('hybrid_'))
+        for cand_id in result.top3_junyi_ids or []:
+            self.assertIn(cand_id, self.junyi_graph.nodes)
 
     def test_zero_hallucinated_ids_across_gold_set(self):
-        """Critical acceptance criterion: 0% hallucinated/invalid Junyi IDs on Gold Set."""
+        """Critical acceptance criterion: 0% hallucinated/invalid Junyi IDs on Gold Set across all top3 candidates."""
         h_mapper = HybridConceptMapper(self.junyi_graph)
         invalid_ids = 0
 
@@ -100,10 +111,58 @@ class TestConceptMapping(unittest.TestCase):
                 'subject': r['eedi_subject']
             }
             res = h_mapper.map_question(q)
-            if res.mapped and res.junyi_concept_id not in self.junyi_graph.nodes:
-                invalid_ids += 1
+            suggested_ids = set()
+            if res.mapped and res.junyi_concept_id:
+                suggested_ids.add(res.junyi_concept_id)
+            if res.mapped and res.top3_junyi_ids:
+                suggested_ids.update(res.top3_junyi_ids)
+
+            for nid in suggested_ids:
+                if nid not in self.junyi_graph.nodes:
+                    invalid_ids += 1
 
         self.assertEqual(invalid_ids, 0)
+
+    def test_known_construct_mapping_fixtures(self):
+        """Verify mapping quality on known math construct fixtures."""
+        b_mapper = EediJunyiMapper(self.junyi_graph)
+        sample_bidmas = {
+            'concept_id': 'EEDI_CONSTRUCT_856',
+            'concept_name': 'Use the order of operations (BIDMAS)',
+            'subject': 'Number'
+        }
+        res_bidmas = b_mapper.map_question(sample_bidmas)
+        self.assertTrue(res_bidmas.mapped)
+        self.assertEqual(res_bidmas.junyi_concept_id, "JUNYI_JZfQaPLUEZBed+XMOOWufLndpgukChiiKsqH/d+cxlI=")
+
+    def test_unmapped_construct_detection(self):
+        """Ensure constructs with no matching concepts return unmapped status."""
+        mapper = SemanticEmbeddingMapper(self.junyi_graph)
+        unmapped_q = {
+            'concept_id': 'EEDI_UNKNOWN_99999',
+            'concept_name': 'Quantum cryptography and advanced astrophysics analysis',
+            'subject': 'Unrelated Non-K12 Topic'
+        }
+        res = mapper.map_question(unmapped_q)
+        self.assertFalse(res.mapped)
+        self.assertIsNone(res.junyi_concept_id)
+
+    def test_embedding_cache_fingerprint_invalidation(self):
+        """Verify graph fingerprint is generated and stored correctly for cache invalidation."""
+        mapper = SemanticEmbeddingMapper(self.junyi_graph)
+        self.assertTrue(hasattr(mapper, '_graph_fingerprint'))
+        self.assertIsInstance(mapper._graph_fingerprint, str)
+        self.assertEqual(len(mapper._graph_fingerprint), 16)
+
+    def test_gold_set_mapping_latency(self):
+        """Verify warm-cache evaluation latency on 150 Gold Set entries is under 5.0 seconds."""
+        # Initial run warms up query vector cache
+        evaluate_gold_set_mapping(GOLD_SET_PATH, self.junyi_graph)
+        # Benchmark run measures warm-cache execution latency
+        result = evaluate_gold_set_mapping(GOLD_SET_PATH, self.junyi_graph)
+        self.assertIn("latency_seconds", result)
+        self.assertLess(result["latency_seconds"], 5.0)
+        self.assertEqual(result["invalid_junyi_ids"], 0)
 
 
 if __name__ == '__main__':

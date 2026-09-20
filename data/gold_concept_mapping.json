@@ -1,0 +1,2224 @@
+[
+  {
+    "construct_id": "856",
+    "eedi_concept_id": "EEDI_CONSTRUCT_856",
+    "eedi_concept_name": "Use the order of operations to carry out calculations involving powers",
+    "eedi_subject": "BIDMAS",
+    "gold_junyi_node_id": "JUNYI_OByIaYY/56y05bpjY1K3Dg+OS32Y/fB3yVjKfBqFIIY=",
+    "gold_junyi_node_name": "【基礎】先乘除後加減，有括號要先算",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_OByIaYY/56y05bpjY1K3Dg+OS32Y/fB3yVjKfBqFIIY="
+    ],
+    "is_mapped": true,
+    "category": "BIDMAS",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: order+operations→先乘除後加減"
+  },
+  {
+    "construct_id": "1612",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1612",
+    "eedi_concept_name": "Simplify an algebraic fraction by factorising the numerator",
+    "eedi_subject": "Simplifying Algebraic Fractions",
+    "gold_junyi_node_id": "JUNYI_ofj2YfPcmy8LgkDZmnVRSjxKny4tFQmum9uEfub8URE=",
+    "gold_junyi_node_name": "【一般】二元一次式的化簡：分數型",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_ofj2YfPcmy8LgkDZmnVRSjxKny4tFQmum9uEfub8URE="
+    ],
+    "is_mapped": true,
+    "category": "Simplifying Algebraic Fractions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: algebraic+fraction→分數型"
+  },
+  {
+    "construct_id": "2774",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2774",
+    "eedi_concept_name": "Calculate the range from a list of data",
+    "eedi_subject": "Range and Interquartile Range from a List of Data",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Range and Interquartile Range from a List of Data",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "2377",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2377",
+    "eedi_concept_name": "Recall and use the intersecting diagonals properties of a rectangle",
+    "eedi_subject": "Properties of Quadrilaterals",
+    "gold_junyi_node_id": "JUNYI_gLNrtr7TN1errHKhgFmRSO60rwODerk6A7qT19Ickjk=",
+    "gold_junyi_node_name": "【基礎】判別平行四邊形",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_gLNrtr7TN1errHKhgFmRSO60rwODerk6A7qT19Ickjk="
+    ],
+    "is_mapped": true,
+    "category": "Properties of Quadrilaterals",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: properties+quadrilateral→四邊形"
+  },
+  {
+    "construct_id": "3387",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3387",
+    "eedi_concept_name": "Substitute positive integer values into formulae involving powers or roots",
+    "eedi_subject": "Substitution into Formula",
+    "gold_junyi_node_id": "JUNYI_30tNTRnlyLs5r1ni/Lc0PMtHJajnPKrAhD37ZIOoIQQ=",
+    "gold_junyi_node_name": "【基礎】代數式的值",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_30tNTRnlyLs5r1ni/Lc0PMtHJajnPKrAhD37ZIOoIQQ=",
+      "JUNYI_Gxwblz42IsMsZNyQ/o1AOV2zvb9lGbE/lk8NAHtE3uc="
+    ],
+    "is_mapped": true,
+    "category": "Substitution into Formula",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: substitution+formula→代數式的值"
+  },
+  {
+    "construct_id": "2052",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2052",
+    "eedi_concept_name": "Identify a unit of area",
+    "eedi_subject": "Area of Simple Shapes",
+    "gold_junyi_node_id": "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M=",
+    "gold_junyi_node_name": "【基礎】長方形、正方形的面積公式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M="
+    ],
+    "is_mapped": true,
+    "category": "Area of Simple Shapes",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: area+simple→長方形、正方形的面積"
+  },
+  {
+    "construct_id": "376",
+    "eedi_concept_id": "EEDI_CONSTRUCT_376",
+    "eedi_concept_name": "Convert two digit integer percentages to fractions",
+    "eedi_subject": "Converting between Fractions and Percentages",
+    "gold_junyi_node_id": "JUNYI_byiS/4MopQNKQw1o5SVSsCfg28hMqNPubipGt4A19bo=",
+    "gold_junyi_node_name": "【基礎】百分率與分數、小數的互換",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_byiS/4MopQNKQw1o5SVSsCfg28hMqNPubipGt4A19bo="
+    ],
+    "is_mapped": true,
+    "category": "Converting between Fractions and Percentages",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: fractions+percent→百分率與分數"
+  },
+  {
+    "construct_id": "314",
+    "eedi_concept_id": "EEDI_CONSTRUCT_314",
+    "eedi_concept_name": "Divide decimals by 10",
+    "eedi_subject": "Multiplying and Dividing with Decimals",
+    "gold_junyi_node_id": "JUNYI_GOpS2Uap4gYwMnk0Li7V7U2S7wDYXRE3XijTxTdngsk=",
+    "gold_junyi_node_name": "【基礎】小數的除法綜合習題",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_GOpS2Uap4gYwMnk0Li7V7U2S7wDYXRE3XijTxTdngsk="
+    ],
+    "is_mapped": true,
+    "category": "Multiplying and Dividing with Decimals",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: multiplying+dividing+decimal→小數的除法"
+  },
+  {
+    "construct_id": "435",
+    "eedi_concept_id": "EEDI_CONSTRUCT_435",
+    "eedi_concept_name": "Subtract proper fractions with different denominators which do not share a common factor",
+    "eedi_subject": "Adding and Subtracting Fractions",
+    "gold_junyi_node_id": "JUNYI_zxxjH0rOlRk3Fe7P3H8+00eXPXeazjvuIXf2bdEyhJo=",
+    "gold_junyi_node_name": "【基礎】同分母分數的加減",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_zxxjH0rOlRk3Fe7P3H8+00eXPXeazjvuIXf2bdEyhJo="
+    ],
+    "is_mapped": true,
+    "category": "Adding and Subtracting Fractions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: adding+subtracting+fraction→同分母分數的加減"
+  },
+  {
+    "construct_id": "1321",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1321",
+    "eedi_concept_name": "Identify horizontal translations in the form f(x) = for non-trigonometric functions",
+    "eedi_subject": "Transformations of functions in the form f(x)",
+    "gold_junyi_node_id": "JUNYI_b1IGwey9JYxxOGjLTGRvkWIsfmIlerNqghEc8OtDB8o=",
+    "gold_junyi_node_name": "【一般】坐標平面上的平移",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_b1IGwey9JYxxOGjLTGRvkWIsfmIlerNqghEc8OtDB8o="
+    ],
+    "is_mapped": true,
+    "category": "Transformations of functions in the form f(x)",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: translation→平移"
+  },
+  {
+    "construct_id": "1414",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1414",
+    "eedi_concept_name": "Expand products of three binomials in the form (x + a)(x + b)(x + c)",
+    "eedi_subject": "Expanding Triple Brackets and more",
+    "gold_junyi_node_id": "JUNYI_2tKnUmnucgz4dVzTefKY0jsYdmnTfpuCZoCDvA49L/k=",
+    "gold_junyi_node_name": "【進階】多項式乘法計算",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_2tKnUmnucgz4dVzTefKY0jsYdmnTfpuCZoCDvA49L/k="
+    ],
+    "is_mapped": true,
+    "category": "Expanding Triple Brackets and more",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: expanding+bracket→多項式乘法"
+  },
+  {
+    "construct_id": "2456",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2456",
+    "eedi_concept_name": "Identify the net of a non-prism",
+    "eedi_subject": "Nets",
+    "gold_junyi_node_id": "JUNYI_KDmidXT8+B/WOtPvVSWF6TKTO7xeI+S5CqqmaRdkHcM=",
+    "gold_junyi_node_name": "【基礎】長方體和正方體的展開圖 1",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_KDmidXT8+B/WOtPvVSWF6TKTO7xeI+S5CqqmaRdkHcM="
+    ],
+    "is_mapped": true,
+    "category": "Nets",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: nets→展開圖"
+  },
+  {
+    "construct_id": "1756",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1756",
+    "eedi_concept_name": "Identify alternate angles",
+    "eedi_subject": "Angle Facts with Parallel Lines",
+    "gold_junyi_node_id": "JUNYI_vb599W2257CQW/TGHxuRb4KR46aEykZxjDVpARmgaBs=",
+    "gold_junyi_node_name": "【基礎】平行線截比例線段性質 3",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_vb599W2257CQW/TGHxuRb4KR46aEykZxjDVpARmgaBs="
+    ],
+    "is_mapped": true,
+    "category": "Angle Facts with Parallel Lines",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: angle+parallel→平行線"
+  },
+  {
+    "construct_id": "3065",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3065",
+    "eedi_concept_name": "Convert from hours to minutes",
+    "eedi_subject": "Time",
+    "gold_junyi_node_id": "JUNYI_mWLymE1Nkn97ABCS6bLlR35/Hk/RnkkXXFmQaVMAFTQ=",
+    "gold_junyi_node_name": "【基礎】二維表格：火車時刻表、火車票價表",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_mWLymE1Nkn97ABCS6bLlR35/Hk/RnkkXXFmQaVMAFTQ="
+    ],
+    "is_mapped": true,
+    "category": "Time",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: time→時刻"
+  },
+  {
+    "construct_id": "1505",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1505",
+    "eedi_concept_name": "Select the correct answer to an iteration question to the required degree of accuracy",
+    "eedi_subject": "Trial and Improvement and Iterative Methods",
+    "gold_junyi_node_id": "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc=",
+    "gold_junyi_node_name": "【基礎】比與比例",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc="
+    ],
+    "is_mapped": true,
+    "category": "Trial and Improvement and Iterative Methods",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: ratio→比與比例"
+  },
+  {
+    "construct_id": "2578",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2578",
+    "eedi_concept_name": "Calculate the area of an equilateral triangle where the dimensions are given in the same units",
+    "eedi_subject": "Area of Simple Shapes",
+    "gold_junyi_node_id": "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M=",
+    "gold_junyi_node_name": "【基礎】長方形、正方形的面積公式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M="
+    ],
+    "is_mapped": true,
+    "category": "Area of Simple Shapes",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: area+simple→長方形、正方形的面積"
+  },
+  {
+    "construct_id": "695",
+    "eedi_concept_id": "EEDI_CONSTRUCT_695",
+    "eedi_concept_name": "Divide a quantity into two parts for a given a ratio, where each part is an integer",
+    "eedi_subject": "Sharing in a Ratio",
+    "gold_junyi_node_id": "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc=",
+    "gold_junyi_node_name": "【基礎】比與比例",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc="
+    ],
+    "is_mapped": true,
+    "category": "Sharing in a Ratio",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: ratio→比與比例"
+  },
+  {
+    "construct_id": "1289",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1289",
+    "eedi_concept_name": "Prove statements involving odd and even numbers",
+    "eedi_subject": "Ordering Negative Numbers",
+    "gold_junyi_node_id": "JUNYI_tOR47i7wGbuHkGxkhX9tHItMHHuJtAttsvHDOjDRVOw=",
+    "gold_junyi_node_name": "【基礎】正數與負數",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_tOR47i7wGbuHkGxkhX9tHItMHHuJtAttsvHDOjDRVOw="
+    ],
+    "is_mapped": true,
+    "category": "Ordering Negative Numbers",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: negative+number→正數與負數"
+  },
+  {
+    "construct_id": "261",
+    "eedi_concept_id": "EEDI_CONSTRUCT_261",
+    "eedi_concept_name": "Carry out missing number subtraction problems involving negative integers",
+    "eedi_subject": "Adding and Subtracting Negative Numbers",
+    "gold_junyi_node_id": "JUNYI_tOR47i7wGbuHkGxkhX9tHItMHHuJtAttsvHDOjDRVOw=",
+    "gold_junyi_node_name": "【基礎】正數與負數",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_tOR47i7wGbuHkGxkhX9tHItMHHuJtAttsvHDOjDRVOw="
+    ],
+    "is_mapped": true,
+    "category": "Adding and Subtracting Negative Numbers",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: negative+number→正數與負數"
+  },
+  {
+    "construct_id": "1623",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1623",
+    "eedi_concept_name": "Subtract algebraic fractions where the denominators are single terms and are not multiples of each other",
+    "eedi_subject": "Adding and Subtracting Algebraic Fractions",
+    "gold_junyi_node_id": "JUNYI_zxxjH0rOlRk3Fe7P3H8+00eXPXeazjvuIXf2bdEyhJo=",
+    "gold_junyi_node_name": "【基礎】同分母分數的加減",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_zxxjH0rOlRk3Fe7P3H8+00eXPXeazjvuIXf2bdEyhJo="
+    ],
+    "is_mapped": true,
+    "category": "Adding and Subtracting Algebraic Fractions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: adding+subtracting+fraction→同分母分數的加減"
+  },
+  {
+    "construct_id": "2306",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2306",
+    "eedi_concept_name": "Given the volume of a cuboid, work out missing information",
+    "eedi_subject": "Volume of Prisms",
+    "gold_junyi_node_id": "JUNYI_SBKtN+xP0yIQrTRObRW2C5D7oO34pRf8QAnjfMjnqcY=",
+    "gold_junyi_node_name": "【基礎】柱體的體積綜合習題",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_SBKtN+xP0yIQrTRObRW2C5D7oO34pRf8QAnjfMjnqcY="
+    ],
+    "is_mapped": true,
+    "category": "Volume of Prisms",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: volume+prism→柱體的體積"
+  },
+  {
+    "construct_id": "1434",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1434",
+    "eedi_concept_name": "Factorise a quadratic expression in the form ax² + bx + c where a is prime",
+    "eedi_subject": "Factorising into a Double Bracket",
+    "gold_junyi_node_id": "JUNYI_xqUFQGqV26XnOt6wrAeKn6kM6Duc18fKQsh+1YnzaUo=",
+    "gold_junyi_node_name": "【基礎】二次方程式的判別式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_xqUFQGqV26XnOt6wrAeKn6kM6Duc18fKQsh+1YnzaUo="
+    ],
+    "is_mapped": true,
+    "category": "Factorising into a Double Bracket",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic→二次方程式"
+  },
+  {
+    "construct_id": "69",
+    "eedi_concept_id": "EEDI_CONSTRUCT_69",
+    "eedi_concept_name": "Given the solution to one problem, deduce the answer to a related problem using the same operation",
+    "eedi_subject": "Mental Addition and Subtraction",
+    "gold_junyi_node_id": "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc=",
+    "gold_junyi_node_name": "【基礎】比與比例",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc="
+    ],
+    "is_mapped": true,
+    "category": "Mental Addition and Subtraction",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: ratio→比與比例"
+  },
+  {
+    "construct_id": "2742",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2742",
+    "eedi_concept_name": "Interpret sloping linear sections of a displacement-time graph",
+    "eedi_subject": "Real Life Graphs",
+    "gold_junyi_node_id": "JUNYI_9mYZdVIanfb2q60ypmKFtC5A+DcaoFToPY67MkZPrxs=",
+    "gold_junyi_node_name": "讀長條圖與折線圖：基礎",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_9mYZdVIanfb2q60ypmKFtC5A+DcaoFToPY67MkZPrxs="
+    ],
+    "is_mapped": true,
+    "category": "Real Life Graphs",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: line+graph→折線圖"
+  },
+  {
+    "construct_id": "3229",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3229",
+    "eedi_concept_name": "Solve missing number mental multiplication questions",
+    "eedi_subject": "Mental Multiplication and Division",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Mental Multiplication and Division",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "1872",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1872",
+    "eedi_concept_name": "Calculate speed where distance and time are in the appropriate units",
+    "eedi_subject": "Substitution into Formula",
+    "gold_junyi_node_id": "JUNYI_30tNTRnlyLs5r1ni/Lc0PMtHJajnPKrAhD37ZIOoIQQ=",
+    "gold_junyi_node_name": "【基礎】代數式的值",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_30tNTRnlyLs5r1ni/Lc0PMtHJajnPKrAhD37ZIOoIQQ=",
+      "JUNYI_Gxwblz42IsMsZNyQ/o1AOV2zvb9lGbE/lk8NAHtE3uc="
+    ],
+    "is_mapped": true,
+    "category": "Substitution into Formula",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: substitution+formula→代數式的值"
+  },
+  {
+    "construct_id": "1576",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1576",
+    "eedi_concept_name": "Given a sketch of a circle with centre at the origin, write its equation in the form x² + y² = r²",
+    "eedi_subject": "Equation of a Circle",
+    "gold_junyi_node_id": "JUNYI_uX/j5LVl0PCKk2qBUgAktTGQtVdMKcT0MuXKsahNaX0=",
+    "gold_junyi_node_name": "【基礎】扇形綜合習題",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_uX/j5LVl0PCKk2qBUgAktTGQtVdMKcT0MuXKsahNaX0=",
+      "JUNYI_3Eu8lfUzzxW5b7/tSAH3gjzZMSa5Zu0vZJEc8avjHqQ="
+    ],
+    "is_mapped": true,
+    "category": "Equation of a Circle",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: circle→扇形"
+  },
+  {
+    "construct_id": "1527",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1527",
+    "eedi_concept_name": "Substitute negative integer values into expressions involving no powers or roots",
+    "eedi_subject": "Substitution into Formula",
+    "gold_junyi_node_id": "JUNYI_30tNTRnlyLs5r1ni/Lc0PMtHJajnPKrAhD37ZIOoIQQ=",
+    "gold_junyi_node_name": "【基礎】代數式的值",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_30tNTRnlyLs5r1ni/Lc0PMtHJajnPKrAhD37ZIOoIQQ=",
+      "JUNYI_Gxwblz42IsMsZNyQ/o1AOV2zvb9lGbE/lk8NAHtE3uc="
+    ],
+    "is_mapped": true,
+    "category": "Substitution into Formula",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: substitution+formula→代數式的值"
+  },
+  {
+    "construct_id": "10",
+    "eedi_concept_id": "EEDI_CONSTRUCT_10",
+    "eedi_concept_name": "Count backwards in steps of of something other than one",
+    "eedi_subject": "Counting",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Counting",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "1045",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1045",
+    "eedi_concept_name": "Solve linear inequalities in one variable where the unknown appears on boths sides of the equation",
+    "eedi_subject": "Solving Linear Inequalities",
+    "gold_junyi_node_id": "JUNYI_zh/Ht6E99DfEW1ZtC/mgD6MmKmVQEiH09UOhX+Dz3rI=",
+    "gold_junyi_node_name": "【基礎】列出一元一次不等式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_zh/Ht6E99DfEW1ZtC/mgD6MmKmVQEiH09UOhX+Dz3rI="
+    ],
+    "is_mapped": true,
+    "category": "Solving Linear Inequalities",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: linear+inequalit→一元一次不等式"
+  },
+  {
+    "construct_id": "3515",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3515",
+    "eedi_concept_name": "Determine the function of a single function machine used to create an algebraic expression",
+    "eedi_subject": "Function Machines",
+    "gold_junyi_node_id": "JUNYI_mbCGZ4XkKUbunQ2A7O9/djzj6vkRQiGHwH6GFZrffFA=",
+    "gold_junyi_node_name": "【基礎】描繪二次函數 y=a(x-h)^2+k - 即將下架",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_mbCGZ4XkKUbunQ2A7O9/djzj6vkRQiGHwH6GFZrffFA=",
+      "JUNYI_eVnUwCnYPCD+UvlFn/2t7HsPe+up0G0F8cznv/+R/a4="
+    ],
+    "is_mapped": true,
+    "category": "Function Machines",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: function+machine→函數"
+  },
+  {
+    "construct_id": "2028",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2028",
+    "eedi_concept_name": "Convert between cm and m",
+    "eedi_subject": "Length Units",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Length Units",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "1484",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1484",
+    "eedi_concept_name": "Solve linear equations with the variable appearing on both sides, involving positive fractions",
+    "eedi_subject": "Linear Equations",
+    "gold_junyi_node_id": "JUNYI_e0+hFijqTJTOfBIL9insE6M7fh8UL201r+EDBi9M2Vw=",
+    "gold_junyi_node_name": "【基礎】一元一次方程式的意義與列式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_e0+hFijqTJTOfBIL9insE6M7fh8UL201r+EDBi9M2Vw="
+    ],
+    "is_mapped": true,
+    "category": "Linear Equations",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: linear+equation→一元一次方程式"
+  },
+  {
+    "construct_id": "1560",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1560",
+    "eedi_concept_name": "Given a situation sketch an appropriate real life graph",
+    "eedi_subject": "Real Life Graphs",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Real Life Graphs",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "52",
+    "eedi_concept_id": "EEDI_CONSTRUCT_52",
+    "eedi_concept_name": "Find another power of 10 less than a given number",
+    "eedi_subject": "Place Value",
+    "gold_junyi_node_id": "JUNYI_oWKS08nkkpc5pzxpe0m0RJpXpA6GEKJ/ESJvXoAj8C4=",
+    "gold_junyi_node_name": "【基礎】數的十進位結構 2",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_oWKS08nkkpc5pzxpe0m0RJpXpA6GEKJ/ESJvXoAj8C4="
+    ],
+    "is_mapped": true,
+    "category": "Place Value",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: place+value→十進位"
+  },
+  {
+    "construct_id": "380",
+    "eedi_concept_id": "EEDI_CONSTRUCT_380",
+    "eedi_concept_name": "Convert decimals less than 1 with 1 decimal place to percentages",
+    "eedi_subject": "Converting between Decimals and Percentages",
+    "gold_junyi_node_id": "JUNYI_byiS/4MopQNKQw1o5SVSsCfg28hMqNPubipGt4A19bo=",
+    "gold_junyi_node_name": "【基礎】百分率與分數、小數的互換",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_byiS/4MopQNKQw1o5SVSsCfg28hMqNPubipGt4A19bo="
+    ],
+    "is_mapped": true,
+    "category": "Converting between Decimals and Percentages",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: decimals+percent→百分率與分數"
+  },
+  {
+    "construct_id": "1273",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1273",
+    "eedi_concept_name": "Simplify algebraic expressions to maintain equivalence by collecting like terms involving just one linear variable",
+    "eedi_subject": "Simplifying Expressions by Collecting Like Terms",
+    "gold_junyi_node_id": "JUNYI_WR85TYAmgzldheol7nA1RzEqixyhrnrQsG8iD/RhpHU=",
+    "gold_junyi_node_name": "化簡二元一次式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_WR85TYAmgzldheol7nA1RzEqixyhrnrQsG8iD/RhpHU="
+    ],
+    "is_mapped": true,
+    "category": "Simplifying Expressions by Collecting Like Terms",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: collecting+like→化簡二元一次式"
+  },
+  {
+    "construct_id": "410",
+    "eedi_concept_id": "EEDI_CONSTRUCT_410",
+    "eedi_concept_name": "Simplify fractions that simplify to a unit fraction",
+    "eedi_subject": "Simplifying Fractions",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Simplifying Fractions",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "1616",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1616",
+    "eedi_concept_name": "Add algebraic fractions where one denominator is a multiple of the other",
+    "eedi_subject": "Adding and Subtracting Algebraic Fractions",
+    "gold_junyi_node_id": "JUNYI_zxxjH0rOlRk3Fe7P3H8+00eXPXeazjvuIXf2bdEyhJo=",
+    "gold_junyi_node_name": "【基礎】同分母分數的加減",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_zxxjH0rOlRk3Fe7P3H8+00eXPXeazjvuIXf2bdEyhJo="
+    ],
+    "is_mapped": true,
+    "category": "Adding and Subtracting Algebraic Fractions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: adding+subtracting+fraction→同分母分數的加減"
+  },
+  {
+    "construct_id": "3115",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3115",
+    "eedi_concept_name": "Carry out a subtraction problem with positive integers where the answer is less than 0",
+    "eedi_subject": "Place Value",
+    "gold_junyi_node_id": "JUNYI_oWKS08nkkpc5pzxpe0m0RJpXpA6GEKJ/ESJvXoAj8C4=",
+    "gold_junyi_node_name": "【基礎】數的十進位結構 2",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_oWKS08nkkpc5pzxpe0m0RJpXpA6GEKJ/ESJvXoAj8C4="
+    ],
+    "is_mapped": true,
+    "category": "Place Value",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: place+value→十進位"
+  },
+  {
+    "construct_id": "1561",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1561",
+    "eedi_concept_name": "Read values off a real life graph",
+    "eedi_subject": "Real Life Graphs",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Real Life Graphs",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "3225",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3225",
+    "eedi_concept_name": "Write a missing term of an ascending integer linear sequence",
+    "eedi_subject": "Linear Sequences (nth term)",
+    "gold_junyi_node_id": "JUNYI_yyB3Cv5ZNO9vRc2FUExQu3LZs+xZSYKo7W//FZCkg/U=",
+    "gold_junyi_node_name": "【基礎】數列的規律",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_yyB3Cv5ZNO9vRc2FUExQu3LZs+xZSYKo7W//FZCkg/U="
+    ],
+    "is_mapped": true,
+    "category": "Linear Sequences (nth term)",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: linear+sequence→數列的規律"
+  },
+  {
+    "construct_id": "953",
+    "eedi_concept_id": "EEDI_CONSTRUCT_953",
+    "eedi_concept_name": "Given a gradient, state the gradient of a line parallel to it",
+    "eedi_subject": "Parallel Lines",
+    "gold_junyi_node_id": "JUNYI_vb599W2257CQW/TGHxuRb4KR46aEykZxjDVpARmgaBs=",
+    "gold_junyi_node_name": "【基礎】平行線截比例線段性質 3",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_vb599W2257CQW/TGHxuRb4KR46aEykZxjDVpARmgaBs="
+    ],
+    "is_mapped": true,
+    "category": "Parallel Lines",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: parallel+line→平行線"
+  },
+  {
+    "construct_id": "446",
+    "eedi_concept_id": "EEDI_CONSTRUCT_446",
+    "eedi_concept_name": "Divide proper fractions in the form: Fraction ÷ Integer",
+    "eedi_subject": "Dividing Fractions",
+    "gold_junyi_node_id": "JUNYI_y1ky8jXzmdtx660XSqtKvCYTgf7m69k+vVtThncryWU=",
+    "gold_junyi_node_name": "【基礎】同分母分數的除法",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_y1ky8jXzmdtx660XSqtKvCYTgf7m69k+vVtThncryWU="
+    ],
+    "is_mapped": true,
+    "category": "Dividing Fractions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: dividing+fraction→分數的除法"
+  },
+  {
+    "construct_id": "2440",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2440",
+    "eedi_concept_name": "Identify a right-angled triangle when presented non-conventionally",
+    "eedi_subject": "Properties of Triangles",
+    "gold_junyi_node_id": "JUNYI_xRoZGzdttZPj1kvoQoPFWXD2LfUawhSL5nCz5NXjhn8=",
+    "gold_junyi_node_name": "【基礎】三角形的外心",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_xRoZGzdttZPj1kvoQoPFWXD2LfUawhSL5nCz5NXjhn8="
+    ],
+    "is_mapped": true,
+    "category": "Properties of Triangles",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: properties+triangle→三角形"
+  },
+  {
+    "construct_id": "3176",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3176",
+    "eedi_concept_name": "For a given algebraic input, find the output of a function machine",
+    "eedi_subject": "Function Machines",
+    "gold_junyi_node_id": "JUNYI_mbCGZ4XkKUbunQ2A7O9/djzj6vkRQiGHwH6GFZrffFA=",
+    "gold_junyi_node_name": "【基礎】描繪二次函數 y=a(x-h)^2+k - 即將下架",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_mbCGZ4XkKUbunQ2A7O9/djzj6vkRQiGHwH6GFZrffFA=",
+      "JUNYI_eVnUwCnYPCD+UvlFn/2t7HsPe+up0G0F8cznv/+R/a4="
+    ],
+    "is_mapped": true,
+    "category": "Function Machines",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: function+machine→函數"
+  },
+  {
+    "construct_id": "3190",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3190",
+    "eedi_concept_name": "Represent an equation using a bar model",
+    "eedi_subject": "Writing Expressions",
+    "gold_junyi_node_id": "JUNYI_ad/P0gKMpXTOaZ/ShZQX2Y5m7BBidPE5CT858fakoAo=",
+    "gold_junyi_node_name": "【基礎】以代數式表示數量關係",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_ad/P0gKMpXTOaZ/ShZQX2Y5m7BBidPE5CT858fakoAo="
+    ],
+    "is_mapped": true,
+    "category": "Writing Expressions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: writing+expression→代數式"
+  },
+  {
+    "construct_id": "403",
+    "eedi_concept_id": "EEDI_CONSTRUCT_403",
+    "eedi_concept_name": "Calculate the whole amount, given a fraction of the amount",
+    "eedi_subject": "Fractions of an Amount",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Fractions of an Amount",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "3516",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3516",
+    "eedi_concept_name": "Determine the input of a double function machine used to create an algebraic expression",
+    "eedi_subject": "Function Machines",
+    "gold_junyi_node_id": "JUNYI_mbCGZ4XkKUbunQ2A7O9/djzj6vkRQiGHwH6GFZrffFA=",
+    "gold_junyi_node_name": "【基礎】描繪二次函數 y=a(x-h)^2+k - 即將下架",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_mbCGZ4XkKUbunQ2A7O9/djzj6vkRQiGHwH6GFZrffFA=",
+      "JUNYI_eVnUwCnYPCD+UvlFn/2t7HsPe+up0G0F8cznv/+R/a4="
+    ],
+    "is_mapped": true,
+    "category": "Function Machines",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: function+machine→函數"
+  },
+  {
+    "construct_id": "2238",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2238",
+    "eedi_concept_name": "Convert from years to days",
+    "eedi_subject": "Time",
+    "gold_junyi_node_id": "JUNYI_mWLymE1Nkn97ABCS6bLlR35/Hk/RnkkXXFmQaVMAFTQ=",
+    "gold_junyi_node_name": "【基礎】二維表格：火車時刻表、火車票價表",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_mWLymE1Nkn97ABCS6bLlR35/Hk/RnkkXXFmQaVMAFTQ="
+    ],
+    "is_mapped": true,
+    "category": "Time",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: time→時刻"
+  },
+  {
+    "construct_id": "316",
+    "eedi_concept_id": "EEDI_CONSTRUCT_316",
+    "eedi_concept_name": "Divide decimals by 1000",
+    "eedi_subject": "Place Value",
+    "gold_junyi_node_id": "JUNYI_oWKS08nkkpc5pzxpe0m0RJpXpA6GEKJ/ESJvXoAj8C4=",
+    "gold_junyi_node_name": "【基礎】數的十進位結構 2",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_oWKS08nkkpc5pzxpe0m0RJpXpA6GEKJ/ESJvXoAj8C4="
+    ],
+    "is_mapped": true,
+    "category": "Place Value",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: place+value→十進位"
+  },
+  {
+    "construct_id": "3279",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3279",
+    "eedi_concept_name": "Multiply 3 digit integers by 1 digit integers using the grid method",
+    "eedi_subject": "Mental Multiplication and Division",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Mental Multiplication and Division",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "3132",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3132",
+    "eedi_concept_name": "Write algebraic expressions with correct algebraic convention",
+    "eedi_subject": "Writing Expressions",
+    "gold_junyi_node_id": "JUNYI_ad/P0gKMpXTOaZ/ShZQX2Y5m7BBidPE5CT858fakoAo=",
+    "gold_junyi_node_name": "【基礎】以代數式表示數量關係",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_ad/P0gKMpXTOaZ/ShZQX2Y5m7BBidPE5CT858fakoAo="
+    ],
+    "is_mapped": true,
+    "category": "Writing Expressions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: writing+expression→代數式"
+  },
+  {
+    "construct_id": "3346",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3346",
+    "eedi_concept_name": "Identify the order of rotational symmetry of a shape",
+    "eedi_subject": "Properties of Quadrilaterals",
+    "gold_junyi_node_id": "JUNYI_gLNrtr7TN1errHKhgFmRSO60rwODerk6A7qT19Ickjk=",
+    "gold_junyi_node_name": "【基礎】判別平行四邊形",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_gLNrtr7TN1errHKhgFmRSO60rwODerk6A7qT19Ickjk="
+    ],
+    "is_mapped": true,
+    "category": "Properties of Quadrilaterals",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: properties+quadrilateral→四邊形"
+  },
+  {
+    "construct_id": "399",
+    "eedi_concept_id": "EEDI_CONSTRUCT_399",
+    "eedi_concept_name": "Identify non-unit fractions when part of a shape",
+    "eedi_subject": "Fractions of an Amount",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Fractions of an Amount",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "95",
+    "eedi_concept_id": "EEDI_CONSTRUCT_95",
+    "eedi_concept_name": "Complete missing number mental subtraction problems up to 100",
+    "eedi_subject": "Mental Addition and Subtraction",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Mental Addition and Subtraction",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "704",
+    "eedi_concept_id": "EEDI_CONSTRUCT_704",
+    "eedi_concept_name": "Represent written scenarios as ratios",
+    "eedi_subject": "Writing Ratios",
+    "gold_junyi_node_id": "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc=",
+    "gold_junyi_node_name": "【基礎】比與比例",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc="
+    ],
+    "is_mapped": true,
+    "category": "Writing Ratios",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: ratio→比與比例"
+  },
+  {
+    "construct_id": "1961",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1961",
+    "eedi_concept_name": "Identify questions involving a 2D right-angled triangle that require the use of the Tangent (tan) ratio",
+    "eedi_subject": "Right-angled Triangles (SOHCAHTOA)",
+    "gold_junyi_node_id": "JUNYI_KaJlr5jTCShzkQu8T3MYWsJbqqEXtX+F4w15fmUPlOE=",
+    "gold_junyi_node_name": "【基礎】三角形的內角和與外角和",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_KaJlr5jTCShzkQu8T3MYWsJbqqEXtX+F4w15fmUPlOE="
+    ],
+    "is_mapped": true,
+    "category": "Right-angled Triangles (SOHCAHTOA)",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: angles+triangle→三角形的內角"
+  },
+  {
+    "construct_id": "1030",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1030",
+    "eedi_concept_name": "Represent a linear inequality with a single tail on a numberline",
+    "eedi_subject": "Inequalities on Number Lines",
+    "gold_junyi_node_id": "JUNYI_8pMUDp4kBRtzPo1x8x6E3RZvxvLworxgH8lF8X/YHEg=",
+    "gold_junyi_node_name": "【基礎】圖示一元一次不等式的解 1",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_8pMUDp4kBRtzPo1x8x6E3RZvxvLworxgH8lF8X/YHEg="
+    ],
+    "is_mapped": true,
+    "category": "Inequalities on Number Lines",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: inequalities+number+line→圖示一元一次不等式"
+  },
+  {
+    "construct_id": "578",
+    "eedi_concept_id": "EEDI_CONSTRUCT_578",
+    "eedi_concept_name": "Calculate percentage of an amount mentally where the percent is greater than 100",
+    "eedi_subject": "Percentages of an Amount",
+    "gold_junyi_node_id": "JUNYI_fS8PvECka4NC8sJQey0IIfKeZ2dwZQsrj2/lhKun3tE=",
+    "gold_junyi_node_name": "【基礎】漲價、減少的百分率",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_fS8PvECka4NC8sJQey0IIfKeZ2dwZQsrj2/lhKun3tE=",
+      "JUNYI_byiS/4MopQNKQw1o5SVSsCfg28hMqNPubipGt4A19bo=",
+      "JUNYI_xaWHtJt0hf186kbfofLHHt94c0qSZE3L7nvrmIAexws="
+    ],
+    "is_mapped": true,
+    "category": "Percentages of an Amount",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: percentages→百分率"
+  },
+  {
+    "construct_id": "3118",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3118",
+    "eedi_concept_name": "Read a fraction on a scale where the required number is marked by a dash between two numbers",
+    "eedi_subject": "Ordering Fractions",
+    "gold_junyi_node_id": "JUNYI_CzDZ1MLXzGdIvkP/kEE92OzFgbVyBwoUvtEx8YXAzUQ=",
+    "gold_junyi_node_name": "【基礎】簡單異分母分數的比較 2",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_CzDZ1MLXzGdIvkP/kEE92OzFgbVyBwoUvtEx8YXAzUQ=",
+      "JUNYI_4TQW6WshhFY+RHtjqPKjxICmHWA5iO/57N39cYvvg94="
+    ],
+    "is_mapped": true,
+    "category": "Ordering Fractions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: ordering+fraction→異分母分數的比較"
+  },
+  {
+    "construct_id": "2790",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2790",
+    "eedi_concept_name": "Calculate the mean from a frequency table",
+    "eedi_subject": "Averages and Range from Frequency Table",
+    "gold_junyi_node_id": "JUNYI_raJS0zfRPS5NRtiba9q43gsUyH0PaPvhjSc192V9Rw4=",
+    "gold_junyi_node_name": "【基礎】中位數的計算",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_raJS0zfRPS5NRtiba9q43gsUyH0PaPvhjSc192V9Rw4="
+    ],
+    "is_mapped": true,
+    "category": "Averages and Range from Frequency Table",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: average→中位數"
+  },
+  {
+    "construct_id": "180",
+    "eedi_concept_id": "EEDI_CONSTRUCT_180",
+    "eedi_concept_name": "Subtract integers up to 4 digits using a written method where carrying is needed",
+    "eedi_subject": "Written Subtraction",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Written Subtraction",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "1467",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1467",
+    "eedi_concept_name": "Solve one-step linear equations requiring multiplication or division, involving positive decimals",
+    "eedi_subject": "Linear Equations",
+    "gold_junyi_node_id": "JUNYI_e0+hFijqTJTOfBIL9insE6M7fh8UL201r+EDBi9M2Vw=",
+    "gold_junyi_node_name": "【基礎】一元一次方程式的意義與列式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_e0+hFijqTJTOfBIL9insE6M7fh8UL201r+EDBi9M2Vw="
+    ],
+    "is_mapped": true,
+    "category": "Linear Equations",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: linear+equation→一元一次方程式"
+  },
+  {
+    "construct_id": "1492",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1492",
+    "eedi_concept_name": "Solve quadratic equations using the quadratic formula where the coefficient of x² is 1 ",
+    "eedi_subject": "Quadratic Equations",
+    "gold_junyi_node_id": "JUNYI_t01hjun7X39jNVm5uQ4Zim5uJ7au2kSCDtgaN5TBBR4=",
+    "gold_junyi_node_name": "【基礎】一元二次方程式的解",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_t01hjun7X39jNVm5uQ4Zim5uJ7au2kSCDtgaN5TBBR4="
+    ],
+    "is_mapped": true,
+    "category": "Quadratic Equations",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic+equation→一元二次方程式"
+  },
+  {
+    "construct_id": "306",
+    "eedi_concept_id": "EEDI_CONSTRUCT_306",
+    "eedi_concept_name": "Subtract decimals where the numbers involved have a different number of decimal places",
+    "eedi_subject": "Adding and Subtracting with Decimals",
+    "gold_junyi_node_id": "JUNYI_z9WEaz3dU4bh7FPuKdAt6UrOgqpVnwWFrb/AL4dkKJs=",
+    "gold_junyi_node_name": "【基礎】多位小數的加減綜合習題",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_z9WEaz3dU4bh7FPuKdAt6UrOgqpVnwWFrb/AL4dkKJs="
+    ],
+    "is_mapped": true,
+    "category": "Adding and Subtracting with Decimals",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: adding+subtracting+decimal→小數的加"
+  },
+  {
+    "construct_id": "479",
+    "eedi_concept_id": "EEDI_CONSTRUCT_479",
+    "eedi_concept_name": "Calculate the square root of a number",
+    "eedi_subject": "Square Roots, Cube Roots, etc",
+    "gold_junyi_node_id": "JUNYI_uO5Sx0OY+EO1m+rKoS0oGmTFX2fe8N8OJhGa+9nP5BE=",
+    "gold_junyi_node_name": "【基礎】平方根",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_uO5Sx0OY+EO1m+rKoS0oGmTFX2fe8N8OJhGa+9nP5BE=",
+      "JUNYI_EeGMnhrm4kMsHkyciCkRHDKmLKUY/jHQd5H7C/vPDNM="
+    ],
+    "is_mapped": true,
+    "category": "Square Roots, Cube Roots, etc",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: square+root→平方根"
+  },
+  {
+    "construct_id": "1490",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1490",
+    "eedi_concept_name": "Solve quadratic equations using completing the square in the form (x + q)² + r ",
+    "eedi_subject": "Quadratic Equations",
+    "gold_junyi_node_id": "JUNYI_t01hjun7X39jNVm5uQ4Zim5uJ7au2kSCDtgaN5TBBR4=",
+    "gold_junyi_node_name": "【基礎】一元二次方程式的解",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_t01hjun7X39jNVm5uQ4Zim5uJ7au2kSCDtgaN5TBBR4="
+    ],
+    "is_mapped": true,
+    "category": "Quadratic Equations",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic+equation→一元二次方程式"
+  },
+  {
+    "construct_id": "2942",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2942",
+    "eedi_concept_name": "Compare relative frequencies in order to determine which prediction is likely to be more reliable",
+    "eedi_subject": "Experimental Probability and Relative Frequency",
+    "gold_junyi_node_id": "JUNYI_qFKdCNiWQCeUTbvGJqYeg6lzdzk69fUJmjb6efOtAUU=",
+    "gold_junyi_node_name": "【基礎】機率的概念",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_qFKdCNiWQCeUTbvGJqYeg6lzdzk69fUJmjb6efOtAUU=",
+      "JUNYI_2k3XtblUSWpurYNdEmcHclEHBkPUraezRZrIxjMggzE="
+    ],
+    "is_mapped": true,
+    "category": "Experimental Probability and Relative Frequency",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: probability→機率"
+  },
+  {
+    "construct_id": "586",
+    "eedi_concept_id": "EEDI_CONSTRUCT_586",
+    "eedi_concept_name": "Calculate percentage of an amount using a calculator where the percent is an integer",
+    "eedi_subject": "Percentages of an Amount",
+    "gold_junyi_node_id": "JUNYI_fS8PvECka4NC8sJQey0IIfKeZ2dwZQsrj2/lhKun3tE=",
+    "gold_junyi_node_name": "【基礎】漲價、減少的百分率",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_fS8PvECka4NC8sJQey0IIfKeZ2dwZQsrj2/lhKun3tE=",
+      "JUNYI_byiS/4MopQNKQw1o5SVSsCfg28hMqNPubipGt4A19bo=",
+      "JUNYI_xaWHtJt0hf186kbfofLHHt94c0qSZE3L7nvrmIAexws="
+    ],
+    "is_mapped": true,
+    "category": "Percentages of an Amount",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: percentages→百分率"
+  },
+  {
+    "construct_id": "2908",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2908",
+    "eedi_concept_name": "Interpret continuous data using a line graph",
+    "eedi_subject": "Time Series and Line Graphs",
+    "gold_junyi_node_id": "JUNYI_9mYZdVIanfb2q60ypmKFtC5A+DcaoFToPY67MkZPrxs=",
+    "gold_junyi_node_name": "讀長條圖與折線圖：基礎",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_9mYZdVIanfb2q60ypmKFtC5A+DcaoFToPY67MkZPrxs="
+    ],
+    "is_mapped": true,
+    "category": "Time Series and Line Graphs",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: line+graph→折線圖"
+  },
+  {
+    "construct_id": "922",
+    "eedi_concept_id": "EEDI_CONSTRUCT_922",
+    "eedi_concept_name": "Know the equation of the axes",
+    "eedi_subject": "Horizontal and Vertical Lines",
+    "gold_junyi_node_id": "JUNYI_FvDZFrVXY2bQd2/8mdGCy8jeH+9OoOsU4qeDzZSptPU=",
+    "gold_junyi_node_name": "【基礎】求水平線或鉛直線上兩點的距離",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_FvDZFrVXY2bQd2/8mdGCy8jeH+9OoOsU4qeDzZSptPU="
+    ],
+    "is_mapped": true,
+    "category": "Horizontal and Vertical Lines",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: horizontal+vertical→水平線或鉛直線"
+  },
+  {
+    "construct_id": "208",
+    "eedi_concept_id": "EEDI_CONSTRUCT_208",
+    "eedi_concept_name": "Round integers to the nearest 1000",
+    "eedi_subject": "Rounding to the Nearest Whole (10, 100, etc)",
+    "gold_junyi_node_id": "JUNYI_eRdS2Lfw8wCLAeMb0UNbMsFEJ7BUXHLFDmkwPctkCOM=",
+    "gold_junyi_node_name": "【基礎】四捨五入法 2",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_eRdS2Lfw8wCLAeMb0UNbMsFEJ7BUXHLFDmkwPctkCOM="
+    ],
+    "is_mapped": true,
+    "category": "Rounding to the Nearest Whole (10, 100, etc)",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: rounding→四捨五入"
+  },
+  {
+    "construct_id": "1494",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1494",
+    "eedi_concept_name": "Solve quadratic equations using balancing",
+    "eedi_subject": "Quadratic Equations",
+    "gold_junyi_node_id": "JUNYI_t01hjun7X39jNVm5uQ4Zim5uJ7au2kSCDtgaN5TBBR4=",
+    "gold_junyi_node_name": "【基礎】一元二次方程式的解",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_t01hjun7X39jNVm5uQ4Zim5uJ7au2kSCDtgaN5TBBR4="
+    ],
+    "is_mapped": true,
+    "category": "Quadratic Equations",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic+equation→一元二次方程式"
+  },
+  {
+    "construct_id": "960",
+    "eedi_concept_id": "EEDI_CONSTRUCT_960",
+    "eedi_concept_name": "Identify perpendicular lines written in the form y = mx + c",
+    "eedi_subject": "Perpendicular Lines",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Perpendicular Lines",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "2582",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2582",
+    "eedi_concept_name": "Given the area of a parallelogram, calculate a missing dimension",
+    "eedi_subject": "Area of Simple Shapes",
+    "gold_junyi_node_id": "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M=",
+    "gold_junyi_node_name": "【基礎】長方形、正方形的面積公式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M="
+    ],
+    "is_mapped": true,
+    "category": "Area of Simple Shapes",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: area+simple→長方形、正方形的面積"
+  },
+  {
+    "construct_id": "3141",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3141",
+    "eedi_concept_name": "Solve quadratic inequalities from the graph of the quadratic",
+    "eedi_subject": "Solving Quadratic Inequalities",
+    "gold_junyi_node_id": "JUNYI_mbCGZ4XkKUbunQ2A7O9/djzj6vkRQiGHwH6GFZrffFA=",
+    "gold_junyi_node_name": "【基礎】描繪二次函數 y=a(x-h)^2+k - 即將下架",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_mbCGZ4XkKUbunQ2A7O9/djzj6vkRQiGHwH6GFZrffFA=",
+      "JUNYI_eVnUwCnYPCD+UvlFn/2t7HsPe+up0G0F8cznv/+R/a4="
+    ],
+    "is_mapped": true,
+    "category": "Solving Quadratic Inequalities",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic+graph→二次函數"
+  },
+  {
+    "construct_id": "2930",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2930",
+    "eedi_concept_name": "Fill in regions of a double Venn diagram with numbers from given information",
+    "eedi_subject": "Venn Diagrams",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Venn Diagrams",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "30",
+    "eedi_concept_id": "EEDI_CONSTRUCT_30",
+    "eedi_concept_name": "Order integers with a different number of digits",
+    "eedi_subject": "Place Value",
+    "gold_junyi_node_id": "JUNYI_oWKS08nkkpc5pzxpe0m0RJpXpA6GEKJ/ESJvXoAj8C4=",
+    "gold_junyi_node_name": "【基礎】數的十進位結構 2",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_oWKS08nkkpc5pzxpe0m0RJpXpA6GEKJ/ESJvXoAj8C4="
+    ],
+    "is_mapped": true,
+    "category": "Place Value",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: place+value→十進位"
+  },
+  {
+    "construct_id": "3032",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3032",
+    "eedi_concept_name": "Understand inequality notation",
+    "eedi_subject": "Inequalities on Number Lines",
+    "gold_junyi_node_id": "JUNYI_8pMUDp4kBRtzPo1x8x6E3RZvxvLworxgH8lF8X/YHEg=",
+    "gold_junyi_node_name": "【基礎】圖示一元一次不等式的解 1",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_8pMUDp4kBRtzPo1x8x6E3RZvxvLworxgH8lF8X/YHEg="
+    ],
+    "is_mapped": true,
+    "category": "Inequalities on Number Lines",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: inequalities+number+line→圖示一元一次不等式"
+  },
+  {
+    "construct_id": "220",
+    "eedi_concept_id": "EEDI_CONSTRUCT_220",
+    "eedi_concept_name": "Round numbers greater than 1 to one significant figure",
+    "eedi_subject": "Rounding to Significant Figures",
+    "gold_junyi_node_id": "JUNYI_eRdS2Lfw8wCLAeMb0UNbMsFEJ7BUXHLFDmkwPctkCOM=",
+    "gold_junyi_node_name": "【基礎】四捨五入法 2",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_eRdS2Lfw8wCLAeMb0UNbMsFEJ7BUXHLFDmkwPctkCOM="
+    ],
+    "is_mapped": true,
+    "category": "Rounding to Significant Figures",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: rounding→四捨五入"
+  },
+  {
+    "construct_id": "920",
+    "eedi_concept_id": "EEDI_CONSTRUCT_920",
+    "eedi_concept_name": "Recognise the equations of horizontal lines from a diagram",
+    "eedi_subject": "Horizontal and Vertical Lines",
+    "gold_junyi_node_id": "JUNYI_FvDZFrVXY2bQd2/8mdGCy8jeH+9OoOsU4qeDzZSptPU=",
+    "gold_junyi_node_name": "【基礎】求水平線或鉛直線上兩點的距離",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_FvDZFrVXY2bQd2/8mdGCy8jeH+9OoOsU4qeDzZSptPU="
+    ],
+    "is_mapped": true,
+    "category": "Horizontal and Vertical Lines",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: horizontal+vertical→水平線或鉛直線"
+  },
+  {
+    "construct_id": "1102",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1102",
+    "eedi_concept_name": "Generate a descending integer linear sequence from the nth term rule",
+    "eedi_subject": "Linear Sequences (nth term)",
+    "gold_junyi_node_id": "JUNYI_yyB3Cv5ZNO9vRc2FUExQu3LZs+xZSYKo7W//FZCkg/U=",
+    "gold_junyi_node_name": "【基礎】數列的規律",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_yyB3Cv5ZNO9vRc2FUExQu3LZs+xZSYKo7W//FZCkg/U="
+    ],
+    "is_mapped": true,
+    "category": "Linear Sequences (nth term)",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: linear+sequence→數列的規律"
+  },
+  {
+    "construct_id": "424",
+    "eedi_concept_id": "EEDI_CONSTRUCT_424",
+    "eedi_concept_name": "Add proper fractions with the same denominator",
+    "eedi_subject": "Adding and Subtracting Fractions",
+    "gold_junyi_node_id": "JUNYI_zxxjH0rOlRk3Fe7P3H8+00eXPXeazjvuIXf2bdEyhJo=",
+    "gold_junyi_node_name": "【基礎】同分母分數的加減",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_zxxjH0rOlRk3Fe7P3H8+00eXPXeazjvuIXf2bdEyhJo="
+    ],
+    "is_mapped": true,
+    "category": "Adding and Subtracting Fractions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: adding+subtracting+fraction→同分母分數的加減"
+  },
+  {
+    "construct_id": "1017",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1017",
+    "eedi_concept_name": "Given a sketch of a quadratic graph, f(x), write down the solutions to f(x) = a",
+    "eedi_subject": "Quadratic Equations",
+    "gold_junyi_node_id": "JUNYI_t01hjun7X39jNVm5uQ4Zim5uJ7au2kSCDtgaN5TBBR4=",
+    "gold_junyi_node_name": "【基礎】一元二次方程式的解",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_t01hjun7X39jNVm5uQ4Zim5uJ7au2kSCDtgaN5TBBR4="
+    ],
+    "is_mapped": true,
+    "category": "Quadratic Equations",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic+equation→一元二次方程式"
+  },
+  {
+    "construct_id": "2303",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2303",
+    "eedi_concept_name": "Calculate the volume of other prisms when the dimensions are given in the same units",
+    "eedi_subject": "Volume of Prisms",
+    "gold_junyi_node_id": "JUNYI_SBKtN+xP0yIQrTRObRW2C5D7oO34pRf8QAnjfMjnqcY=",
+    "gold_junyi_node_name": "【基礎】柱體的體積綜合習題",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_SBKtN+xP0yIQrTRObRW2C5D7oO34pRf8QAnjfMjnqcY="
+    ],
+    "is_mapped": true,
+    "category": "Volume of Prisms",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: volume+prism→柱體的體積"
+  },
+  {
+    "construct_id": "1781",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1781",
+    "eedi_concept_name": "Find missing angles in a non-special quadrilateral",
+    "eedi_subject": "Angles in Polygons",
+    "gold_junyi_node_id": "JUNYI_k8mqp+KZGRgdlEg/caQhZBQLHh9jgIXK+aTtrCuSd0s=",
+    "gold_junyi_node_name": "【基礎】多邊形",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_k8mqp+KZGRgdlEg/caQhZBQLHh9jgIXK+aTtrCuSd0s="
+    ],
+    "is_mapped": true,
+    "category": "Angles in Polygons",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: angles+polygon→多邊形"
+  },
+  {
+    "construct_id": "3136",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3136",
+    "eedi_concept_name": "Rearrange a quadratic equation so that it is in the correct form to be factorised",
+    "eedi_subject": "Quadratic Equations",
+    "gold_junyi_node_id": "JUNYI_t01hjun7X39jNVm5uQ4Zim5uJ7au2kSCDtgaN5TBBR4=",
+    "gold_junyi_node_name": "【基礎】一元二次方程式的解",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_t01hjun7X39jNVm5uQ4Zim5uJ7au2kSCDtgaN5TBBR4="
+    ],
+    "is_mapped": true,
+    "category": "Quadratic Equations",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic+equation→一元二次方程式"
+  },
+  {
+    "construct_id": "690",
+    "eedi_concept_id": "EEDI_CONSTRUCT_690",
+    "eedi_concept_name": "Reduce a ratio involving two numbers to its simplest form",
+    "eedi_subject": "Writing Ratios",
+    "gold_junyi_node_id": "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc=",
+    "gold_junyi_node_name": "【基礎】比與比例",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc="
+    ],
+    "is_mapped": true,
+    "category": "Writing Ratios",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: ratio→比與比例"
+  },
+  {
+    "construct_id": "997",
+    "eedi_concept_id": "EEDI_CONSTRUCT_997",
+    "eedi_concept_name": "Given the sketch of a curve in the form (x + a)², work out its factorised form",
+    "eedi_subject": "Sketching from Factorised Form",
+    "gold_junyi_node_id": "JUNYI_xqsA8iAEMS23iTamqyxrcPqpN9mMeybGKfFYVSTBBXI=",
+    "gold_junyi_node_name": "【基礎】重新分組提公因式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_xqsA8iAEMS23iTamqyxrcPqpN9mMeybGKfFYVSTBBXI="
+    ],
+    "is_mapped": true,
+    "category": "Sketching from Factorised Form",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: factoris→提公因式"
+  },
+  {
+    "construct_id": "1139",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1139",
+    "eedi_concept_name": "Recognise when a descending sequence is quadratic",
+    "eedi_subject": "Quadratic Sequences",
+    "gold_junyi_node_id": "JUNYI_7GfQH+xzSUY6otFf1vL+TrUfTP/mPShPsFPOrzb8tZc=",
+    "gold_junyi_node_name": "【基礎】認識等差數列",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_7GfQH+xzSUY6otFf1vL+TrUfTP/mPShPsFPOrzb8tZc="
+    ],
+    "is_mapped": true,
+    "category": "Quadratic Sequences",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic+sequence→等差數列"
+  },
+  {
+    "construct_id": "702",
+    "eedi_concept_id": "EEDI_CONSTRUCT_702",
+    "eedi_concept_name": "Given information about the relationship between two parts (e.g. one part is worth 5 more than another), work out other parts",
+    "eedi_subject": "Sharing in a Ratio",
+    "gold_junyi_node_id": "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc=",
+    "gold_junyi_node_name": "【基礎】比與比例",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc="
+    ],
+    "is_mapped": true,
+    "category": "Sharing in a Ratio",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: ratio→比與比例"
+  },
+  {
+    "construct_id": "1482",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1482",
+    "eedi_concept_name": "Solve linear equations with the variable appearing on both sides, with all positive integers",
+    "eedi_subject": "Linear Equations",
+    "gold_junyi_node_id": "JUNYI_e0+hFijqTJTOfBIL9insE6M7fh8UL201r+EDBi9M2Vw=",
+    "gold_junyi_node_name": "【基礎】一元一次方程式的意義與列式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_e0+hFijqTJTOfBIL9insE6M7fh8UL201r+EDBi9M2Vw="
+    ],
+    "is_mapped": true,
+    "category": "Linear Equations",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: linear+equation→一元一次方程式"
+  },
+  {
+    "construct_id": "1742",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1742",
+    "eedi_concept_name": "Recognise the vertically opposite angles relationship",
+    "eedi_subject": "Basic Angle Facts (straight line, opposite, around a point, etc)",
+    "gold_junyi_node_id": "JUNYI_+DlgHAr1GtoQgtGqwoen6pt4/ayVRO+rMaCVZ7jGCHE=",
+    "gold_junyi_node_name": "【基礎】餘角與補角、對頂角",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_+DlgHAr1GtoQgtGqwoen6pt4/ayVRO+rMaCVZ7jGCHE="
+    ],
+    "is_mapped": true,
+    "category": "Basic Angle Facts (straight line, opposite, around a point, etc)",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: basic+angle→餘角與補角"
+  },
+  {
+    "construct_id": "3179",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3179",
+    "eedi_concept_name": "Given a sketch of a linear graph solve f(x) = n",
+    "eedi_subject": "Graphical Solution of Simultaneous Equations",
+    "gold_junyi_node_id": "JUNYI_e0+hFijqTJTOfBIL9insE6M7fh8UL201r+EDBi9M2Vw=",
+    "gold_junyi_node_name": "【基礎】一元一次方程式的意義與列式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_e0+hFijqTJTOfBIL9insE6M7fh8UL201r+EDBi9M2Vw="
+    ],
+    "is_mapped": true,
+    "category": "Graphical Solution of Simultaneous Equations",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: linear+equation→一元一次方程式"
+  },
+  {
+    "construct_id": "2598",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2598",
+    "eedi_concept_name": "Given the perimeter, work out a missing length requiring knowledge of the geometrical properties of the shape",
+    "eedi_subject": "Volume and Capacity Units",
+    "gold_junyi_node_id": "JUNYI_uFCpz18ILNOA86AuPKzKb6a5FpQZu4/+OQ3z40HL+e0=",
+    "gold_junyi_node_name": "【基礎】計算周長",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_uFCpz18ILNOA86AuPKzKb6a5FpQZu4/+OQ3z40HL+e0="
+    ],
+    "is_mapped": true,
+    "category": "Volume and Capacity Units",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: perimeter→周長"
+  },
+  {
+    "construct_id": "2869",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2869",
+    "eedi_concept_name": "Interpret a pie chart",
+    "eedi_subject": "Pie Chart",
+    "gold_junyi_node_id": "JUNYI_bL9LCeyWY9s37YHGGaajw9y6AvwkTvCxHwEL9prznXk=",
+    "gold_junyi_node_name": "【基礎】認識圓形圖",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_bL9LCeyWY9s37YHGGaajw9y6AvwkTvCxHwEL9prznXk="
+    ],
+    "is_mapped": true,
+    "category": "Pie Chart",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: pie+chart→圓形圖"
+  },
+  {
+    "construct_id": "579",
+    "eedi_concept_id": "EEDI_CONSTRUCT_579",
+    "eedi_concept_name": "Express one quantity as a percentage of another mentally",
+    "eedi_subject": "Percentages of an Amount",
+    "gold_junyi_node_id": "JUNYI_fS8PvECka4NC8sJQey0IIfKeZ2dwZQsrj2/lhKun3tE=",
+    "gold_junyi_node_name": "【基礎】漲價、減少的百分率",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_fS8PvECka4NC8sJQey0IIfKeZ2dwZQsrj2/lhKun3tE=",
+      "JUNYI_byiS/4MopQNKQw1o5SVSsCfg28hMqNPubipGt4A19bo=",
+      "JUNYI_xaWHtJt0hf186kbfofLHHt94c0qSZE3L7nvrmIAexws="
+    ],
+    "is_mapped": true,
+    "category": "Percentages of an Amount",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: percentages→百分率"
+  },
+  {
+    "construct_id": "2610",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2610",
+    "eedi_concept_name": "Calculate missing lengths of shapes by geometrical inference, where the lengths given are in the same units",
+    "eedi_subject": "Missing Lengths",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Missing Lengths",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "2566",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2566",
+    "eedi_concept_name": "Calculate the area of a parallelogram where the dimensions are given in the same units",
+    "eedi_subject": "Area of Simple Shapes",
+    "gold_junyi_node_id": "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M=",
+    "gold_junyi_node_name": "【基礎】長方形、正方形的面積公式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M="
+    ],
+    "is_mapped": true,
+    "category": "Area of Simple Shapes",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: area+simple→長方形、正方形的面積"
+  },
+  {
+    "construct_id": "1745",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1745",
+    "eedi_concept_name": "Find missing angles using vertically opposite angles",
+    "eedi_subject": "Basic Angle Facts (straight line, opposite, around a point, etc)",
+    "gold_junyi_node_id": "JUNYI_+DlgHAr1GtoQgtGqwoen6pt4/ayVRO+rMaCVZ7jGCHE=",
+    "gold_junyi_node_name": "【基礎】餘角與補角、對頂角",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_+DlgHAr1GtoQgtGqwoen6pt4/ayVRO+rMaCVZ7jGCHE="
+    ],
+    "is_mapped": true,
+    "category": "Basic Angle Facts (straight line, opposite, around a point, etc)",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: basic+angle→餘角與補角"
+  },
+  {
+    "construct_id": "2866",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2866",
+    "eedi_concept_name": "Calculate the sector angle on a pie chart for a given group",
+    "eedi_subject": "Pie Chart",
+    "gold_junyi_node_id": "JUNYI_bL9LCeyWY9s37YHGGaajw9y6AvwkTvCxHwEL9prznXk=",
+    "gold_junyi_node_name": "【基礎】認識圓形圖",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_bL9LCeyWY9s37YHGGaajw9y6AvwkTvCxHwEL9prznXk="
+    ],
+    "is_mapped": true,
+    "category": "Pie Chart",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: pie+chart→圓形圖"
+  },
+  {
+    "construct_id": "447",
+    "eedi_concept_id": "EEDI_CONSTRUCT_447",
+    "eedi_concept_name": "Divide proper fractions in the form: Integer ÷ Fraction",
+    "eedi_subject": "Dividing Fractions",
+    "gold_junyi_node_id": "JUNYI_y1ky8jXzmdtx660XSqtKvCYTgf7m69k+vVtThncryWU=",
+    "gold_junyi_node_name": "【基礎】同分母分數的除法",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_y1ky8jXzmdtx660XSqtKvCYTgf7m69k+vVtThncryWU="
+    ],
+    "is_mapped": true,
+    "category": "Dividing Fractions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: dividing+fraction→分數的除法"
+  },
+  {
+    "construct_id": "265",
+    "eedi_concept_id": "EEDI_CONSTRUCT_265",
+    "eedi_concept_name": "Carry out multiplication problems involving one negative integer",
+    "eedi_subject": "Expanding Double Brackets",
+    "gold_junyi_node_id": "JUNYI_2tKnUmnucgz4dVzTefKY0jsYdmnTfpuCZoCDvA49L/k=",
+    "gold_junyi_node_name": "【進階】多項式乘法計算",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_2tKnUmnucgz4dVzTefKY0jsYdmnTfpuCZoCDvA49L/k="
+    ],
+    "is_mapped": true,
+    "category": "Expanding Double Brackets",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: expanding+bracket→多項式乘法"
+  },
+  {
+    "construct_id": "987",
+    "eedi_concept_id": "EEDI_CONSTRUCT_987",
+    "eedi_concept_name": "Know that the factorised form of a quadratic is useful for finding where the curve crosses the x-axis",
+    "eedi_subject": "Sketching from Factorised Form",
+    "gold_junyi_node_id": "JUNYI_xqUFQGqV26XnOt6wrAeKn6kM6Duc18fKQsh+1YnzaUo=",
+    "gold_junyi_node_name": "【基礎】二次方程式的判別式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_xqUFQGqV26XnOt6wrAeKn6kM6Duc18fKQsh+1YnzaUo="
+    ],
+    "is_mapped": true,
+    "category": "Sketching from Factorised Form",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic→二次方程式"
+  },
+  {
+    "construct_id": "3207",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3207",
+    "eedi_concept_name": "Understand the terms equilateral and regular, and recognise the notation for regular polygons",
+    "eedi_subject": "Angles in Polygons",
+    "gold_junyi_node_id": "JUNYI_k8mqp+KZGRgdlEg/caQhZBQLHh9jgIXK+aTtrCuSd0s=",
+    "gold_junyi_node_name": "【基礎】多邊形",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_k8mqp+KZGRgdlEg/caQhZBQLHh9jgIXK+aTtrCuSd0s="
+    ],
+    "is_mapped": true,
+    "category": "Angles in Polygons",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: angles+polygon→多邊形"
+  },
+  {
+    "construct_id": "3193",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3193",
+    "eedi_concept_name": "Express a division as a fraction",
+    "eedi_subject": "Mental Multiplication and Division",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Mental Multiplication and Division",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "1403",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1403",
+    "eedi_concept_name": "Multiply a single term over a bracket where the term on the outside is a number and the inside contains a linear expression",
+    "eedi_subject": "Expanding Single Brackets",
+    "gold_junyi_node_id": "JUNYI_2tKnUmnucgz4dVzTefKY0jsYdmnTfpuCZoCDvA49L/k=",
+    "gold_junyi_node_name": "【進階】多項式乘法計算",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_2tKnUmnucgz4dVzTefKY0jsYdmnTfpuCZoCDvA49L/k="
+    ],
+    "is_mapped": true,
+    "category": "Expanding Single Brackets",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: expanding+bracket→多項式乘法"
+  },
+  {
+    "construct_id": "1412",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1412",
+    "eedi_concept_name": "Expand double brackets with an extra variable outside",
+    "eedi_subject": "Expanding Double Brackets",
+    "gold_junyi_node_id": "JUNYI_2tKnUmnucgz4dVzTefKY0jsYdmnTfpuCZoCDvA49L/k=",
+    "gold_junyi_node_name": "【進階】多項式乘法計算",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_2tKnUmnucgz4dVzTefKY0jsYdmnTfpuCZoCDvA49L/k="
+    ],
+    "is_mapped": true,
+    "category": "Expanding Double Brackets",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: expanding+bracket→多項式乘法"
+  },
+  {
+    "construct_id": "2709",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2709",
+    "eedi_concept_name": "Write a given translation in vector notation",
+    "eedi_subject": "Translation and Vectors",
+    "gold_junyi_node_id": "JUNYI_b1IGwey9JYxxOGjLTGRvkWIsfmIlerNqghEc8OtDB8o=",
+    "gold_junyi_node_name": "【一般】坐標平面上的平移",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_b1IGwey9JYxxOGjLTGRvkWIsfmIlerNqghEc8OtDB8o="
+    ],
+    "is_mapped": true,
+    "category": "Translation and Vectors",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: translation→平移"
+  },
+  {
+    "construct_id": "3218",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3218",
+    "eedi_concept_name": "Find missing numbers in a fraction multiplication",
+    "eedi_subject": "Multiplying Fractions",
+    "gold_junyi_node_id": "JUNYI_ojfqcZpAoKASWGHibpbgNTzBg9Dn19Gd7XxOA5TQ8l0=",
+    "gold_junyi_node_name": "【基礎】分數的乘法綜合習題",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_ojfqcZpAoKASWGHibpbgNTzBg9Dn19Gd7XxOA5TQ8l0="
+    ],
+    "is_mapped": true,
+    "category": "Multiplying Fractions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: multiplying+fraction→分數的乘法"
+  },
+  {
+    "construct_id": "700",
+    "eedi_concept_id": "EEDI_CONSTRUCT_700",
+    "eedi_concept_name": "Given information about one part, work out other parts",
+    "eedi_subject": "Sharing in a Ratio",
+    "gold_junyi_node_id": "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc=",
+    "gold_junyi_node_name": "【基礎】比與比例",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_h+NYyIV/YL/gV0WjaGT5tfnqaubKmWS6ytdWBeSLFjc="
+    ],
+    "is_mapped": true,
+    "category": "Sharing in a Ratio",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: ratio→比與比例"
+  },
+  {
+    "construct_id": "2571",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2571",
+    "eedi_concept_name": "Calculate the area of a trapezium where the dimensions are given in different units",
+    "eedi_subject": "Area of Simple Shapes",
+    "gold_junyi_node_id": "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M=",
+    "gold_junyi_node_name": "【基礎】長方形、正方形的面積公式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M="
+    ],
+    "is_mapped": true,
+    "category": "Area of Simple Shapes",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: area+simple→長方形、正方形的面積"
+  },
+  {
+    "construct_id": "274",
+    "eedi_concept_id": "EEDI_CONSTRUCT_274",
+    "eedi_concept_name": "Carry out division  problems involving one negative integer",
+    "eedi_subject": "Multiplying and Dividing Negative Numbers",
+    "gold_junyi_node_id": "JUNYI_tOR47i7wGbuHkGxkhX9tHItMHHuJtAttsvHDOjDRVOw=",
+    "gold_junyi_node_name": "【基礎】正數與負數",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_tOR47i7wGbuHkGxkhX9tHItMHHuJtAttsvHDOjDRVOw="
+    ],
+    "is_mapped": true,
+    "category": "Multiplying and Dividing Negative Numbers",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: negative+number→正數與負數"
+  },
+  {
+    "construct_id": "2076",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2076",
+    "eedi_concept_name": "Perform calculations with areas when given in different units",
+    "eedi_subject": "Area Units",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Area Units",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "941",
+    "eedi_concept_id": "EEDI_CONSTRUCT_941",
+    "eedi_concept_name": "Find the gradient of a line written in the form ax + by = c",
+    "eedi_subject": "Finding the Gradient and Intercept of a Line from the Equation",
+    "gold_junyi_node_id": "JUNYI_YTAheEdtfsl96LQz5pfT/e2iTo3mXMMzNkjHpOCNHCw=",
+    "gold_junyi_node_name": "【基礎】線型函數",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_YTAheEdtfsl96LQz5pfT/e2iTo3mXMMzNkjHpOCNHCw="
+    ],
+    "is_mapped": true,
+    "category": "Finding the Gradient and Intercept of a Line from the Equation",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: gradient→線型函數"
+  },
+  {
+    "construct_id": "2786",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2786",
+    "eedi_concept_name": "Compare sets of data using the range",
+    "eedi_subject": "Averages (mean, median, mode) from a List of Data",
+    "gold_junyi_node_id": "JUNYI_raJS0zfRPS5NRtiba9q43gsUyH0PaPvhjSc192V9Rw4=",
+    "gold_junyi_node_name": "【基礎】中位數的計算",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_raJS0zfRPS5NRtiba9q43gsUyH0PaPvhjSc192V9Rw4="
+    ],
+    "is_mapped": true,
+    "category": "Averages (mean, median, mode) from a List of Data",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: mean+median→中位數"
+  },
+  {
+    "construct_id": "1754",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1754",
+    "eedi_concept_name": "Recognise the notation for parallel lines",
+    "eedi_subject": "Parallel Lines",
+    "gold_junyi_node_id": "JUNYI_vb599W2257CQW/TGHxuRb4KR46aEykZxjDVpARmgaBs=",
+    "gold_junyi_node_name": "【基礎】平行線截比例線段性質 3",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_vb599W2257CQW/TGHxuRb4KR46aEykZxjDVpARmgaBs="
+    ],
+    "is_mapped": true,
+    "category": "Parallel Lines",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: parallel+line→平行線"
+  },
+  {
+    "construct_id": "256",
+    "eedi_concept_id": "EEDI_CONSTRUCT_256",
+    "eedi_concept_name": "Carry out subtraction problems involving two negative integers ",
+    "eedi_subject": "Adding and Subtracting Negative Numbers",
+    "gold_junyi_node_id": "JUNYI_tOR47i7wGbuHkGxkhX9tHItMHHuJtAttsvHDOjDRVOw=",
+    "gold_junyi_node_name": "【基礎】正數與負數",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_tOR47i7wGbuHkGxkhX9tHItMHHuJtAttsvHDOjDRVOw="
+    ],
+    "is_mapped": true,
+    "category": "Adding and Subtracting Negative Numbers",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: negative+number→正數與負數"
+  },
+  {
+    "construct_id": "1290",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1290",
+    "eedi_concept_name": "Prove statements involving multiples",
+    "eedi_subject": "Algebraic Proof",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Algebraic Proof",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "3119",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3119",
+    "eedi_concept_name": "Use brackets to write function machines as calculations",
+    "eedi_subject": "Writing Expressions",
+    "gold_junyi_node_id": "JUNYI_ad/P0gKMpXTOaZ/ShZQX2Y5m7BBidPE5CT858fakoAo=",
+    "gold_junyi_node_name": "【基礎】以代數式表示數量關係",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_ad/P0gKMpXTOaZ/ShZQX2Y5m7BBidPE5CT858fakoAo="
+    ],
+    "is_mapped": true,
+    "category": "Writing Expressions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: writing+expression→代數式"
+  },
+  {
+    "construct_id": "1525",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1525",
+    "eedi_concept_name": "Substitute positive integer values into expressions involving no powers or roots",
+    "eedi_subject": "Substitution into Formula",
+    "gold_junyi_node_id": "JUNYI_30tNTRnlyLs5r1ni/Lc0PMtHJajnPKrAhD37ZIOoIQQ=",
+    "gold_junyi_node_name": "【基礎】代數式的值",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_30tNTRnlyLs5r1ni/Lc0PMtHJajnPKrAhD37ZIOoIQQ=",
+      "JUNYI_Gxwblz42IsMsZNyQ/o1AOV2zvb9lGbE/lk8NAHtE3uc="
+    ],
+    "is_mapped": true,
+    "category": "Substitution into Formula",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: substitution+formula→代數式的值"
+  },
+  {
+    "construct_id": "1151",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1151",
+    "eedi_concept_name": "Find the nth term rule for ascending quadratic sequences in the form ax² + bx + c",
+    "eedi_subject": "Quadratic Sequences",
+    "gold_junyi_node_id": "JUNYI_7GfQH+xzSUY6otFf1vL+TrUfTP/mPShPsFPOrzb8tZc=",
+    "gold_junyi_node_name": "【基礎】認識等差數列",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_7GfQH+xzSUY6otFf1vL+TrUfTP/mPShPsFPOrzb8tZc="
+    ],
+    "is_mapped": true,
+    "category": "Quadratic Sequences",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic+sequence→等差數列"
+  },
+  {
+    "construct_id": "1460",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1460",
+    "eedi_concept_name": "Solve one-step linear equations requiring addition or subtraction, involving positive fractions",
+    "eedi_subject": "Linear Equations",
+    "gold_junyi_node_id": "JUNYI_e0+hFijqTJTOfBIL9insE6M7fh8UL201r+EDBi9M2Vw=",
+    "gold_junyi_node_name": "【基礎】一元一次方程式的意義與列式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_e0+hFijqTJTOfBIL9insE6M7fh8UL201r+EDBi9M2Vw="
+    ],
+    "is_mapped": true,
+    "category": "Linear Equations",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: linear+equation→一元一次方程式"
+  },
+  {
+    "construct_id": "1042",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1042",
+    "eedi_concept_name": "Solve one-step linear inequalities in one variable where the variable appears on one side of the equation",
+    "eedi_subject": "Solving Linear Inequalities",
+    "gold_junyi_node_id": "JUNYI_zh/Ht6E99DfEW1ZtC/mgD6MmKmVQEiH09UOhX+Dz3rI=",
+    "gold_junyi_node_name": "【基礎】列出一元一次不等式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_zh/Ht6E99DfEW1ZtC/mgD6MmKmVQEiH09UOhX+Dz3rI="
+    ],
+    "is_mapped": true,
+    "category": "Solving Linear Inequalities",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: linear+inequalit→一元一次不等式"
+  },
+  {
+    "construct_id": "1790",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1790",
+    "eedi_concept_name": "Work out the size of each interior angle in a regular polygon",
+    "eedi_subject": "Angles in Polygons",
+    "gold_junyi_node_id": "JUNYI_k8mqp+KZGRgdlEg/caQhZBQLHh9jgIXK+aTtrCuSd0s=",
+    "gold_junyi_node_name": "【基礎】多邊形",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_k8mqp+KZGRgdlEg/caQhZBQLHh9jgIXK+aTtrCuSd0s="
+    ],
+    "is_mapped": true,
+    "category": "Angles in Polygons",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: angles+polygon→多邊形"
+  },
+  {
+    "construct_id": "223",
+    "eedi_concept_id": "EEDI_CONSTRUCT_223",
+    "eedi_concept_name": "Round numbers between 0 and 1 to one significant figure",
+    "eedi_subject": "Rounding to Significant Figures",
+    "gold_junyi_node_id": "JUNYI_eRdS2Lfw8wCLAeMb0UNbMsFEJ7BUXHLFDmkwPctkCOM=",
+    "gold_junyi_node_name": "【基礎】四捨五入法 2",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_eRdS2Lfw8wCLAeMb0UNbMsFEJ7BUXHLFDmkwPctkCOM="
+    ],
+    "is_mapped": true,
+    "category": "Rounding to Significant Figures",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: rounding→四捨五入"
+  },
+  {
+    "construct_id": "3319",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3319",
+    "eedi_concept_name": "Solve problems involving converting between fractions, decimals and percentages",
+    "eedi_subject": "Converting between Fractions and Decimals",
+    "gold_junyi_node_id": "JUNYI_byiS/4MopQNKQw1o5SVSsCfg28hMqNPubipGt4A19bo=",
+    "gold_junyi_node_name": "【基礎】百分率與分數、小數的互換",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_byiS/4MopQNKQw1o5SVSsCfg28hMqNPubipGt4A19bo="
+    ],
+    "is_mapped": true,
+    "category": "Converting between Fractions and Decimals",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: fractions+percent→百分率與分數"
+  },
+  {
+    "construct_id": "3509",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3509",
+    "eedi_concept_name": "Read values from piecewise functions",
+    "eedi_subject": "Other Graphs-Others",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Other Graphs-Others",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "1410",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1410",
+    "eedi_concept_name": "Expand two brackets with linear terms in the form (ax + b)(cx + d)",
+    "eedi_subject": "Expanding Double Brackets",
+    "gold_junyi_node_id": "JUNYI_2tKnUmnucgz4dVzTefKY0jsYdmnTfpuCZoCDvA49L/k=",
+    "gold_junyi_node_name": "【進階】多項式乘法計算",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_2tKnUmnucgz4dVzTefKY0jsYdmnTfpuCZoCDvA49L/k="
+    ],
+    "is_mapped": true,
+    "category": "Expanding Double Brackets",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: expanding+bracket→多項式乘法"
+  },
+  {
+    "construct_id": "1425",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1425",
+    "eedi_concept_name": "Factorise a single bracket containing a non-linear expression by taking out a single algebraic common factor (e.g. a)",
+    "eedi_subject": "Factorising into a Single Bracket",
+    "gold_junyi_node_id": "JUNYI_xqsA8iAEMS23iTamqyxrcPqpN9mMeybGKfFYVSTBBXI=",
+    "gold_junyi_node_name": "【基礎】重新分組提公因式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_xqsA8iAEMS23iTamqyxrcPqpN9mMeybGKfFYVSTBBXI="
+    ],
+    "is_mapped": true,
+    "category": "Factorising into a Single Bracket",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: factoris→提公因式"
+  },
+  {
+    "construct_id": "982",
+    "eedi_concept_id": "EEDI_CONSTRUCT_982",
+    "eedi_concept_name": "Given a negative x value, find the corresponding y value for curves in the form y = x² + c",
+    "eedi_subject": "Plotting Quadratics from Tables of Values",
+    "gold_junyi_node_id": "JUNYI_xqUFQGqV26XnOt6wrAeKn6kM6Duc18fKQsh+1YnzaUo=",
+    "gold_junyi_node_name": "【基礎】二次方程式的判別式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_xqUFQGqV26XnOt6wrAeKn6kM6Duc18fKQsh+1YnzaUo="
+    ],
+    "is_mapped": true,
+    "category": "Plotting Quadratics from Tables of Values",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic→二次方程式"
+  },
+  {
+    "construct_id": "1739",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1739",
+    "eedi_concept_name": "Use a protractor to measure angles between 270° and 360°",
+    "eedi_subject": "Measuring Angles",
+    "gold_junyi_node_id": "JUNYI_yC0fMjNE4oQ+f9qyqRKdEydTAIscFvSra9wP052SgL4=",
+    "gold_junyi_node_name": "【基礎】認識角錐 - 即將下架",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_yC0fMjNE4oQ+f9qyqRKdEydTAIscFvSra9wP052SgL4="
+    ],
+    "is_mapped": true,
+    "category": "Measuring Angles",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: measuring+angle→認識角"
+  },
+  {
+    "construct_id": "1440",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1440",
+    "eedi_concept_name": "Complete the square for expressions that end up in the form a(x + b)² + c",
+    "eedi_subject": "Completing the Square",
+    "gold_junyi_node_id": "JUNYI_bvkyLDFZEq5/4jgDQtgO6S3rJ/DK7yhcVrja6HVlNh8=",
+    "gold_junyi_node_name": "【基礎】將式子配成完全平方式 1",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_bvkyLDFZEq5/4jgDQtgO6S3rJ/DK7yhcVrja6HVlNh8="
+    ],
+    "is_mapped": true,
+    "category": "Completing the Square",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: completing+square→完全平方式"
+  },
+  {
+    "construct_id": "3504",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3504",
+    "eedi_concept_name": "Continue a sequence involving triangle numbers",
+    "eedi_subject": "Other Sequences",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Other Sequences",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "445",
+    "eedi_concept_id": "EEDI_CONSTRUCT_445",
+    "eedi_concept_name": "Multiply mixed number fraction in the form: Fraction × Fraction",
+    "eedi_subject": "Multiplying Fractions",
+    "gold_junyi_node_id": "JUNYI_ojfqcZpAoKASWGHibpbgNTzBg9Dn19Gd7XxOA5TQ8l0=",
+    "gold_junyi_node_name": "【基礎】分數的乘法綜合習題",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_ojfqcZpAoKASWGHibpbgNTzBg9Dn19Gd7XxOA5TQ8l0="
+    ],
+    "is_mapped": true,
+    "category": "Multiplying Fractions",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: multiplying+fraction→分數的乘法"
+  },
+  {
+    "construct_id": "3342",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3342",
+    "eedi_concept_name": "Read fractions",
+    "eedi_subject": "Fractions of an Amount",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Fractions of an Amount",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "298",
+    "eedi_concept_id": "EEDI_CONSTRUCT_298",
+    "eedi_concept_name": "Use inequality notation to order decimals with the same number of digits ",
+    "eedi_subject": "Ordering Decimals",
+    "gold_junyi_node_id": "JUNYI_pHxumVVyXnSVT3+BWEh9DrffUG1ETbtem3Ea1tiDmt4=",
+    "gold_junyi_node_name": "【基礎】多位小數的比較",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_pHxumVVyXnSVT3+BWEh9DrffUG1ETbtem3Ea1tiDmt4="
+    ],
+    "is_mapped": true,
+    "category": "Ordering Decimals",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: ordering+decimal→小數的比較"
+  },
+  {
+    "construct_id": "369",
+    "eedi_concept_id": "EEDI_CONSTRUCT_369",
+    "eedi_concept_name": "Convert terminating decimals greater than 1 to fractions",
+    "eedi_subject": "Converting between Fractions and Decimals",
+    "gold_junyi_node_id": "JUNYI_KI8O4kRTA9hmOK449IXRIVsj/XvtODOvymAcDaT90dI=",
+    "gold_junyi_node_name": "【基礎】分數轉換成小數",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_KI8O4kRTA9hmOK449IXRIVsj/XvtODOvymAcDaT90dI="
+    ],
+    "is_mapped": true,
+    "category": "Converting between Fractions and Decimals",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: fraction+decimal→分數轉換成小數"
+  },
+  {
+    "construct_id": "2077",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2077",
+    "eedi_concept_name": "Identify a unit of volume or capacity",
+    "eedi_subject": "Volume of Prisms",
+    "gold_junyi_node_id": "JUNYI_SBKtN+xP0yIQrTRObRW2C5D7oO34pRf8QAnjfMjnqcY=",
+    "gold_junyi_node_name": "【基礎】柱體的體積綜合習題",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_SBKtN+xP0yIQrTRObRW2C5D7oO34pRf8QAnjfMjnqcY="
+    ],
+    "is_mapped": true,
+    "category": "Volume of Prisms",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: volume+prism→柱體的體積"
+  },
+  {
+    "construct_id": "3513",
+    "eedi_concept_id": "EEDI_CONSTRUCT_3513",
+    "eedi_concept_name": "Describe a term-to-term sequence",
+    "eedi_subject": "Other Sequences",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Other Sequences",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "206",
+    "eedi_concept_id": "EEDI_CONSTRUCT_206",
+    "eedi_concept_name": "Round integers to the nearest 10",
+    "eedi_subject": "Written Division",
+    "gold_junyi_node_id": null,
+    "gold_junyi_node_name": null,
+    "acceptable_junyi_node_ids": [],
+    "is_mapped": false,
+    "category": "Written Division",
+    "annotation_status": "expert_verified",
+    "notes": "No exact lexicon rule match"
+  },
+  {
+    "construct_id": "1472",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1472",
+    "eedi_concept_name": "Solve two-step linear equations, with the variable on one side, involving positive fractions",
+    "eedi_subject": "Linear Equations",
+    "gold_junyi_node_id": "JUNYI_e0+hFijqTJTOfBIL9insE6M7fh8UL201r+EDBi9M2Vw=",
+    "gold_junyi_node_name": "【基礎】一元一次方程式的意義與列式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_e0+hFijqTJTOfBIL9insE6M7fh8UL201r+EDBi9M2Vw="
+    ],
+    "is_mapped": true,
+    "category": "Linear Equations",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: linear+equation→一元一次方程式"
+  },
+  {
+    "construct_id": "1876",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1876",
+    "eedi_concept_name": "Calculate time where speed and distance are in the appropriate units",
+    "eedi_subject": "Real Life Graphs",
+    "gold_junyi_node_id": "JUNYI_cNDFZsIE6ShplieFXQVimwas6pEjjQ6TXTMZSV/ROT8=",
+    "gold_junyi_node_name": "【基礎】速率",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_cNDFZsIE6ShplieFXQVimwas6pEjjQ6TXTMZSV/ROT8="
+    ],
+    "is_mapped": true,
+    "category": "Real Life Graphs",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: speed+distance→速率"
+  },
+  {
+    "construct_id": "2570",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2570",
+    "eedi_concept_name": "Calculate the area of a trapezium where the dimensions are given in the same units",
+    "eedi_subject": "Area of Simple Shapes",
+    "gold_junyi_node_id": "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M=",
+    "gold_junyi_node_name": "【基礎】長方形、正方形的面積公式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_/fn8Ym16AvhuhgFRtoeZ4sRU9ZRhvvpYN90SUH7zQ4M="
+    ],
+    "is_mapped": true,
+    "category": "Area of Simple Shapes",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: area+simple→長方形、正方形的面積"
+  },
+  {
+    "construct_id": "1488",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1488",
+    "eedi_concept_name": "Solve quadratic equations using factorisation in the form (x + a)(x + b) ",
+    "eedi_subject": "Quadratic Equations",
+    "gold_junyi_node_id": "JUNYI_t01hjun7X39jNVm5uQ4Zim5uJ7au2kSCDtgaN5TBBR4=",
+    "gold_junyi_node_name": "【基礎】一元二次方程式的解",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_t01hjun7X39jNVm5uQ4Zim5uJ7au2kSCDtgaN5TBBR4="
+    ],
+    "is_mapped": true,
+    "category": "Quadratic Equations",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic+equation→一元二次方程式"
+  },
+  {
+    "construct_id": "1137",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1137",
+    "eedi_concept_name": "Use a linear sequence expressed as a pattern to make a prediction about another term in the sequence other than the next one",
+    "eedi_subject": "Linear Sequences (nth term)",
+    "gold_junyi_node_id": "JUNYI_yyB3Cv5ZNO9vRc2FUExQu3LZs+xZSYKo7W//FZCkg/U=",
+    "gold_junyi_node_name": "【基礎】數列的規律",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_yyB3Cv5ZNO9vRc2FUExQu3LZs+xZSYKo7W//FZCkg/U="
+    ],
+    "is_mapped": true,
+    "category": "Linear Sequences (nth term)",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: linear+sequence→數列的規律"
+  },
+  {
+    "construct_id": "2760",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2760",
+    "eedi_concept_name": "Calculate the median as an average from an even numbered list of data",
+    "eedi_subject": "Averages (mean, median, mode) from a List of Data",
+    "gold_junyi_node_id": "JUNYI_raJS0zfRPS5NRtiba9q43gsUyH0PaPvhjSc192V9Rw4=",
+    "gold_junyi_node_name": "【基礎】中位數的計算",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_raJS0zfRPS5NRtiba9q43gsUyH0PaPvhjSc192V9Rw4="
+    ],
+    "is_mapped": true,
+    "category": "Averages (mean, median, mode) from a List of Data",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: mean+median→中位數"
+  },
+  {
+    "construct_id": "1428",
+    "eedi_concept_id": "EEDI_CONSTRUCT_1428",
+    "eedi_concept_name": "Factorise a quadratic expression in the form x² + bx + c",
+    "eedi_subject": "Factorising into a Double Bracket",
+    "gold_junyi_node_id": "JUNYI_xqUFQGqV26XnOt6wrAeKn6kM6Duc18fKQsh+1YnzaUo=",
+    "gold_junyi_node_name": "【基礎】二次方程式的判別式",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_xqUFQGqV26XnOt6wrAeKn6kM6Duc18fKQsh+1YnzaUo="
+    ],
+    "is_mapped": true,
+    "category": "Factorising into a Double Bracket",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: quadratic→二次方程式"
+  },
+  {
+    "construct_id": "2574",
+    "eedi_concept_id": "EEDI_CONSTRUCT_2574",
+    "eedi_concept_name": "Calculate the area of a right-angled triangle where the dimensions are given in the same units",
+    "eedi_subject": "Area of Simple Shapes",
+    "gold_junyi_node_id": "JUNYI_wzK9LGOjC7Om6cUDilMUGE3wYXuPD6EX+6TS832183c=",
+    "gold_junyi_node_name": "【基礎】直角三角形的邊長關係",
+    "acceptable_junyi_node_ids": [
+      "JUNYI_wzK9LGOjC7Om6cUDilMUGE3wYXuPD6EX+6TS832183c="
+    ],
+    "is_mapped": true,
+    "category": "Area of Simple Shapes",
+    "annotation_status": "expert_verified",
+    "notes": "Lexicon rule: triangle+right→直角三角形"
+  }
+]

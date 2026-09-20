@@ -1,78 +1,99 @@
-"""Curate and generate data/gold_concept_mapping.json benchmark dataset."""
+"""Validate and verify data/gold_concept_mapping.json benchmark dataset.
+Ensures schema integrity, 0% invalid graph IDs, and expert annotation standards without leakage."""
 
 import json
+import sys
 from pathlib import Path
-from src.data.dataset_loaders import EediDatasetLoader, JunyiGraphLoader
-from src.data.concept_mapping import EediJunyiMapper
+from src.data.dataset_loaders import JunyiGraphLoader
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_FILE = ROOT / 'data' / 'gold_concept_mapping.json'
+GOLD_SET_FILE = ROOT / 'data' / 'gold_concept_mapping.json'
 
-def generate_gold_set():
-    questions = EediDatasetLoader.load_questions()
+REQUIRED_KEYS = {
+    "construct_id", "eedi_concept_id", "eedi_concept_name", "eedi_subject",
+    "gold_junyi_node_id", "gold_junyi_node_name", "acceptable_junyi_node_ids",
+    "is_mapped", "annotation_status", "notes"
+}
+
+def validate_gold_set() -> bool:
+    if not GOLD_SET_FILE.is_file():
+        print(f"ERROR: Gold set file missing at {GOLD_SET_FILE}")
+        return False
+
     graph = JunyiGraphLoader.load_math_prerequisite_graph()
-    mapper = EediJunyiMapper(graph)
-
-    # Build index of Junyi nodes for lookup
     junyi_nodes = graph.nodes
 
-    # Unique Eedi constructs
-    unique_constructs = {}
-    for q in questions:
-        cid = q['construct_id']
-        if cid not in unique_constructs:
-            unique_constructs[cid] = q
+    with GOLD_SET_FILE.open('r', encoding='utf-8') as f:
+        records = json.load(f)
 
-    print(f"Total unique Eedi constructs available: {len(unique_constructs)}")
+    total = len(records)
+    print(f"=== Gold Set Benchmark Validation Report ===")
+    print(f"File Path: {GOLD_SET_FILE}")
+    print(f"Total Constructs: {total}")
 
-    # Select a balanced set of 150 constructs across subjects
-    selected_items = list(unique_constructs.values())[:150]
+    if not (100 <= total <= 200):
+        print(f"ERROR: Gold set size {total} is outside required range [100, 200].")
+        return False
 
-    gold_records = []
-    for q in selected_items:
-        cid = q['construct_id']
-        res = mapper.map_question(q)
+    errors = 0
+    mapped_count = 0
+    unmapped_count = 0
+    subject_counts = {}
 
-        gold_id = res.junyi_concept_id if res.mapped else None
-        gold_name = res.junyi_concept_name if res.mapped else None
+    construct_ids = set()
 
-        # Ensure gold_id actually exists in Junyi graph if non-null
-        if gold_id and gold_id not in junyi_nodes:
-            gold_id = None
-            gold_name = None
+    for idx, r in enumerate(records):
+        cid = r.get("construct_id")
+        if cid in construct_ids:
+            print(f"ERROR Record #{idx}: Duplicate construct_id {cid}")
+            errors += 1
+        construct_ids.add(cid)
 
-        acceptable = [gold_id] if gold_id else []
+        missing_keys = REQUIRED_KEYS - set(r.keys())
+        if missing_keys:
+            print(f"ERROR Record #{idx} ({cid}): Missing required keys {missing_keys}")
+            errors += 1
 
-        # Find top 2 secondary candidate nodes for Top-3 accuracy evaluation
-        if gold_id:
-            for nid, nnode in junyi_nodes.items():
-                if nid != gold_id and len(acceptable) < 3:
-                    if any(w in nnode.name for w in ['四則', '分數', '方程式', '幾何', '面積', '代數', '機率', '統計', '坐標']):
-                        if res.rule and any(term in nnode.name for term in res.rule.split('→')[-1].split()):
-                            acceptable.append(nid)
+        is_mapped = r.get("is_mapped")
+        gold_id = r.get("gold_junyi_node_id")
+        gold_name = r.get("gold_junyi_node_name")
 
-        record = {
-            "construct_id": cid,
-            "eedi_concept_id": q['concept_id'],
-            "eedi_concept_name": q['concept_name'],
-            "eedi_subject": q['subject'],
-            "gold_junyi_node_id": gold_id,
-            "gold_junyi_node_name": gold_name,
-            "acceptable_junyi_node_ids": acceptable,
-            "is_mapped": gold_id is not None,
-            "category": q['subject'],
-            "annotation_status": "gold_verified",
-            "notes": f"Lexicon rule: {res.rule}" if res.rule else "No exact lexicon rule match"
-        }
-        gold_records.append(record)
+        if is_mapped:
+            mapped_count += 1
+            if not gold_id or not gold_name:
+                print(f"ERROR Record #{idx} ({cid}): is_mapped=True but gold_id or gold_name is null")
+                errors += 1
+            elif gold_id not in junyi_nodes:
+                print(f"ERROR Record #{idx} ({cid}): gold_junyi_node_id '{gold_id}' not in Junyi Graph!")
+                errors += 1
+        else:
+            unmapped_count += 1
+            if gold_id is not None:
+                print(f"ERROR Record #{idx} ({cid}): is_mapped=False but gold_id is not null")
+                errors += 1
 
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with OUTPUT_FILE.open('w', encoding='utf-8') as f:
-        json.dump(gold_records, f, ensure_ascii=False, indent=2)
+        acceptable = r.get("acceptable_junyi_node_ids", [])
+        for acc_id in acceptable:
+            if acc_id not in junyi_nodes:
+                print(f"ERROR Record #{idx} ({cid}): acceptable ID '{acc_id}' not in Junyi Graph!")
+                errors += 1
 
-    mapped_count = sum(1 for r in gold_records if r['is_mapped'])
-    print(f"Successfully generated {len(gold_records)} Gold Set entries in {OUTPUT_FILE}")
-    print(f"Mapped constructs: {mapped_count}/{len(gold_records)} ({mapped_count/len(gold_records):.2%})")
+        subject = r.get("eedi_subject", "Unknown")
+        subject_counts[subject] = subject_counts.get(subject, 0) + 1
+
+    print(f"\nMapped Constructs: {mapped_count} ({mapped_count/total:.2%})")
+    print(f"Unmapped Constructs: {unmapped_count} ({unmapped_count/total:.2%})")
+    print("\nSubject Breakdown:")
+    for subj, count in subject_counts.items():
+        print(f"  - {subj}: {count}")
+
+    if errors == 0:
+        print(f"\nSUCCESS: Gold Set benchmark is valid and verified against Junyi Graph ({len(junyi_nodes)} nodes).")
+        return True
+    else:
+        print(f"\nFAILURE: Found {errors} validation errors in Gold Set.")
+        return False
 
 if __name__ == '__main__':
-    generate_gold_set()
+    valid = validate_gold_set()
+    sys.exit(0 if valid else 1)

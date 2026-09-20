@@ -231,6 +231,20 @@ def evaluate_mapping(questions: List[Dict[str, Any]], mapper: EediJunyiMapper,
     }
 
 
+def is_top_k_hit(result: EediJunyiMapper, acceptable_ids: set, k: int = 3) -> bool:
+    if not getattr(result, 'mapped', False):
+        return False
+    predictions = []
+    if getattr(result, 'junyi_concept_id', None):
+        predictions.append(result.junyi_concept_id)
+    top3_ids = getattr(result, 'top3_junyi_ids', None)
+    if top3_ids:
+        for cand in top3_ids:
+            if cand not in predictions:
+                predictions.append(cand)
+    return any(cand in acceptable_ids for cand in predictions[:k])
+
+
 def evaluate_gold_set_mapping(gold_set_path: Path, graph) -> Dict[str, Any]:
     if not gold_set_path.is_file():
         raise FileNotFoundError(f"Missing Gold Set file: {gold_set_path}")
@@ -238,14 +252,20 @@ def evaluate_gold_set_mapping(gold_set_path: Path, graph) -> Dict[str, Any]:
     with gold_set_path.open('r', encoding='utf-8') as f:
         gold_records = json.load(f)
 
+    cold_start_begin = datetime.now(timezone.utc)
     b_mapper = EediJunyiMapper(graph)
     s_mapper = SemanticEmbeddingMapper(graph)
-    h_mapper = HybridConceptMapper(graph)
+    h_mapper = HybridConceptMapper(graph, baseline_mapper=b_mapper, semantic_mapper=s_mapper)
+    cold_start_seconds = (datetime.now(timezone.utc) - cold_start_begin).total_seconds()
 
     start_time = datetime.now(timezone.utc)
-    b_top1 = b_top3 = 0
-    s_top1 = s_top3 = 0
-    h_top1 = h_top3 = 0
+
+    mapped_records = [r for r in gold_records if r.get('gold_junyi_node_id') is not None]
+    unmapped_records = [r for r in gold_records if r.get('gold_junyi_node_id') is None]
+
+    b_mapped_top1 = b_mapped_top3 = b_unmapped_correct = b_exact_matches = 0
+    s_mapped_top1 = s_mapped_top3 = s_unmapped_correct = s_exact_matches = 0
+    h_mapped_top1 = h_mapped_top3 = h_unmapped_correct = h_exact_matches = 0
     invalid_ids = 0
 
     detailed_results = []
@@ -266,23 +286,53 @@ def evaluate_gold_set_mapping(gold_set_path: Path, graph) -> Dict[str, Any]:
         res_h = h_mapper.map_question(q)
 
         for res in [res_b, res_s, res_h]:
-            if res.mapped and res.junyi_concept_id not in graph.nodes:
-                invalid_ids += 1
+            suggested_ids = set()
+            if res.mapped and res.junyi_concept_id:
+                suggested_ids.add(res.junyi_concept_id)
+            if res.mapped and res.top3_junyi_ids:
+                suggested_ids.update(res.top3_junyi_ids)
+            for nid in suggested_ids:
+                if nid not in graph.nodes:
+                    invalid_ids += 1
 
-        if res_b.junyi_concept_id == gold_target:
-            b_top1 += 1
-        if res_b.junyi_concept_id in acceptable:
-            b_top3 += 1
+        # Baseline evaluation
+        if gold_target is not None:
+            if res_b.mapped and res_b.junyi_concept_id == gold_target:
+                b_mapped_top1 += 1
+            if is_top_k_hit(res_b, acceptable, k=3):
+                b_mapped_top3 += 1
+            if res_b.mapped and res_b.junyi_concept_id == gold_target:
+                b_exact_matches += 1
+        else:
+            if not res_b.mapped:
+                b_unmapped_correct += 1
+                b_exact_matches += 1
 
-        if res_s.junyi_concept_id == gold_target:
-            s_top1 += 1
-        if res_s.junyi_concept_id in acceptable or (res_s.top3_junyi_ids and any(cand in acceptable for cand in res_s.top3_junyi_ids)):
-            s_top3 += 1
+        # Semantic evaluation
+        if gold_target is not None:
+            if res_s.mapped and res_s.junyi_concept_id == gold_target:
+                s_mapped_top1 += 1
+            if is_top_k_hit(res_s, acceptable, k=3):
+                s_mapped_top3 += 1
+            if res_s.mapped and res_s.junyi_concept_id == gold_target:
+                s_exact_matches += 1
+        else:
+            if not res_s.mapped:
+                s_unmapped_correct += 1
+                s_exact_matches += 1
 
-        if res_h.junyi_concept_id == gold_target:
-            h_top1 += 1
-        if res_h.junyi_concept_id in acceptable or (res_h.top3_junyi_ids and any(cand in acceptable for cand in res_h.top3_junyi_ids)):
-            h_top3 += 1
+        # Hybrid evaluation
+        if gold_target is not None:
+            if res_h.mapped and res_h.junyi_concept_id == gold_target:
+                h_mapped_top1 += 1
+            if is_top_k_hit(res_h, acceptable, k=3):
+                h_mapped_top3 += 1
+            if res_h.mapped and res_h.junyi_concept_id == gold_target:
+                h_exact_matches += 1
+        else:
+            if not res_h.mapped:
+                h_unmapped_correct += 1
+                h_exact_matches += 1
 
         detailed_results.append({
             'construct_id': r['construct_id'],
@@ -294,7 +344,9 @@ def evaluate_gold_set_mapping(gold_set_path: Path, graph) -> Dict[str, Any]:
         })
 
     elapsed_seconds = (datetime.now(timezone.utc) - start_time).total_seconds()
-    n = len(gold_records)
+    n_total = len(gold_records)
+    n_mapped = len(mapped_records)
+    n_unmapped = len(unmapped_records)
 
     semantic_map_file = ROOT / 'eedi_junyi_semantic_map.json'
     with semantic_map_file.open('w', encoding='utf-8') as f:
@@ -302,17 +354,27 @@ def evaluate_gold_set_mapping(gold_set_path: Path, graph) -> Dict[str, Any]:
 
     return {
         'task': 'Gold Set benchmark evaluation (Baseline vs Semantic vs Hybrid)',
-        'gold_set_size': n,
-        'baseline_top1_accuracy': _rate(b_top1, n),
-        'baseline_top3_accuracy': _rate(b_top3, n),
-        'semantic_top1_accuracy': _rate(s_top1, n),
-        'semantic_top3_accuracy': _rate(s_top3, n),
-        'hybrid_top1_accuracy': _rate(h_top1, n),
-        'hybrid_top3_accuracy': _rate(h_top3, n),
+        'gold_set_size': n_total,
+        'mapped_gold_set_size': n_mapped,
+        'unmapped_gold_set_size': n_unmapped,
+        'baseline_mapping_top1_accuracy': _rate(b_mapped_top1, n_mapped),
+        'baseline_mapping_top3_accuracy': _rate(b_mapped_top3, n_mapped),
+        'baseline_unmapped_detection_accuracy': _rate(b_unmapped_correct, n_unmapped),
+        'baseline_overall_exact_match_rate': _rate(b_exact_matches, n_total),
+        'semantic_mapping_top1_accuracy': _rate(s_mapped_top1, n_mapped),
+        'semantic_mapping_top3_accuracy': _rate(s_mapped_top3, n_mapped),
+        'semantic_unmapped_detection_accuracy': _rate(s_unmapped_correct, n_unmapped),
+        'semantic_overall_exact_match_rate': _rate(s_exact_matches, n_total),
+        'hybrid_mapping_top1_accuracy': _rate(h_mapped_top1, n_mapped),
+        'hybrid_mapping_top3_accuracy': _rate(h_mapped_top3, n_mapped),
+        'hybrid_unmapped_detection_accuracy': _rate(h_unmapped_correct, n_unmapped),
+        'hybrid_overall_exact_match_rate': _rate(h_exact_matches, n_total),
         'invalid_junyi_ids': invalid_ids,
+        'cold_start_latency_seconds': round(cold_start_seconds, 4),
         'latency_seconds': round(elapsed_seconds, 4),
         'semantic_map_saved_to': str(semantic_map_file)
     }
+
 
 
 
@@ -564,12 +626,13 @@ def format_report(report: Dict[str, Any]) -> str:
         f"  Sai không nhãn — dùng fallback, không bịa ID: {pct(d['unlabeled_uses_fallback_rate'])}",
         '',
         '[Ánh xạ Eedi → Junyi — Benchmark Gold Set & Semantic Mapper]',
-        f"  Số lượng sample Gold Set: {g.get('gold_set_size', 'n/a')}",
-        f"  Baseline (Lexicon)  — Top-1 Acc: {pct(g.get('baseline_top1_accuracy'))} | Top-3 Acc: {pct(g.get('baseline_top3_accuracy'))}",
-        f"  Semantic Embedding  — Top-1 Acc: {pct(g.get('semantic_top1_accuracy'))} | Top-3 Acc: {pct(g.get('semantic_top3_accuracy'))}",
-        f"  Hybrid Mapper       — Top-1 Acc: {pct(g.get('hybrid_top1_accuracy'))} | Top-3 Acc: {pct(g.get('hybrid_top3_accuracy'))}",
+        f"  Số lượng sample Gold Set: {g.get('gold_set_size', 'n/a')} (Mapped: {g.get('mapped_gold_set_size', 'n/a')}, Unmapped: {g.get('unmapped_gold_set_size', 'n/a')})",
+        f"  Baseline (Lexicon)  — Mapped Top-1 Acc: {pct(g.get('baseline_mapping_top1_accuracy'))} | Top-3 Acc: {pct(g.get('baseline_mapping_top3_accuracy'))} | Unmapped Acc: {pct(g.get('baseline_unmapped_detection_accuracy'))}",
+        f"  Semantic Embedding  — Mapped Top-1 Acc: {pct(g.get('semantic_mapping_top1_accuracy'))} | Top-3 Acc: {pct(g.get('semantic_mapping_top3_accuracy'))} | Unmapped Acc: {pct(g.get('semantic_unmapped_detection_accuracy'))}",
+        f"  Hybrid Mapper       — Mapped Top-1 Acc: {pct(g.get('hybrid_mapping_top1_accuracy'))} | Top-3 Acc: {pct(g.get('hybrid_mapping_top3_accuracy'))} | Unmapped Acc: {pct(g.get('hybrid_unmapped_detection_accuracy'))}",
+        f"  Overall Exact Match — Baseline: {pct(g.get('baseline_overall_exact_match_rate'))} | Semantic: {pct(g.get('semantic_overall_exact_match_rate'))} | Hybrid: {pct(g.get('hybrid_overall_exact_match_rate'))}",
         f"  ID Junyi không tồn tại (Hallucination penalty): {g.get('invalid_junyi_ids', 0)}",
-        f"  Thời gian thực thi Mapping Gold Set: {g.get('latency_seconds', 'n/a')}s",
+        f"  Thời gian thực thi Mapping Gold Set (Warm cache): {g.get('latency_seconds', 'n/a')}s",
         '',
         '[Knowledge Graph Agent — Junyi]',
         f"  Mapped có tiên quyết chưa đạt: {pct(k['mapped_with_unmastered_prerequisites_rate'])}",
