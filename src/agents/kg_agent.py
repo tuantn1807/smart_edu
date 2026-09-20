@@ -26,7 +26,7 @@ class KGAgent(BaseAgent):
         mapping = input_data.get("mapping") or {}
         learner_state: LearnerState = context.get("learner_state")
         mapping_available = bool(mapping.get("mapped")) or (
-            not mapping and target_concept_id in self.knowledge_graph.nodes
+            target_concept_id in self.knowledge_graph.nodes
         )
 
         print(self.format_log(f"Đang truy vết cây phụ thuộc kiến thức Junyi cho '{target_concept_id}'..."))
@@ -56,10 +56,11 @@ class KGAgent(BaseAgent):
             empty["analysis_summary"] = "Dataset chưa có quan hệ tiên quyết; không thể đánh giá lỗ hổng nền tảng."
             return empty
 
+        threshold = input_data.get("threshold") or context.get("threshold") or 0.6
         unmastered_prereqs: List[ConceptNode] = self.knowledge_graph.find_unmastered_prerequisites(
             target_concept_id=target_concept_id,
             mastery_levels=mastery_levels,
-            threshold=0.6
+            threshold=threshold
         )
         all_ancestors = self.knowledge_graph.get_all_ancestors(target_concept_id)
         return {

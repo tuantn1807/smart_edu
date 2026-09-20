@@ -384,6 +384,8 @@ def evaluate_knowledge_graph(questions: List[Dict[str, Any]], mapper: EediJunyiM
     mapped_with_prereq = mapped_empty = unmapped_clean = 0
     mapped = 0
     unmapped = 0
+    dynamic_prop_tested = 0
+    dynamic_prop_ok = 0
     ancestor_counts: List[float] = []
     with _silence():
         for index, question in enumerate(questions):
@@ -397,9 +399,22 @@ def evaluate_knowledge_graph(questions: List[Dict[str, Any]], mapper: EediJunyiM
             if mapping.mapped:
                 mapped += 1
                 ancestor_counts.append(float(result['all_prerequisites_count']))
-                if result['mapping_available'] and result['unmastered_prerequisites']:
+                unmastered = result.get('unmastered_prerequisites', [])
+                if result['mapping_available'] and unmastered:
                     mapped_with_prereq += 1
-                elif result['mapping_available'] and not result['unmastered_prerequisites']:
+                    # Dynamic propagation verification:
+                    # Update mastery of the first unmastered prerequisite to 0.8 (mastered >= 0.6)
+                    first_prereq_id = unmastered[0]['concept_id']
+                    state.set_concept_mastery(first_prereq_id, 0.8)
+                    result_step2 = agent.process(
+                        {'target_concept_id': target, 'mapping': mapping.to_dict()},
+                        {'learner_state': state},
+                    )
+                    unmastered_step2 = result_step2.get('unmastered_prerequisites', [])
+                    dynamic_prop_tested += 1
+                    if len(unmastered_step2) == len(unmastered) - 1:
+                        dynamic_prop_ok += 1
+                elif result['mapping_available'] and not unmastered:
                     mapped_empty += 1
             else:
                 unmapped += 1
@@ -420,6 +435,9 @@ def evaluate_knowledge_graph(questions: List[Dict[str, Any]], mapper: EediJunyiM
         'unmapped_questions': unmapped,
         'unmapped_no_invented_prerequisites': unmapped_clean,
         'unmapped_no_invented_prerequisites_rate': _rate(unmapped_clean, unmapped),
+        'dynamic_mastery_propagation_tested': dynamic_prop_tested,
+        'dynamic_mastery_propagation_ok': dynamic_prop_ok,
+        'dynamic_mastery_propagation_rate': _rate(dynamic_prop_ok, dynamic_prop_tested),
     }
 
 
@@ -638,6 +656,7 @@ def format_report(report: Dict[str, Any]) -> str:
         f"  Mapped có tiên quyết chưa đạt: {pct(k['mapped_with_unmastered_prerequisites_rate'])}",
         f"  Số ancestor trung bình (mapped): {k['mean_ancestor_count_mapped']}",
         f"  Unmapped không bịa cạnh tiên quyết: {pct(k['unmapped_no_invented_prerequisites_rate'])}",
+        f"  Lan truyền năng lực động (Dynamic Mastery Propagation Rate): {pct(k.get('dynamic_mastery_propagation_rate'))}",
         '',
         '[Planner + Tutor — Lộ trình ZPD & Interactive Scaffolding]',
         f"  Mapped + sai có nhãn → lộ trình 3 pha: {pct(p['mapped_wrong_with_3_phase_path_rate'])}",
