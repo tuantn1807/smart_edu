@@ -23,19 +23,21 @@ class PAAFFramework:
         self.planner_agent = PlannerAgent()
         self.tutor_agent = TutorAgent()
 
-    def run_full_pipeline(self, student_id: str, student_name: str, diagnostic_question: Dict[str, Any], selected_option: str) -> Dict[str, Any]:
+    def run_full_pipeline(self, student_id: str, student_name: str, diagnostic_question: Dict[str, Any], selected_option: str, learner_state: Optional[LearnerState] = None) -> Dict[str, Any]:
         """
         Executes end-to-end PAAF multi-agent pipeline:
-        1. Initialize Centralized Learner State
+        1. Initialize / Load Centralized Learner State
         2. Diagnostic Agent -> CoT Misconception Diagnosis
-        3. Knowledge Graph Agent -> Prerequisite Gap Traversal
-        4. Planner Agent -> ZPD Personalized Learning Path
-        5. Returns structured state and remediation package.
+        3. Real-time Session Mastery Update & Propagation on Knowledge Graph
+        4. Knowledge Graph Agent -> Prerequisite Gap Traversal
+        5. Planner Agent -> ZPD Personalized Learning Path
+        6. Returns structured state and remediation package.
         """
         print("\n=== [PAAF FRAMEWORK] KHỞI ĐỘNG TIẾN TRÌNH MULTI-AGENT PIPELINE ===")
 
         # Step 1: Initialize / Load Learner State
-        learner_state = LearnerState(student_id=student_id, student_name=student_name)
+        if learner_state is None:
+            learner_state = LearnerState(student_id=student_id, student_name=student_name)
         context = {"learner_state": learner_state}
 
         # Step 2: Diagnostic Agent Execution
@@ -45,10 +47,20 @@ class PAAFFramework:
         }
         diagnosis_result = self.diagnostic_agent.process(diag_input, context)
 
-        # Step 3: Knowledge Graph Agent Execution on the Junyi node, if mapped
+        # Step 3: Dynamic Real-time Mastery Update & Propagation
         mapping = self.concept_mapper.map_question(diagnostic_question)
         eedi_concept_id = diagnostic_question.get("concept_id", "UNKNOWN")
         target_concept_id = mapping.junyi_concept_id if mapping.mapped else eedi_concept_id
+
+        is_correct = diagnosis_result.get("is_correct", False)
+        learner_state.update_mastery(target_concept_id, is_correct=is_correct)
+        if eedi_concept_id != target_concept_id:
+            learner_state.update_mastery(eedi_concept_id, is_correct=is_correct)
+
+        if not is_correct and mapping.mapped:
+            learner_state.propagate_mastery_loss(target_concept_id, self.knowledge_graph)
+
+        # Step 4: Knowledge Graph Agent Execution on the Junyi node, if mapped
         kg_input = {
             "target_concept_id": target_concept_id,
             "mapping": mapping.to_dict(),
