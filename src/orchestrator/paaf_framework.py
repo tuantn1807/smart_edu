@@ -8,6 +8,7 @@ from typing import Dict, Any, Optional
 from src.core.learner_state import LearnerState
 from src.core.knowledge_graph import KnowledgeGraph
 from src.data.concept_mapping import EediJunyiMapper
+from src.data.learner_repository import LearnerStateRepository
 from src.agents.diagnostic_agent import DiagnosticAgent
 from src.agents.kg_agent import KGAgent
 from src.agents.planner_agent import PlannerAgent
@@ -15,10 +16,18 @@ from src.agents.tutor_agent import TutorAgent
 
 
 class PAAFFramework:
-    def __init__(self, knowledge_graph: KnowledgeGraph, concept_mapper: Optional[EediJunyiMapper] = None, item_repository: Optional[Any] = None):
+    def __init__(
+        self,
+        knowledge_graph: KnowledgeGraph,
+        concept_mapper: Optional[EediJunyiMapper] = None,
+        item_repository: Optional[Any] = None,
+        learner_repository: Optional[LearnerStateRepository] = None,
+        db_path: Optional[str] = None
+    ):
         self.knowledge_graph = knowledge_graph
         self.concept_mapper = concept_mapper or EediJunyiMapper(knowledge_graph)
         self.item_repository = item_repository
+        self.learner_repository = learner_repository or LearnerStateRepository(db_path=db_path)
         self.diagnostic_agent = DiagnosticAgent()
         self.kg_agent = KGAgent(knowledge_graph=self.knowledge_graph)
         self.planner_agent = PlannerAgent(item_repository=self.item_repository)
@@ -27,18 +36,23 @@ class PAAFFramework:
     def run_full_pipeline(self, student_id: str, student_name: str, diagnostic_question: Dict[str, Any], selected_option: str, learner_state: Optional[LearnerState] = None) -> Dict[str, Any]:
         """
         Executes end-to-end PAAF multi-agent pipeline:
-        1. Initialize / Load Centralized Learner State
+        1. Initialize / Load Centralized Learner State from SQLite database
         2. Diagnostic Agent -> CoT Misconception Diagnosis
         3. Real-time Session Mastery Update & Propagation on Knowledge Graph
         4. Knowledge Graph Agent -> Prerequisite Gap Traversal
         5. Planner Agent -> ZPD Personalized Learning Path with real Eedi items
-        6. Returns structured state and remediation package.
+        6. Persists updated LearnerState to SQLite database and returns result.
         """
         print("\n=== [PAAF FRAMEWORK] KHỞI ĐỘNG TIẾN TRÌNH MULTI-AGENT PIPELINE ===")
 
         # Step 1: Initialize / Load Learner State
         if learner_state is None:
-            learner_state = LearnerState(student_id=student_id, student_name=student_name)
+            learner_state = self.learner_repository.load_learner_state(student_id)
+            if learner_state is None:
+                learner_state = LearnerState(student_id=student_id, student_name=student_name)
+            elif student_name and student_name != "Học sinh":
+                learner_state.student_name = student_name
+
         context = {
             "learner_state": learner_state,
             "item_repository": self.item_repository
@@ -79,6 +93,10 @@ class PAAFFramework:
         }
         planner_result = self.planner_agent.process(planner_input, context)
 
+        # Persist state to SQLite database
+        if self.learner_repository and learner_state:
+            self.learner_repository.save_learner_state(learner_state)
+
         print("=== [PAAF FRAMEWORK] HOÀN THÀNH MULTI-AGENT PIPELINE ===\n")
 
         return {
@@ -101,4 +119,10 @@ class PAAFFramework:
         }
 
         tutor_result = self.tutor_agent.process(tutor_input, context)
+
+        # Persist updated learner_state after tutor interaction
+        if self.learner_repository and learner_state:
+            self.learner_repository.save_learner_state(learner_state)
+
         return tutor_result
+

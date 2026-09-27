@@ -140,7 +140,9 @@ class LearnerState:
                 {
                     "concept_id": m.concept_id,
                     "name": m.misconception_name,
+                    "misconception_name": m.misconception_name,
                     "description": m.description,
+                    "detected_at": m.detected_at,
                     "severity": m.severity,
                     "resolved": m.resolved
                 } for m in self.misconceptions
@@ -157,5 +159,52 @@ class LearnerState:
                     "question_details": s.question_details
                 } for s in self.active_learning_path
             ],
-            "history_count": len(self.interaction_history)
+            "history_count": len(self.interaction_history),
+            "interaction_history": self.interaction_history,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
         }
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "LearnerState":
+        """Reconstruct a LearnerState instance from a dictionary."""
+        state = cls(
+            student_id=data["student_id"],
+            student_name=data.get("student_name", "Học sinh")
+        )
+        state.mastery_levels = dict(data.get("mastery_levels", {}))
+        state.consecutive_correct = data.get("consecutive_correct", 0)
+        state.consecutive_incorrect = data.get("consecutive_incorrect", 0)
+        state.answered_questions = list(data.get("answered_questions", []))
+        state.created_at = data.get("created_at", datetime.datetime.now().isoformat())
+        state.updated_at = data.get("updated_at", datetime.datetime.now().isoformat())
+
+        state.misconceptions = []
+        for m in data.get("misconceptions", []):
+            rec = MisconceptionRecord(
+                concept_id=m.get("concept_id", ""),
+                misconception_name=m.get("misconception_name") or m.get("name", ""),
+                description=m.get("description", ""),
+                detected_at=m.get("detected_at", datetime.datetime.now().isoformat()),
+                severity=m.get("severity", "medium"),
+                resolved=m.get("resolved", False)
+            )
+            state.misconceptions.append(rec)
+
+        state.active_learning_path = []
+        for s in data.get("active_learning_path", []):
+            step = LearningPathStep(
+                step_id=s.get("step_id", 0),
+                concept_id=s.get("concept_id", ""),
+                concept_name=s.get("concept_name", ""),
+                action_type=s.get("action_type", ""),
+                description=s.get("description", ""),
+                status=s.get("status", "pending"),
+                question_id=s.get("question_id"),
+                question_details=s.get("question_details")
+            )
+            state.active_learning_path.append(step)
+
+        state.interaction_history = list(data.get("interaction_history", []))
+        return state
+
