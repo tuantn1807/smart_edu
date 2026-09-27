@@ -23,9 +23,11 @@ class LearningPathStep:
     step_id: int
     concept_id: str
     concept_name: str
-    action_type: 'str'  # 'review_prerequisite', 'learn_concept', 'practice_exercise', 'advanced_challenge'
+    action_type: str  # 'review_prerequisite', 'learn_concept', 'practice_exercise', 'advanced_challenge', 'remediate_misconception'
     description: str
     status: str = 'pending'  # 'pending', 'in_progress', 'completed'
+    question_id: Optional[str] = None
+    question_details: Optional[Dict[str, Any]] = None
 
 
 class LearnerState:
@@ -36,7 +38,23 @@ class LearnerState:
         self.misconceptions: List[MisconceptionRecord] = []
         self.active_learning_path: List[LearningPathStep] = []
         self.interaction_history: List[Dict[str, Any]] = []
+        self.consecutive_correct: int = 0
+        self.consecutive_incorrect: int = 0
+        self.answered_questions: List[str] = []
         self.created_at = datetime.datetime.now().isoformat()
+        self.updated_at = datetime.datetime.now().isoformat()
+
+    def record_question_result(self, question_id: Optional[str], is_correct: bool):
+        """Record outcome of answering a question and update consecutive streaks."""
+        if question_id and question_id not in self.answered_questions:
+            self.answered_questions.append(question_id)
+
+        if is_correct:
+            self.consecutive_correct += 1
+            self.consecutive_incorrect = 0
+        else:
+            self.consecutive_incorrect += 1
+            self.consecutive_correct = 0
         self.updated_at = datetime.datetime.now().isoformat()
 
     def set_concept_mastery(self, concept_id: str, score: float):
@@ -115,6 +133,9 @@ class LearnerState:
             "student_id": self.student_id,
             "student_name": self.student_name,
             "mastery_levels": self.mastery_levels,
+            "consecutive_correct": self.consecutive_correct,
+            "consecutive_incorrect": self.consecutive_incorrect,
+            "answered_questions": list(self.answered_questions),
             "misconceptions": [
                 {
                     "concept_id": m.concept_id,
@@ -131,7 +152,9 @@ class LearnerState:
                     "concept_name": s.concept_name,
                     "action_type": s.action_type,
                     "description": s.description,
-                    "status": s.status
+                    "status": s.status,
+                    "question_id": s.question_id,
+                    "question_details": s.question_details
                 } for s in self.active_learning_path
             ],
             "history_count": len(self.interaction_history)
