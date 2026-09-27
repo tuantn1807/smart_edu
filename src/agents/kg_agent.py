@@ -56,7 +56,11 @@ class KGAgent(BaseAgent):
             empty["analysis_summary"] = "Dataset chưa có quan hệ tiên quyết; không thể đánh giá lỗ hổng nền tảng."
             return empty
 
-        threshold = input_data.get("threshold") or context.get("threshold") or 0.6
+        threshold = input_data.get("threshold")
+        if threshold is None:
+            threshold = context.get("threshold")
+        if threshold is None:
+            threshold = 0.6
         unmastered_prereqs: List[ConceptNode] = self.knowledge_graph.find_unmastered_prerequisites(
             target_concept_id=target_concept_id,
             mastery_levels=mastery_levels,

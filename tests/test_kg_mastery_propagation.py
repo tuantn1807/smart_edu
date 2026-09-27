@@ -35,14 +35,14 @@ class TestKGMasteryPropagation(unittest.TestCase):
         self.assertAlmostEqual(score, 0.0)
 
         # Set initial mastery for ancestors
-        state.set_concept_mastery("node_A", 0.8)
-        state.set_concept_mastery("node_B", 0.5)
+        state.set_concept_mastery("node_A", 0.8)  # mastered (>= 0.6)
+        state.set_concept_mastery("node_B", 0.5)  # direct prereq (< 0.6)
 
         # Propagate loss from node_C
         updated = state.propagate_mastery_loss("node_C", self.kg, attenuation=0.1)
-        self.assertIn("node_A", updated)
+        self.assertNotIn("node_A", updated)
         self.assertIn("node_B", updated)
-        self.assertAlmostEqual(state.get_concept_mastery("node_A"), 0.7)
+        self.assertAlmostEqual(state.get_concept_mastery("node_A"), 0.8)
         self.assertAlmostEqual(state.get_concept_mastery("node_B"), 0.4)
 
     def test_dynamic_kg_agent_traversal(self):
@@ -92,14 +92,36 @@ class TestKGMasteryPropagation(unittest.TestCase):
             "correct_option": "A"
         }
 
-        # Session 1: Trả lời sai
         state = LearnerState("S004", "Học sinh D")
+        state.set_concept_mastery("node_A", 0.8)  # mastered (>= 0.6)
+        state.set_concept_mastery("node_B", 0.5)  # direct prereq (< 0.6)
+        state.set_concept_mastery("node_C", 0.2)
+
+        # Turn 1: Trả lời sai node_C
         res1 = framework.run_full_pipeline("S004", "Học sinh D", question, selected_option="B", learner_state=state)
         kg_res1 = res1["kg_analysis"]
         self.assertTrue(kg_res1["prerequisites_available"])
-        self.assertGreater(len(kg_res1["unmastered_prerequisites"]), 0)
         self.assertIn("graph_kind", kg_res1)
         self.assertIn("graph_source", kg_res1)
+
+        # Target concept node_C (0.2 - 0.3) -> 0.0
+        self.assertAlmostEqual(state.get_concept_mastery("node_C"), 0.0)
+        # Direct prerequisite node_B (0.5 - 0.1) -> 0.4
+        self.assertAlmostEqual(state.get_concept_mastery("node_B"), 0.4)
+        # Grandparent node_A (0.8) remains unchanged
+        self.assertAlmostEqual(state.get_concept_mastery("node_A"), 0.8)
+
+        # Multi-turn correct: 3 correct answers (+0.2 each turn) -> 0.6
+        for _ in range(3):
+            framework.run_full_pipeline("S004", "Học sinh D", question, selected_option="A", learner_state=state)
+
+        self.assertAlmostEqual(state.get_concept_mastery("node_C"), 0.6)
+
+        # Further correct answers cap mastery at 1.0
+        for _ in range(3):
+            framework.run_full_pipeline("S004", "Học sinh D", question, selected_option="A", learner_state=state)
+
+        self.assertAlmostEqual(state.get_concept_mastery("node_C"), 1.0)
 
 
 if __name__ == "__main__":

@@ -58,20 +58,25 @@ class LearnerState:
         self.set_concept_mastery(concept_id, new_score)
         return new_score
 
-    def propagate_mastery_loss(self, target_concept_id: str, knowledge_graph: Any, attenuation: float = 0.1) -> List[str]:
+    def propagate_mastery_loss(self, target_concept_id: str, knowledge_graph: Any, attenuation: float = 0.1, threshold: float = 0.6) -> List[str]:
         """
-        Propagate mastery reduction (-attenuation) upstream to prerequisite ancestors
-        when student makes a mistake on target_concept_id.
+        Propagate mastery reduction (-attenuation) to direct prerequisites
+        that are not yet mastered (mastery < threshold) when student makes a mistake on target_concept_id.
         """
-        if not hasattr(knowledge_graph, "get_all_ancestors"):
+        if hasattr(knowledge_graph, "get_direct_prerequisites"):
+            direct_prereqs = knowledge_graph.get_direct_prerequisites(target_concept_id)
+        elif hasattr(knowledge_graph, "get_all_ancestors"):
+            direct_prereqs = knowledge_graph.get_all_ancestors(target_concept_id)
+        else:
             return []
-        ancestors = knowledge_graph.get_all_ancestors(target_concept_id)
+
         updated_prereqs = []
-        for prereq_id in ancestors:
+        for prereq_id in direct_prereqs:
             current = self.get_concept_mastery(prereq_id)
-            new_score = max(0.0, current - attenuation)
-            self.set_concept_mastery(prereq_id, new_score)
-            updated_prereqs.append(prereq_id)
+            if current < threshold:
+                new_score = max(0.0, current - attenuation)
+                self.set_concept_mastery(prereq_id, new_score)
+                updated_prereqs.append(prereq_id)
         return updated_prereqs
 
     def add_misconception(self, concept_id: str, misconception_name: str, description: str, severity: str = 'medium'):

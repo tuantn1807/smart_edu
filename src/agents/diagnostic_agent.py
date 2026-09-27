@@ -47,18 +47,14 @@ class DiagnosticAgent(BaseAgent):
 
         if is_correct:
             current_mastery = learner_state.get_concept_mastery(concept_id) if learner_state else 0.0
-            new_mastery = min(1.0, current_mastery + 0.25)
-            if learner_state:
-                learner_state.set_concept_mastery(concept_id, new_mastery)
-
-            reasoning_cot = f"Học sinh đã chọn đáp án chính xác '{selected_option}'. Năng lực khái niệm '{concept_name}' tăng lên {new_mastery:.2f}."
+            reasoning_cot = f"Học sinh đã chọn đáp án chính xác '{selected_option}'."
             diagnosis_result = {
                 "is_correct": True,
                 "concept_id": concept_id,
                 "concept_name": concept_name,
                 "detected_misconception": None,
                 "misconception_id": "unlabeled",
-                "mastery_score": new_mastery,
+                "mastery_score": current_mastery,
                 "cot_explanation": reasoning_cot,
                 "confidence_score": 1.0,
                 "is_valid_parse": None,

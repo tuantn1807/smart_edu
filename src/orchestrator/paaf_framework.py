@@ -54,10 +54,8 @@ class PAAFFramework:
 
         is_correct = diagnosis_result.get("is_correct", False)
         learner_state.update_mastery(target_concept_id, is_correct=is_correct)
-        if eedi_concept_id != target_concept_id:
-            learner_state.update_mastery(eedi_concept_id, is_correct=is_correct)
 
-        if not is_correct and mapping.mapped:
+        if not is_correct and (mapping.mapped or target_concept_id in self.knowledge_graph.nodes):
             learner_state.propagate_mastery_loss(target_concept_id, self.knowledge_graph)
 
         # Step 4: Knowledge Graph Agent Execution on the Junyi node, if mapped
