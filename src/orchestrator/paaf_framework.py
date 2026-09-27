@@ -15,12 +15,13 @@ from src.agents.tutor_agent import TutorAgent
 
 
 class PAAFFramework:
-    def __init__(self, knowledge_graph: KnowledgeGraph, concept_mapper: Optional[EediJunyiMapper] = None):
+    def __init__(self, knowledge_graph: KnowledgeGraph, concept_mapper: Optional[EediJunyiMapper] = None, item_repository: Optional[Any] = None):
         self.knowledge_graph = knowledge_graph
         self.concept_mapper = concept_mapper or EediJunyiMapper(knowledge_graph)
+        self.item_repository = item_repository
         self.diagnostic_agent = DiagnosticAgent()
         self.kg_agent = KGAgent(knowledge_graph=self.knowledge_graph)
-        self.planner_agent = PlannerAgent()
+        self.planner_agent = PlannerAgent(item_repository=self.item_repository)
         self.tutor_agent = TutorAgent()
 
     def run_full_pipeline(self, student_id: str, student_name: str, diagnostic_question: Dict[str, Any], selected_option: str, learner_state: Optional[LearnerState] = None) -> Dict[str, Any]:
@@ -30,7 +31,7 @@ class PAAFFramework:
         2. Diagnostic Agent -> CoT Misconception Diagnosis
         3. Real-time Session Mastery Update & Propagation on Knowledge Graph
         4. Knowledge Graph Agent -> Prerequisite Gap Traversal
-        5. Planner Agent -> ZPD Personalized Learning Path
+        5. Planner Agent -> ZPD Personalized Learning Path with real Eedi items
         6. Returns structured state and remediation package.
         """
         print("\n=== [PAAF FRAMEWORK] KHỞI ĐỘNG TIẾN TRÌNH MULTI-AGENT PIPELINE ===")
@@ -38,7 +39,10 @@ class PAAFFramework:
         # Step 1: Initialize / Load Learner State
         if learner_state is None:
             learner_state = LearnerState(student_id=student_id, student_name=student_name)
-        context = {"learner_state": learner_state}
+        context = {
+            "learner_state": learner_state,
+            "item_repository": self.item_repository
+        }
 
         # Step 2: Diagnostic Agent Execution
         diag_input = {
@@ -53,6 +57,8 @@ class PAAFFramework:
         target_concept_id = mapping.junyi_concept_id if mapping.mapped else eedi_concept_id
 
         is_correct = diagnosis_result.get("is_correct", False)
+        question_id = diagnostic_question.get("question_id")
+        learner_state.record_question_result(question_id, is_correct=is_correct)
         learner_state.update_mastery(target_concept_id, is_correct=is_correct)
 
         if not is_correct and (mapping.mapped or target_concept_id in self.knowledge_graph.nodes):
@@ -65,7 +71,7 @@ class PAAFFramework:
         }
         kg_result = self.kg_agent.process(kg_input, context)
 
-        # Step 4: Planner Agent Execution
+        # Step 5: Planner Agent Execution (ZPD Path & Item Selection)
         planner_input = {
             "target_concept_id": eedi_concept_id,
             "kg_analysis": kg_result,
