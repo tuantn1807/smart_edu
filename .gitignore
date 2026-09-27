@@ -59,6 +59,7 @@ data/downloads/
 *.tar
 *.gz
 *.7z
+*.db
 
 # Exception: keep data documentation, manifest, and synthetic test fixtures
 !data/README.md
