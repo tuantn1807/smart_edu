@@ -48,6 +48,37 @@ class LearnerState:
         """Get mastery score for a concept, default to 0.0 if unassessed."""
         return self.mastery_levels.get(concept_id, 0.0)
 
+    def update_mastery(self, concept_id: str, is_correct: bool, delta_correct: float = 0.2, delta_incorrect: float = 0.3) -> float:
+        """Update mastery score for concept_id based on answer correctness."""
+        current = self.get_concept_mastery(concept_id)
+        if is_correct:
+            new_score = min(1.0, current + delta_correct)
+        else:
+            new_score = max(0.0, current - delta_incorrect)
+        self.set_concept_mastery(concept_id, new_score)
+        return new_score
+
+    def propagate_mastery_loss(self, target_concept_id: str, knowledge_graph: Any, attenuation: float = 0.1, threshold: float = 0.6) -> List[str]:
+        """
+        Propagate mastery reduction (-attenuation) to direct prerequisites
+        that are not yet mastered (mastery < threshold) when student makes a mistake on target_concept_id.
+        """
+        if hasattr(knowledge_graph, "get_direct_prerequisites"):
+            direct_prereqs = knowledge_graph.get_direct_prerequisites(target_concept_id)
+        elif hasattr(knowledge_graph, "get_all_ancestors"):
+            direct_prereqs = knowledge_graph.get_all_ancestors(target_concept_id)
+        else:
+            return []
+
+        updated_prereqs = []
+        for prereq_id in direct_prereqs:
+            current = self.get_concept_mastery(prereq_id)
+            if current < threshold:
+                new_score = max(0.0, current - attenuation)
+                self.set_concept_mastery(prereq_id, new_score)
+                updated_prereqs.append(prereq_id)
+        return updated_prereqs
+
     def add_misconception(self, concept_id: str, misconception_name: str, description: str, severity: str = 'medium'):
         """Record a detected knowledge gap / misconception."""
         record = MisconceptionRecord(
@@ -58,7 +89,7 @@ class LearnerState:
             severity=severity
         )
         self.misconceptions.append(record)
-        self.set_concept_mastery(concept_id, max(0.0, self.get_concept_mastery(concept_id) - 0.3))
+        self.update_mastery(concept_id, is_correct=False, delta_incorrect=0.3)
         self.updated_at = datetime.datetime.now().isoformat()
 
     def set_learning_path(self, steps: List[LearningPathStep]):

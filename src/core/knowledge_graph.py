@@ -50,6 +50,12 @@ class KnowledgeGraph:
         if concept_id in self.nodes and prerequisite_id in self.nodes:
             self.nodes[concept_id].prerequisites.add(prerequisite_id)
 
+    def get_direct_prerequisites(self, concept_id: str) -> Set[str]:
+        """Find direct prerequisite concept_ids required for concept_id."""
+        if concept_id not in self.nodes:
+            return set()
+        return set(self.nodes[concept_id].prerequisites)
+
     def get_all_ancestors(self, concept_id: str) -> Set[str]:
         """Recursively find all prerequisite concepts required for concept_id."""
         ancestors: Set[str] = set()
