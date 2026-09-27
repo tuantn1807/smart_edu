@@ -14,8 +14,10 @@ class LearnerStateRepository:
     def __init__(self, db_path: Optional[str] = None):
         if db_path is None:
             db_path = "data/learner_state.db"
-        self.db_path = db_path
+        self.set_db_path(db_path)
 
+    def set_db_path(self, db_path: str):
+        self.db_path = db_path
         if self.db_path != ":memory:":
             abs_path = os.path.abspath(self.db_path)
             dir_name = os.path.dirname(abs_path)
@@ -24,7 +26,6 @@ class LearnerStateRepository:
             self._conn = None
         else:
             self._conn = sqlite3.connect(":memory:")
-
         self._init_db()
 
     def _get_connection(self) -> sqlite3.Connection:
