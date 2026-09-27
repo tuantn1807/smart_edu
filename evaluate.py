@@ -24,9 +24,17 @@ from src.agents.tutor_engine import compute_specificity_score
 from src.core.learner_state import LearnerState
 from src.data.concept_mapping import EediJunyiMapper, SemanticEmbeddingMapper, HybridConceptMapper
 from src.data.dataset_loaders import EediDatasetLoader, JunyiGraphLoader
+from src.eval.benchmark_suite import (
+    run_ablation_study,
+    export_benchmark_artifacts,
+    generate_markdown_table,
+    generate_latex_table,
+)
+
 
 ROOT = Path(__file__).resolve().parent
-DEFAULT_OUTPUT = ROOT / 'eval' / 'results.json'
+DEFAULT_OUTPUT = ROOT / 'eval' / 'results' / 'results.json'
+
 
 
 def _rate(numerator: int, denominator: int) -> Optional[float]:
@@ -589,6 +597,8 @@ def evaluate_all() -> Dict[str, Any]:
     mapper = EediJunyiMapper(graph)
     gold_set_file = ROOT / 'data' / 'gold_concept_mapping.json'
 
+    ablation_study = run_ablation_study(questions, graph, mapper)
+
     report = {
         'generated_at': datetime.now(timezone.utc).isoformat(),
         'datasets': {
@@ -604,6 +614,7 @@ def evaluate_all() -> Dict[str, Any]:
         'gold_set_eval': evaluate_gold_set_mapping(gold_set_file, graph) if gold_set_file.is_file() else {},
         'knowledge_graph': evaluate_knowledge_graph(questions, mapper, graph),
         'planner_tutor': evaluate_planner_and_tutor(questions, mapper, graph),
+        'ablation_study': ablation_study,
         'limitations': [
             'Diagnostic metrics measure rubric lookup against Eedi labels, not LLM CoT quality.',
             'Junyi Info_Content edges are content hierarchy, not expert prerequisite annotations.',
@@ -666,9 +677,15 @@ def format_report(report: Dict[str, Any]) -> str:
         f"  Tutor duy trì đúng ngữ cảnh 3 lượt liên tiếp (Context Retention): {pct(p.get('tutor_context_retention_rate'))}",
         f"  Tutor bảo vệ đáp án đúng (Answer Protection Rate): {pct(p['tutor_omits_correct_option_text_rate'])}",
         f"  Tutor tỷ lệ rò rỉ đáp án đúng (Leakage Rate ≤ 1.3%): {pct(p.get('tutor_answer_leakage_rate'))}",
-        '',
-        'Giới hạn:',
     ]
+
+    if 'ablation_study' in report:
+        lines.append('')
+        lines.append('[Scientific Benchmark & Ablation Study Summary]')
+        lines.append(generate_markdown_table(report['ablation_study']))
+
+    lines.append('')
+    lines.append('Giới hạn:')
     lines.extend(f'  - {item}' for item in report['limitations'])
     return '\n'.join(lines) + '\n'
 
@@ -676,6 +693,8 @@ def format_report(report: Dict[str, Any]) -> str:
 def write_report(report: Dict[str, Any], output: Path) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    if 'ablation_study' in report:
+        export_benchmark_artifacts(report['ablation_study'], output.parent)
 
 
 def main(argv: Optional[List[str]] = None) -> int:
@@ -685,8 +704,9 @@ def main(argv: Optional[List[str]] = None) -> int:
     report = evaluate_all()
     write_report(report, args.output)
     print(format_report(report))
-    print(f'Đã ghi {args.output}')
+    print(f'Đã ghi kết quả benchmark và ablation vào {args.output.parent}')
     return 0
+
 
 
 if __name__ == '__main__':
