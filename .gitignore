@@ -48,6 +48,7 @@ abc.text
 # Data & Datasets (local raw & processed data)
 data/raw/
 data/junyi/
+data/cache/
 data/processed/
 data/downloads/
 *.csv

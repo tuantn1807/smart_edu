@@ -20,6 +20,88 @@ class DiagnosticAgent(BaseAgent):
         )
         self.cot_engine = cot_engine or LocalCoTDiagnosticEngine()
 
+    @staticmethod
+    def build_misconception_badge(
+        question_id: str,
+        selected_option: str,
+        misconception_id: str,
+        misconception_name: str,
+        description: str,
+        severity: str = "unknown",
+        confidence_score: float = 1.0,
+        cot_summary: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """Creates a standardized Misconception Badge schema dictionary."""
+        is_labeled = misconception_id not in (None, "", "unlabeled") and misconception_name != UNLABELED_MISCONCEPTION
+        sev = (severity or "unknown").lower()
+        if sev in ("high", "critical"):
+            color = "#EF4444"
+            variant = "danger"
+        elif sev == "medium":
+            color = "#F59E0B"
+            variant = "warning"
+        elif sev == "low":
+            color = "#3B82F6"
+            variant = "info"
+        elif is_labeled:
+            color = "#8B5CF6"
+            variant = "purple"
+        else:
+            color = "#6B7280"
+            variant = "neutral"
+
+        badge_id = f"BADGE_{misconception_id}" if is_labeled else f"BADGE_{question_id}_{selected_option}"
+        label = misconception_name if is_labeled else "Lỗi chưa phân loại"
+        badge_type = "misconception" if is_labeled else "unclassified"
+
+        if not cot_summary:
+            clean_desc = description.replace("\n", " ").strip()
+            cot_summary = f"Lỗi: {label} — {clean_desc[:100]}..." if is_labeled else clean_desc[:100]
+
+        return {
+            "badge_id": badge_id,
+            "misconception_id": str(misconception_id) if misconception_id else "unlabeled",
+            "label": label,
+            "badge_color": color,
+            "badge_variant": variant,
+            "badge_type": badge_type,
+            "severity": sev,
+            "cot_summary": cot_summary,
+            "root_cause": description,
+            "confidence_score": round(confidence_score, 4)
+        }
+
+    @staticmethod
+    def build_root_cause_analysis(
+        selected_option: str,
+        correct_option: str,
+        misconception_name: str,
+        detailed_explanation: str,
+        concept_name: str,
+        cot_explanation: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """Constructs structured Root Cause Analysis steps for the incorrect answer."""
+        observation = f"Học sinh chọn phương án '{selected_option}' thay vì đáp án đúng '{correct_option}'."
+        gap_conclusion = f"Cần củng cố và kiểm tra thêm mức độ hiểu khái niệm '{concept_name}'."
+
+        if cot_explanation and "\n" in cot_explanation:
+            cot_steps = [line.strip() for line in cot_explanation.split("\n") if line.strip()]
+        else:
+            cot_steps = [
+                f"1. Quan sát: {observation}",
+                f"2. Phân tích nguyên nhân (Root Cause): Học sinh mắc lỗi '{misconception_name}'.",
+                f"3. Diễn giải chi tiết: {detailed_explanation}",
+                f"4. Kết luận lỗ hổng: {gap_conclusion}"
+            ]
+
+        return {
+            "observation": observation,
+            "misconception": misconception_name,
+            "detailed_explanation": detailed_explanation,
+            "gap_conclusion": gap_conclusion,
+            "cot_steps": cot_steps
+        }
+
     def process(self, input_data: Dict[str, Any], context: Dict[str, Any]) -> Dict[str, Any]:
         """
         Input expects:
@@ -60,7 +142,9 @@ class DiagnosticAgent(BaseAgent):
                 "is_valid_parse": None,
                 "used_fallback": False,
                 "error_reason": None,
-                "engine": "rule_based"
+                "engine": "rule_based",
+                "misconception_badge": None,
+                "root_cause_analysis": None
             }
         else:
             misconception_map = question.get("misconception_map", {})
@@ -90,6 +174,24 @@ class DiagnosticAgent(BaseAgent):
 
                 mastery = learner_state.get_concept_mastery(concept_id) if learner_state else 0.0
 
+                badge = self.build_misconception_badge(
+                    question_id=question.get("question_id", "UNKNOWN"),
+                    selected_option=selected_option,
+                    misconception_id=misc_id,
+                    misconception_name=matched_name,
+                    description=cot_explanation,
+                    severity="unknown",
+                    confidence_score=confidence_score
+                )
+                root_cause = self.build_root_cause_analysis(
+                    selected_option=selected_option,
+                    correct_option=correct_option,
+                    misconception_name=matched_name,
+                    detailed_explanation=cot_explanation,
+                    concept_name=concept_name,
+                    cot_explanation=cot_explanation
+                )
+
                 diagnosis_result = {
                     "is_correct": False,
                     "question_id": question.get("question_id", "UNKNOWN"),
@@ -109,7 +211,9 @@ class DiagnosticAgent(BaseAgent):
                     "parse_attempts": attempts,
                     "used_fallback": used_fallback,
                     "error_reason": error_reason,
-                    "engine": "llm_cot"
+                    "engine": "llm_cot",
+                    "misconception_badge": badge,
+                    "root_cause_analysis": root_cause
                 }
             else:
                 misc_info = misconception_map.get(selected_option, {
@@ -136,6 +240,24 @@ class DiagnosticAgent(BaseAgent):
 
                 mastery = learner_state.get_concept_mastery(concept_id) if learner_state else 0.0
 
+                badge = self.build_misconception_badge(
+                    question_id=question.get("question_id", "UNKNOWN"),
+                    selected_option=selected_option,
+                    misconception_id=misc_id,
+                    misconception_name=misc_info["name"],
+                    description=misc_info["description"],
+                    severity=misc_info.get("severity", "unknown"),
+                    confidence_score=1.0
+                )
+                root_cause = self.build_root_cause_analysis(
+                    selected_option=selected_option,
+                    correct_option=correct_option,
+                    misconception_name=misc_info["name"],
+                    detailed_explanation=misc_info["description"],
+                    concept_name=concept_name,
+                    cot_explanation=cot_explanation
+                )
+
                 diagnosis_result = {
                     "is_correct": False,
                     "question_id": question.get("question_id", "UNKNOWN"),
@@ -151,7 +273,9 @@ class DiagnosticAgent(BaseAgent):
                     "confidence_score": 1.0,
                     "question_text": question.get("question_text", ""),
                     "options": question.get("options", {}),
-                    "engine": "rule_based"
+                    "engine": "rule_based",
+                    "misconception_badge": badge,
+                    "root_cause_analysis": root_cause
                 }
 
         return diagnosis_result
