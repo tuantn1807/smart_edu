@@ -31,12 +31,24 @@ def run_student_session(framework: PAAFFramework, student_id: str, student_name:
     )
 
     print("-" * 80)
-    print("📌 [DIAGNOSTIC AGENT - Misconception Analysis & CoT Reasoning]:")
+    print("📌 [DIAGNOSTIC AGENT - Misconception Badging & CoT Root Cause Reasoning]:")
     diag = pipeline_result["diagnosis_result"]
     print(f" - Kết quả làm bài: {'ĐÚNG' if diag['is_correct'] else 'SAI'}")
     if not diag['is_correct']:
         print(f" - Hiểu lầm phát hiện: {diag['detected_misconception']}")
         print(f" - Mức độ nghiêm trọng: {diag['severity'].upper()}")
+        badge = diag.get("misconception_badge")
+        if badge:
+            print(f" 🏷️ [Thẻ Chẩn đoán CoT (Misconception Badge)]: [{badge['badge_id']}] {badge['label']} (Mức độ: {badge['severity'].upper()})")
+            print(f"    - Màu thẻ hiển thị: {badge['badge_color']} ({badge['badge_variant']})")
+            print(f"    - Tóm tắt CoT: {badge['cot_summary']}")
+        rc = diag.get("root_cause_analysis")
+        if rc:
+            print(" 🧠 [Chi tiết Nguyên nhân Gốc rễ CoT]:")
+            print(f"    * 🔍 {rc['observation']}")
+            print(f"    * ⚠️ Lỗi: {rc['misconception']}")
+            print(f"    * 📖 Giải thích: {rc['detailed_explanation']}")
+            print(f"    * 🎯 Kết luận: {rc['gap_conclusion']}")
         print(f" - Chuỗi suy luận (CoT Explanation):\n{diag['cot_explanation']}\n")
 
     print("-" * 80)

@@ -4,7 +4,11 @@ Provides endpoints for Azota / Study4 / Tuyensinh247 exam payload submission & d
 """
 
 from fastapi import APIRouter, HTTPException, status
-from src.api.schemas import AssessmentSubmitRequest, AssessmentDiagnosticResponse
+from src.api.schemas import (
+    AssessmentSubmitRequest,
+    AssessmentDiagnosticResponse,
+    PostSubmissionDiagnosticResponse,
+)
 from src.api.assessment_gateway import AssessmentGatewayService
 
 router = APIRouter(prefix="/api/v1/assessment", tags=["Assessment Gateway"])
@@ -40,6 +44,23 @@ async def submit_assessment(request: AssessmentSubmitRequest) -> AssessmentDiagn
 async def diagnose_submission(request: AssessmentSubmitRequest) -> AssessmentDiagnosticResponse:
     try:
         response = gateway_service.process_submission(request)
+        return response
+    except ValueError as ve:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(ve))
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Internal Diagnostic Error: {str(e)}")
+
+
+@router.post(
+    "/post-submission-diagnostic",
+    response_model=PostSubmissionDiagnosticResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Post-submission CoT Diagnostic & Misconception Badging",
+    description="Filters incorrect answers from exam submission, runs Diagnostic Agent for CoT reasoning, and assigns misconception badges."
+)
+async def post_submission_diagnostic(request: AssessmentSubmitRequest) -> PostSubmissionDiagnosticResponse:
+    try:
+        response = gateway_service.diagnose_post_submission(request)
         return response
     except ValueError as ve:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(ve))

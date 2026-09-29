@@ -116,12 +116,13 @@ sequenceDiagram
 
 ## 4. CHI TIẾT CÁC MÔ HÌNH TÁC TỬ (SPECIALIZED AGENTS)
 
-### 4.1. Diagnostic Agent (Tác tử Chẩn đoán Lỗ hổng)
-* **Chức năng:** Nhận dữ liệu câu hỏi (dạng Eedi Diagnostic Questions) và đáp án sai do học sinh chọn, tiến hành **Suy luận chuỗi (Chain-of-Thought - CoT)** để tìm ra nguyên nhân gốc rễ.
+### 4.1. Diagnostic Agent (Tác tử Chẩn đoán Lỗ hổng & Gán nhãn Misconception Badging)
+* **Chức năng:** Nhận dữ liệu câu hỏi (dạng Eedi Diagnostic Questions) và đáp án sai do học sinh chọn, tiến hành **Suy luận chuỗi (Chain-of-Thought - CoT)** để tìm ra nguyên nhân gốc rễ sau khi nộp bài thi (Post-Submission Diagnostic).
 * **Đầu ra:** 
-  * Xác định nhãn Hiểu lầm cụ thể (Misconception Name).
-  * Đánh giá mức độ nghiêm trọng (Severity: High / Medium / Low).
-  * Giải thích chi tiết luồng tư duy sai của học sinh.
+  * Gán Thẻ Chẩn đoán CoT (Misconception Badge) trực quan với mã màu theo mức độ nghiêm trọng (Severity: High / Medium / Low / Critical).
+  * Xác định nhãn Hiểu lầm cụ thể (`misconception_id`, `label`, `cot_summary`).
+  * Phân tích nguyên nhân gốc rễ 4 bước (Root Cause Analysis: Quan sát -> Phân tích -> Diễn giải -> Kết luận lỗ hổng).
+  * Render HTML Card trực quan cho phép tích hợp trực tiếp vào giao diện bài thi khảo thí (Azota / Study4).
 
 ### 4.2. Knowledge Graph Agent (Tác tử Đồ thị Kiến thức)
 * **Chức năng:** Sử dụng thuật toán duyệt đồ thị (Graph Traversal) trên cấu trúc Đồ thị phụ thuộc khái niệm (Junyi Concept Dependency Graph).
